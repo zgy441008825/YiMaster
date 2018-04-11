@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="WidthScaleAnimation">
+        <attr name="circleWidth" format="float"/>
+        <attr name="normalColor" format="color"/>
+        <attr name="width_radius" format="float"/>
+    </declare-styleable>
+</resources>

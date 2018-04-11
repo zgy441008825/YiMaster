@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">pppp</string>
+
+    <string name="public_login">微信登录</string>
+    <string name="public_tips">提示</string>
+    <string name="public_ok">确定</string>
+    <string name="public_no">取消</string>
+
+    <string name="login_ing">登录中&#8230;</string>
+    <string name="mainStart">开始</string>
+</resources>

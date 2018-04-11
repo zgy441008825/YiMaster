@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent" android:layout_height="match_parent"
+                android:background="@drawable/main_test_bg">
+
+    <com.zou.yimaster.ui.view.QuestionGroupView
+        android:id="@+id/questionGroupView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/playButton"
+        android:layout_marginBottom="50dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:group_click_errorColor="@color/colorAccent"
+        app:group_click_rightColor="@android:color/holo_green_dark"
+        app:group_click_selectColor="@color/colorPrimary"/>
+
+    <Button
+        android:id="@+id/playButton"
+        style="@style/Default_button"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        android:text="准备"/>
+</RelativeLayout>

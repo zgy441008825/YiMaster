@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <!--<com.zou.yimaster.ui.view.ClickView
+        android:id="@+id/ClickView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="100dp"
+        android:minWidth="100dp"
+        app:clickColor="@color/colorAccent"
+        app:click_radius="100"
+        app:click_scale="20"
+        app:normalColor="@android:color/white"
+        app:selectColor="@android:color/holo_blue_dark"/>-->
+
+</android.support.constraint.ConstraintLayout>

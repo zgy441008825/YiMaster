@@ -1,0 +1,44 @@
+CREATE TABLE channelinfo
+(
+  id      INT AUTO_INCREMENT
+    PRIMARY KEY,
+  channel VARCHAR(45)  NOT NULL,
+  appid   VARCHAR(100) NOT NULL,
+  secret  VARCHAR(100) NOT NULL
+);
+
+////////////////////////////////
+-- auto-generated definition
+CREATE TABLE gamerecord
+(
+  id          INT AUTO_INCREMENT
+    PRIMARY KEY,
+  openid      VARCHAR(50)  NOT NULL,
+  useTime     INT          NOT NULL,
+  count       INT          NOT NULL,
+  recode_time INT          NULL,
+  nickName    VARCHAR(100) NULL,
+  headImgUrl  VARCHAR(100) NULL
+);
+/////////////////////////////////////
+-- auto-generated definition
+CREATE TABLE userinfo
+(
+  id            INT AUTO_INCREMENT
+    PRIMARY KEY,
+  nickName      VARCHAR(50)  NOT NULL,
+  sex           INT          NOT NULL,
+  province      VARCHAR(50)  NULL,
+  userinfocol   VARCHAR(50)  NULL,
+  city          VARCHAR(50)  NULL,
+  country       VARCHAR(50)  NULL,
+  headImgUrl    VARCHAR(100) NULL,
+  unionid       VARCHAR(50)  NOT NULL,
+  openid        VARCHAR(50)  NOT NULL,
+  expires_in    INT          NULL,
+  scope         VARCHAR(50)  NULL,
+  access_time   VARCHAR(30)  NULL,
+  refresh_time  VARCHAR(30)  NULL,
+  access_token  VARCHAR(45)  NULL,
+  refresh_token VARCHAR(45)  NULL
+);

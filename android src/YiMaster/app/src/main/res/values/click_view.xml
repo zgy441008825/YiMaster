@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ClickView">
+        <attr name="click_radius" format="float"/>
+        <attr name="click_scale" format="float"/>
+        <attr name="click_normalColor" format="color"/>
+        <attr name="click_selectColor" format="color"/>
+    </declare-styleable>
+</resources>

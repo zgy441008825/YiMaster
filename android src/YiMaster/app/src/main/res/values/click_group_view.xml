@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="QuestionGroupView">
+        <attr name="group_click_radius" format="float"/>
+        <attr name="group_click_scale" format="float"/>
+        <attr name="group_click_normalColor" format="color"/>
+        <attr name="group_click_selectColor" format="color"/>
+        <attr name="group_click_rightColor" format="color"/>
+        <attr name="group_click_errorColor" format="color"/>
+    </declare-styleable>
+</resources>
