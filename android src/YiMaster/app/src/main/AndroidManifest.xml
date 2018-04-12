@@ -8,12 +8,12 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
+
     <application
         android:name=".common.YiApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.activity.WelcomeActivity"
@@ -34,6 +34,22 @@
                   android:exported="true"
                   android:screenOrientation="portrait"
                   android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+
+        <!-- 百度 更新 -->
+        <meta-data android:name="BDAPPID" android:value="3311903"/>
+        <meta-data android:name="BDAPPKEY" android:value="jOUrp6QGvdEqPj6G4xMPGk54"/>
+
+        <!-- android:authorities="包名.fileprovider"将“包名”替换为实际包名 -->
+        <provider
+            android:authorities="com.zou.yimaster.fileprovider"
+            android:name="android.support.v4.content.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/bdp_update_filepaths"/>
+        </provider>
+
     </application>
 
 </manifest>

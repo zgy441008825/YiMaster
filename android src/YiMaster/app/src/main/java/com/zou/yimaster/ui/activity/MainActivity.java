@@ -3,10 +3,16 @@ package com.zou.yimaster.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Process;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
 
+import com.umeng.analytics.MobclickAgent;
+import com.umeng.message.inapp.IUmengInAppMsgCloseCallback;
+import com.umeng.message.inapp.InAppMessageManager;
+import com.umeng.socialize.ShareAction;
+import com.umeng.socialize.editorpage.ShareActivity;
 import com.zou.yimaster.R;
 import com.zou.yimaster.common.PowerFactory;
 import com.zou.yimaster.ui.base.BaseActivity;
@@ -29,6 +35,8 @@ public class MainActivity extends BaseActivity {
         tvPowerTime = findViewById(R.id.powerInfoTime);
         PowerFactory.getInstance().setListener(powerProductionListener);
         findViewById(R.id.BTLogin).setOnClickListener(onClickListener);
+        InAppMessageManager.getInstance(this).showCardMessage(this, "main",
+                () -> Log.i(TAG, "card message close"));
     }
 
     private View.OnClickListener onClickListener = v -> {
@@ -76,6 +84,7 @@ public class MainActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         PowerFactory.getInstance().trunToBackground();
+        MobclickAgent.onKillProcess(this);
         Process.killProcess(Process.myPid());
         System.exit(0);
     }

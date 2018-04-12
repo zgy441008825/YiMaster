@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/UMLibrary/UMLibrary.iml" filepath="$PROJECT_DIR$/UMLibrary/UMLibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/YiMaster.iml" filepath="$PROJECT_DIR$/YiMaster.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/focus/focus.iml" filepath="$PROJECT_DIR$/focus/focus.iml" />

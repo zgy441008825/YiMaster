@@ -1,5 +1,7 @@
 package com.zou.yimaster.net;
 
+import com.zou.yimaster.common.AppConfig;
+
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -66,7 +68,7 @@ public class RetrofitHelper {
     /**
      * 获取平台相关信息
      */
-    public static Flowable<String> getChannelInfo(String channel) {
+    public static Flowable<AppConfig> getChannelInfo(String channel) {
         Retrofit retrofit = getYiServiceBaseRetrofit();
         IYiServerRetrofit yiServerRetrofit = retrofit.create(IYiServerRetrofit.class);
         return yiServerRetrofit.getChannelInfo(channel);

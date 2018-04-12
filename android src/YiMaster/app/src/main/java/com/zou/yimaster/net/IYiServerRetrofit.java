@@ -1,5 +1,7 @@
 package com.zou.yimaster.net;
 
+import com.zou.yimaster.common.AppConfig;
+
 import io.reactivex.Flowable;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
@@ -19,6 +21,6 @@ public interface IYiServerRetrofit {
      * @return json 包含APPID secret等
      */
     @POST("/GetChannelInfo")
-    Flowable<String> getChannelInfo(@Query("channel") String channel);
+    Flowable<AppConfig> getChannelInfo(@Query("channel") String channel);
 
 }
