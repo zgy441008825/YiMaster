@@ -7,8 +7,12 @@ import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.zou.yimaster.R;
+import com.zou.yimaster.common.GameHelper;
+import com.zou.yimaster.common.PowerFactory;
+import com.zou.yimaster.common.dao.UserGameRecord;
 import com.zou.yimaster.ui.adapter.PlayAdapter;
 import com.zou.yimaster.ui.base.BaseActivity;
 import com.zou.yimaster.ui.view.QuestionGroupView;
@@ -42,13 +46,17 @@ public class PlayActivity extends BaseActivity {
     Button playButton;
     @BindView(R.id.questionGroupView)
     QuestionGroupView groupView;
-
-
+    @BindView(R.id.powerInfoPowerCnt)
+    TextView powerInfoPowerCnt;
+    @BindView(R.id.powerInfoTime)
+    TextView powerInfoTime;
+    @BindView(R.id.powerInfoMoney)
+    TextView powerInfoMoney;
 
     /**
      * 题目数量
      */
-    private int dataSize = 2;
+    private int dataSize = 5;
 
     /**
      * 网格个数
@@ -64,6 +72,11 @@ public class PlayActivity extends BaseActivity {
      * 记录耗时
      */
     private long answerUserTime = 0;
+
+    /**
+     * 单次耗时
+     */
+    private long oneUserTime = 0;
 
     /**
      * 显示的时间格式
@@ -114,6 +127,7 @@ public class PlayActivity extends BaseActivity {
         setContentView(R.layout.activity_play);
         ButterKnife.bind(this);
         groupView.setCallback(callback);
+        PowerFactory.getInstance().setListener(powerProductionListener);
         initDataList();
     }
 
@@ -121,6 +135,10 @@ public class PlayActivity extends BaseActivity {
      * 初始化数据
      */
     private void initDataList() {
+        if (!PowerFactory.getInstance().canPlay()) {
+            showBuyDialog();
+            return;
+        }
         dataList.clear();
         Random random = new Random();
         for (int i = 0; i < dataSize; i++) {
@@ -130,21 +148,56 @@ public class PlayActivity extends BaseActivity {
         showGuide0();
     }
 
+    /**
+     *
+     */
+    private void showBuyDialog() {
+    }
+
     private void showGuide0() {
         if (!SPTools.getInstance(this).getBoolean(PLAY_SHOW_GUIDE_0)) {
-            new AlertDialog.Builder(this)
-                    .setMessage("点击“准备”按钮，开始显示题目")
-                    .setPositiveButton(R.string.public_ok, null)
-                    .show();
-        } else {
-            new AlertDialog.Builder(this)
-                    .setMessage("开始")
-                    .setPositiveButton(R.string.public_ok, (dialog, which) -> startShowAnswer())
-                    .show();
+            if (state < STATE_SHOW_QUESTION_END) {
+                new AlertDialog.Builder(this)
+                        .setMessage("点击“准备”按钮，开始显示题目")
+                        .setPositiveButton(R.string.public_ok, null)
+                        .show();
+            } else {
+                new AlertDialog.Builder(this)
+                        .setMessage("点击“开始”按钮，开始回答题目")
+                        .setPositiveButton(R.string.public_ok,
+                                (dialog, which) -> SPTools.getInstance(PlayActivity.this).saveBoolean
+                                        (PLAY_SHOW_GUIDE_0, true))
+                        .show();
+            }
         }
     }
 
+    private PowerFactory.IPowerProductionListener powerProductionListener = new PowerFactory.IPowerProductionListener
+            () {
+        @Override
+        public void onStateChange(String time) {
+            powerInfoPowerCnt.setText(time);
+        }
+
+        @Override
+        public void onStockChange(int stock) {
+            powerInfoTime.setText(String.format(Locale.getDefault(), "%1$d/%2$d", stock, PowerFactory.POWER_MAX));
+            if (stock >= PowerFactory.POWER_MAX) {
+                powerInfoTime.setVisibility(View.GONE);
+            } else {
+                powerInfoTime.setVisibility(View.VISIBLE);
+            }
+        }
+
+        @Override
+        public void onMoneyChange(int money) {
+            powerInfoMoney.setText(String.valueOf(money));
+        }
+    };
+
     private int clickCnt = 0;
+
+    private int answerCnt = 0;
 
     private PlayAdapter.IClickViewTouchCallback callback = new PlayAdapter.IClickViewTouchCallback() {
         @Override
@@ -154,6 +207,8 @@ public class PlayActivity extends BaseActivity {
                 clickCnt++;
                 return true;
             }
+            disposeFlowable();
+            showFailedDialog();
             return false;
         }
 
@@ -161,24 +216,56 @@ public class PlayActivity extends BaseActivity {
         public void onActionUp(int index) {
             Log.d(TAG, "onActionUp: " + index);
             if (clickCnt >= dataSize) {//完成
+                answerCnt += dataSize;
                 disposeFlowable();
+                showNextLevelDialog();
             }
         }
     };
 
+    private void showNextLevelDialog() {
+        dataSize += 2;
+        initDataList();
+    }
+
+    private void showFailedDialog() {
+        new AlertDialog.Builder(this)
+                .setPositiveButton("继续", (dialog, which) -> {
+                    answerUserTime -= oneUserTime;
+                    initDataList();
+                })
+                .setNegativeButton("取消", (dialog, which) -> {
+                    answerUserTime -= oneUserTime;
+                    GameHelper.saveResult(getRecord());
+                })
+                .show();
+    }
+
+    private UserGameRecord getRecord() {
+        UserGameRecord record = new UserGameRecord();
+        record.setAnswerCnt(answerCnt)
+                .setUseTime(answerUserTime)
+                .setRecordTime(System.currentTimeMillis());
+        return record;
+    }
+
     @OnClick(R.id.playButton)
     public void onPlayButtonClick(View view) {
-        if (state != STATE_SHOW_QUESTION_END) {
+        if (state == STATE_NORMAL) {
+            startShowAnswer();
             return;
         }
-        startAnswer();
+        if (state == STATE_SHOW_QUESTION_END) {
+            startAnswer();
+            return;
+        }
     }
 
     private void startShowAnswer() {
         state = STATE_SHOW_QUESTION;
         playButton.setText("准备");
         groupView.setEnabled(false);
-        clearDisposable = Flowable.interval(currentIndex, 3, TimeUnit.SECONDS)
+        clearDisposable = Flowable.interval(currentIndex, 2, TimeUnit.SECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.newThread())
                 .take(dataSize + 1)
@@ -187,7 +274,7 @@ public class PlayActivity extends BaseActivity {
                     playButton.setText("开始");
                     state = STATE_SHOW_QUESTION_END;
                 });
-        selectDisposable = Flowable.interval(currentIndex + 1, 3, TimeUnit.SECONDS)
+        selectDisposable = Flowable.interval(currentIndex + 1, 2, TimeUnit.SECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.newThread())
                 .take(dataSize)
@@ -209,11 +296,13 @@ public class PlayActivity extends BaseActivity {
     private void startAnswer() {
         state = STATE_ANSWER;
         groupView.setEnabled(true);
+        oneUserTime = 0;
         timeCountDisposable = Flowable.interval(0, 10, TimeUnit.MILLISECONDS)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(aLong -> {
                     answerUserTime += 10;
+                    oneUserTime += 10;
                     playButton.setText(dateFormat.format(answerUserTime));
                 });
     }

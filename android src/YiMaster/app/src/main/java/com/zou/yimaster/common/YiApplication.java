@@ -10,7 +10,6 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.text.TextUtils;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.umeng.analytics.MobclickAgent;
@@ -20,7 +19,6 @@ import com.umeng.message.PushAgent;
 import com.umeng.message.UmengNotificationClickHandler;
 import com.umeng.message.entity.UMessage;
 import com.umeng.socialize.UMShareAPI;
-import com.zou.yimaster.net.RetrofitHelper;
 
 import org.xutils.x;
 
@@ -28,9 +26,6 @@ import java.lang.reflect.Method;
 import java.net.NetworkInterface;
 import java.util.Enumeration;
 import java.util.Locale;
-
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by zougy on 03.25.025
@@ -42,16 +37,19 @@ public class YiApplication extends Application {
     public void onCreate() {
         super.onCreate();
         x.Ext.init(this);
+        initAPPID();
+    }
+
+    private void initAPPID() {
+        setUMeng("5ac4200a8f4a9d3474000d0a", null);
         initUMeng();
-//        System.out.println("getDeviceInfo:"+getDeviceInfo(this));
     }
 
     private void initUMeng() {
-        setUMeng("5ac4200a8f4a9d3474000d0a", null);
         UMConfigure.setLogEnabled(true);
         UMConfigure.setEncryptEnabled(true);
         MobclickAgent.setCatchUncaughtExceptions(true);
-        MobclickAgent.setScenarioType(this, MobclickAgent.EScenarioType.E_UM_GAME);
+        MobclickAgent.setScenarioType(x.app(), MobclickAgent.EScenarioType.E_UM_GAME);
     }
 
     private void setUMeng(String appid, String appSecret) {
@@ -63,9 +61,9 @@ public class YiApplication extends Application {
          * 参数4:设备类型，UMConfigure.DEVICE_TYPE_PHONE为手机、UMConfigure.DEVICE_TYPE_BOX为盒子，默认为手机
          * 参数5:Push推送业务的secret
          */
-        UMConfigure.init(this, appid, "umeng", UMConfigure.DEVICE_TYPE_PHONE, appSecret);
-        MobclickAgent.setSecret(this, appSecret);
-        UMShareAPI.init(this, appid);
+        UMConfigure.init(x.app(), appid, "umeng", UMConfigure.DEVICE_TYPE_PHONE, appSecret);
+        MobclickAgent.setSecret(x.app(), appSecret);
+        UMShareAPI.init(x.app(), appid);
         PushAgent mPushAgent = PushAgent.getInstance(this);
         //注册推送服务，每次调用register方法都会回调该接口
         mPushAgent.register(new IUmengRegisterCallback() {
@@ -99,7 +97,6 @@ public class YiApplication extends Application {
                 device_id = tm.getDeviceId();
             }
             String mac = getMac(context);
-
             json.put("mac", mac);
             if (TextUtils.isEmpty(device_id)) {
                 device_id = mac;
@@ -125,7 +122,7 @@ public class YiApplication extends Application {
             mac = getMacBySystemInterface(context);
         } else {
             mac = getMacByJavaAPI();
-            if (TextUtils.isEmpty(mac)){
+            if (TextUtils.isEmpty(mac)) {
                 mac = getMacBySystemInterface(context);
             }
         }

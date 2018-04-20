@@ -29,11 +29,12 @@
                   android:screenOrientation="portrait"/>
         <activity android:name=".ui.activity.PlayActivity"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".wxapi.WXEntryActivity"
-                  android:configChanges="keyboardHidden|orientation|screenSize"
-                  android:exported="true"
-                  android:screenOrientation="portrait"
-                  android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
         <!-- 百度 更新 -->
         <meta-data android:name="BDAPPID" android:value="3311903"/>

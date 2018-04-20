@@ -7,6 +7,7 @@ import com.zou.yimaster.servlet.dao.DBManager;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 获取前面信息 参数channel，如果不传返回所有渠道信息
@@ -20,7 +21,7 @@ public class GetChannelInfo extends javax.servlet.http.HttpServlet {
         String channel = request.getParameter("channel");
         System.out.println("post:" + channel);
         if (channel == null || channel.equals("")) {
-            List<ChannelInfo> channelInfos = DBManager.getInstance().getChannels();
+            Map<String, ChannelInfo.InfoBean> channelInfos = DBManager.getInstance().getChannels();
             System.out.println("getChannels:" + (new Gson().toJson(channelInfos)));
             writer.print(new Gson().toJson(channelInfos));
         } else {

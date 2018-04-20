@@ -1,17 +1,14 @@
 package com.zou.yimaster.servlet.dao;
 
-import org.apache.commons.dbutils.BaseResultSetHandler;
-import org.apache.commons.dbutils.QueryRunner;
-import org.apache.commons.dbutils.ResultSetHandler;
-import org.apache.commons.dbutils.handlers.BeanHandler;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by zougaoyuan on 2018/4/11
@@ -33,7 +30,7 @@ public class DBManager {
     //MySQL配置时的用户名
     private String user = "root";
     //MySQL配置时的密码
-    private String password = "root";
+    private String password = "zgy03031022WENLI";
 
     private DBManager() {
         try {
@@ -68,13 +65,13 @@ public class DBManager {
                     String sql = "INSERT INTO channelinfo(channel, appid, secret) VALUES (?, ?, ?)";
                     statement = conn.prepareStatement(sql);
                     statement.setString(1, info.getChannel());
-                    statement.setString(2, info.getAppid());
-                    statement.setString(3, info.getSecrit());
+                    statement.setString(2, info.getInfo().getAppid());
+                    statement.setString(3, info.getInfo().getSecrit());
                 } else {
                     String sql = "UPDATE channelinfo SET appid = ? , secret = ? WHERE channel = ?";
                     statement = conn.prepareStatement(sql);
-                    statement.setString(1, info.getAppid());
-                    statement.setString(2, info.getSecrit());
+                    statement.setString(1, info.getInfo().getAppid());
+                    statement.setString(2, info.getInfo().getSecrit());
                     statement.setString(3, info.getChannel());
                 }
                 statement.execute();
@@ -93,9 +90,11 @@ public class DBManager {
                 ResultSet resultSet = statement.executeQuery();
                 if (resultSet.first()) {
                     ChannelInfo info = new ChannelInfo();
-                    info.setChannel(channel)
-                            .setAppid(resultSet.getString("appid"))
-                            .setSecrit(resultSet.getString("secret"));
+                    ChannelInfo.InfoBean bean = new ChannelInfo.InfoBean();
+                    bean.setAppid(resultSet.getString("appid"));
+                    bean.setSecrit(resultSet.getString("secret"));
+                    info.setChannel(channel);
+                    info.setInfo(bean);
                     return info;
                 }
             }
@@ -105,22 +104,19 @@ public class DBManager {
         return null;
     }
 
-    public List<ChannelInfo> getChannels() {
+    public Map<String, ChannelInfo.InfoBean> getChannels() {
         try {
             if (!conn.isClosed()) {
                 String sql = "SELECT * FROM channelinfo";
                 PreparedStatement statement = conn.prepareStatement(sql);
                 ResultSet resultSet = statement.executeQuery();
                 if (resultSet.first()) {
-                    List<ChannelInfo> channelInfos = new ArrayList<>();
+                    Map<String, ChannelInfo.InfoBean> infoBeanMap = new HashMap<>();
                     do {
-                        ChannelInfo info = new ChannelInfo();
-                        info.setChannel(resultSet.getString("channel"))
-                                .setAppid(resultSet.getString("appid"))
-                                .setSecrit(resultSet.getString("secret"));
-                        channelInfos.add(info);
+                        ChannelInfo info = getChannelInfo(resultSet.getString("channel"));
+                        infoBeanMap.put(info.getChannel(), info.getInfo());
                     } while (resultSet.next());
-                    return channelInfos;
+                    return infoBeanMap;
                 }
             }
         } catch (SQLException e) {

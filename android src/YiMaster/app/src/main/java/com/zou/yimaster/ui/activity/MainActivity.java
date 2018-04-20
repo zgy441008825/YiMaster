@@ -1,6 +1,8 @@
 package com.zou.yimaster.ui.activity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Process;
 import android.util.Log;
@@ -9,10 +11,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.umeng.analytics.MobclickAgent;
-import com.umeng.message.inapp.IUmengInAppMsgCloseCallback;
 import com.umeng.message.inapp.InAppMessageManager;
-import com.umeng.socialize.ShareAction;
-import com.umeng.socialize.editorpage.ShareActivity;
 import com.zou.yimaster.R;
 import com.zou.yimaster.common.PowerFactory;
 import com.zou.yimaster.ui.base.BaseActivity;
@@ -26,6 +25,7 @@ public class MainActivity extends BaseActivity {
 
     private TextView tvPowerCnt;
     private TextView tvPowerTime;
+    private TextView tvMoneyCnt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +33,28 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         tvPowerCnt = findViewById(R.id.powerInfoPowerCnt);
         tvPowerTime = findViewById(R.id.powerInfoTime);
+        tvMoneyCnt = findViewById(R.id.powerInfoMoney);
         PowerFactory.getInstance().setListener(powerProductionListener);
         findViewById(R.id.BTLogin).setOnClickListener(onClickListener);
         InAppMessageManager.getInstance(this).showCardMessage(this, "main",
                 () -> Log.i(TAG, "card message close"));
+        requestPermission();
+    }
+
+    private void requestPermission() {
+        if (Build.VERSION.SDK_INT >= 23) {
+            String[] mPermissionList = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.CALL_PHONE,
+                    Manifest.permission.READ_LOGS,
+                    Manifest.permission.READ_PHONE_STATE,
+                    Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.SET_DEBUG_APP,
+                    Manifest.permission.SYSTEM_ALERT_WINDOW,
+                    Manifest.permission.GET_ACCOUNTS,
+                    Manifest.permission.WRITE_APN_SETTINGS};
+            requestPermissions(mPermissionList, 123);
+        }
     }
 
     private View.OnClickListener onClickListener = v -> {
@@ -46,6 +64,11 @@ public class MainActivity extends BaseActivity {
             ToastHelper.show("。。。。。。。。。。。。。。");
         }
     };
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 
     private PowerFactory.IPowerProductionListener powerProductionListener = new PowerFactory.IPowerProductionListener
             () {
@@ -62,6 +85,11 @@ public class MainActivity extends BaseActivity {
             } else {
                 tvPowerTime.setVisibility(View.VISIBLE);
             }
+        }
+
+        @Override
+        public void onMoneyChange(int money) {
+            tvMoneyCnt.setText(String.valueOf(money));
         }
     };
 
@@ -83,7 +111,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        PowerFactory.getInstance().trunToBackground();
+        PowerFactory.getInstance().turnToBackground();
         MobclickAgent.onKillProcess(this);
         Process.killProcess(Process.myPid());
         System.exit(0);

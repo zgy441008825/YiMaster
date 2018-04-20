@@ -4,17 +4,25 @@
                 android:layout_width="match_parent" android:layout_height="match_parent"
                 android:background="@drawable/main_test_bg">
 
+    <include
+        android:id="@+id/playPowerLayout"
+        layout="@layout/play_power_info"/>
+
     <com.zou.yimaster.ui.view.QuestionGroupView
         android:id="@+id/questionGroupView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/playButton"
+        android:layout_below="@+id/playPowerLayout"
         android:layout_marginBottom="50dp"
+        android:layout_marginTop="20dp"
         android:clickable="true"
         android:focusable="true"
         app:group_click_errorColor="@color/colorAccent"
+        app:group_click_radius="130"
         app:group_click_rightColor="@android:color/holo_green_dark"
-        app:group_click_selectColor="@color/colorPrimary"/>
+        app:group_click_selectColor="@color/colorPrimary"
+        app:group_click_space="80"/>
 
     <Button
         android:id="@+id/playButton"
@@ -25,4 +33,5 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="50dp"
         android:text="准备"/>
+
 </RelativeLayout>
