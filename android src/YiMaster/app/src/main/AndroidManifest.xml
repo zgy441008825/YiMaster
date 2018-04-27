@@ -29,12 +29,18 @@
                   android:screenOrientation="portrait"/>
         <activity android:name=".ui.activity.PlayActivity"
                   android:screenOrientation="portrait"/>
+        <activity android:name=".ui.activity.GameResultActivity"
+                  android:screenOrientation="portrait"
+                  android:theme="@style/TransparentActivity"/>
+        <activity android:name=".ui.activity.BuyActivity"
+                  android:screenOrientation="portrait"
+                  android:theme="@style/TransparentActivity"/>
         <activity
             android:name=".wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
 
         <!-- 百度 更新 -->
         <meta-data android:name="BDAPPID" android:value="3311903"/>
@@ -42,8 +48,8 @@
 
         <!-- android:authorities="包名.fileprovider"将“包名”替换为实际包名 -->
         <provider
-            android:authorities="com.zou.yimaster.fileprovider"
             android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.zou.yimaster.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

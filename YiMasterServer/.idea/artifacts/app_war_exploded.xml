@@ -11,6 +11,11 @@
           <element id="library" level="project" name="com.google.code.gson:gson:2.8.2" />
           <element id="library" level="project" name="mysql-connector-java-5.1.44-bin" />
           <element id="library" level="project" name="Java EE 6-Java EE 6" />
+          <element id="library" level="project" name="com.squareup.retrofit2:retrofit:2.4.0" />
+          <element id="library" level="project" name="com.squareup.retrofit2:adapter-rxjava2:2.4.0" />
+          <element id="library" level="project" name="com.squareup.retrofit2:converter-scalars:2.4.0" />
+          <element id="library" level="project" name="io.reactivex.rxjava2:rxjava:2.1.12" />
+          <element id="library" level="project" name="com.squareup.retrofit2:converter-simplexml:2.4.0" />
         </element>
       </element>
     </root>

@@ -203,9 +203,16 @@ public class QuestionGroupView extends View {
         return this;
     }
 
+    /**
+     * 设置选中一个
+     * @param position
+     *
+     * @return
+     */
     public QuestionGroupView setSelect(int position) {
         this.clickIndex = position;
         this.paintColor = selectColor;
+        drawRadius = radius;
         invalidate();
         return this;
     }

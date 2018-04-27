@@ -1,23 +1,22 @@
-package com.zou.yimaster.servlet;
+package com.zou.yimaster.servlet.api;
 
 import com.google.gson.Gson;
 import com.zou.yimaster.servlet.dao.ChannelInfo;
 import com.zou.yimaster.servlet.dao.DBManager;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 import java.util.Map;
+
+import javax.servlet.annotation.WebServlet;
 
 /**
  * 获取前面信息 参数channel，如果不传返回所有渠道信息
  */
-public class GetChannelInfo extends javax.servlet.http.HttpServlet {
+@WebServlet(urlPatterns = "/api/getChannel",name = "getChannelInfo")
+public class GetChannelInfo extends BaseServlet {
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse
             response) throws javax.servlet.ServletException, IOException {
-        response.setCharacterEncoding("UTF-8");
-        response.setHeader("Content-type", "text/html;charset=UTF-8");
-        PrintWriter writer = response.getWriter();
+        super.doPost(request, response);
         String channel = request.getParameter("channel");
         System.out.println("post:" + channel);
         if (channel == null || channel.equals("")) {
@@ -34,6 +33,6 @@ public class GetChannelInfo extends javax.servlet.http.HttpServlet {
 
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse
             response) throws javax.servlet.ServletException, IOException {
-        doPost(request, response);
+        super.doGet(request, response);
     }
 }

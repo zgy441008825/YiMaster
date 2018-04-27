@@ -9,6 +9,7 @@ import android.widget.Toast;
 import com.tencent.mm.opensdk.modelpay.PayReq;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
+import com.zou.yimaster.R;
 import com.zou.yimaster.common.AppConfig;
 import com.zou.yimaster.net.RetrofitHelper;
 import com.zou.yimaster.ui.base.BaseActivity;
@@ -32,6 +33,7 @@ public class BuyPowerActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_bug);
         api = WXAPIFactory.createWXAPI(this, AppConfig.APPConfigs.get("weChat").getAppid());
     }
 

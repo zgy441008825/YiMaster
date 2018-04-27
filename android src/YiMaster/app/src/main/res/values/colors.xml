@@ -5,4 +5,6 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="textColor">#212121</color>
+
+    <color name="activity_trans">#B000</color>
 </resources>

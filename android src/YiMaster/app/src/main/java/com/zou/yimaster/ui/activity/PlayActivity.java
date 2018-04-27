@@ -1,16 +1,17 @@
 package com.zou.yimaster.ui.activity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.zou.yimaster.R;
-import com.zou.yimaster.common.GameHelper;
 import com.zou.yimaster.common.PowerFactory;
 import com.zou.yimaster.common.dao.UserGameRecord;
 import com.zou.yimaster.ui.adapter.PlayAdapter;
@@ -53,10 +54,12 @@ public class PlayActivity extends BaseActivity {
     @BindView(R.id.powerInfoMoney)
     TextView powerInfoMoney;
 
+    private static int QUEST_CNT_INIT = 5;
+
     /**
      * 题目数量
      */
-    private int dataSize = 5;
+    private int dataSize = QUEST_CNT_INIT;
 
     /**
      * 网格个数
@@ -81,7 +84,7 @@ public class PlayActivity extends BaseActivity {
     /**
      * 显示的时间格式
      */
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("mm:ss:SS", Locale.getDefault());
+    public static SimpleDateFormat dateFormat = new SimpleDateFormat("mm:ss:SSS", Locale.getDefault());
 
     /**
      * 计时Disposable
@@ -135,23 +138,16 @@ public class PlayActivity extends BaseActivity {
      * 初始化数据
      */
     private void initDataList() {
-        if (!PowerFactory.getInstance().canPlay()) {
-            showBuyDialog();
-            return;
-        }
         dataList.clear();
+        groupView.setEnabled(false);
+        state = STATE_NORMAL;
         Random random = new Random();
         for (int i = 0; i < dataSize; i++) {
             dataList.add(random.nextInt(itemSize));
         }
         Log.d(TAG, "initDataList: " + dataList);
+        playButton.setText("准备");
         showGuide0();
-    }
-
-    /**
-     *
-     */
-    private void showBuyDialog() {
     }
 
     private void showGuide0() {
@@ -159,7 +155,9 @@ public class PlayActivity extends BaseActivity {
             if (state < STATE_SHOW_QUESTION_END) {
                 new AlertDialog.Builder(this)
                         .setMessage("点击“准备”按钮，开始显示题目")
-                        .setPositiveButton(R.string.public_ok, null)
+                        .setPositiveButton(R.string.public_ok, (dialog, which) -> SPTools.getInstance(PlayActivity
+                                .this).saveBoolean
+                                (PLAY_SHOW_GUIDE_0, true))
                         .show();
             } else {
                 new AlertDialog.Builder(this)
@@ -228,17 +226,36 @@ public class PlayActivity extends BaseActivity {
         initDataList();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == ACTIVITY_REQUEST_CODE) {
+            try {
+                int id = data.getIntExtra("result", -1);
+                switch (id) {
+                    case R.id.playResultIcHome:
+                        finish();
+                        break;
+                    case R.id.playResultIcLoop:
+                        dataSize = QUEST_CNT_INIT;
+                        answerUserTime = 0;
+                        currentIndex = 0;
+                        initDataList();
+                        break;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                finish();
+            }
+        }
+    }
+
+    private static final int ACTIVITY_REQUEST_CODE = 0x1100;
+
     private void showFailedDialog() {
-        new AlertDialog.Builder(this)
-                .setPositiveButton("继续", (dialog, which) -> {
-                    answerUserTime -= oneUserTime;
-                    initDataList();
-                })
-                .setNegativeButton("取消", (dialog, which) -> {
-                    answerUserTime -= oneUserTime;
-                    GameHelper.saveResult(getRecord());
-                })
-                .show();
+        Intent intent = new Intent(this, GameResultActivity.class);
+        intent.putExtra("time", answerUserTime);
+        startActivityForResult(intent, ACTIVITY_REQUEST_CODE);
     }
 
     private UserGameRecord getRecord() {
@@ -263,8 +280,6 @@ public class PlayActivity extends BaseActivity {
 
     private void startShowAnswer() {
         state = STATE_SHOW_QUESTION;
-        playButton.setText("准备");
-        groupView.setEnabled(false);
         clearDisposable = Flowable.interval(currentIndex, 2, TimeUnit.SECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.newThread())
@@ -297,12 +312,12 @@ public class PlayActivity extends BaseActivity {
         state = STATE_ANSWER;
         groupView.setEnabled(true);
         oneUserTime = 0;
-        timeCountDisposable = Flowable.interval(0, 10, TimeUnit.MILLISECONDS)
+        timeCountDisposable = Flowable.interval(0, 1, TimeUnit.MILLISECONDS)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(aLong -> {
-                    answerUserTime += 10;
-                    oneUserTime += 10;
+                    answerUserTime += 1;
+                    oneUserTime += 1;
                     playButton.setText(dateFormat.format(answerUserTime));
                 });
     }
@@ -326,5 +341,10 @@ public class PlayActivity extends BaseActivity {
     protected void onStop() {
         super.onStop();
         disposeFlowable();
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        return keyCode == KeyEvent.KEYCODE_BACK || super.onKeyDown(keyCode, event);
     }
 }

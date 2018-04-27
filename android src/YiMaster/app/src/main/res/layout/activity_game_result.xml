@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/playResultTvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="结果"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"/>
+
+    <TextView
+        android:id="@+id/playResultTvResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/playResultTvTitle"
+        android:layout_centerHorizontal="true"
+        android:text="13:22"
+        android:textColor="@android:color/white"
+        android:textSize="50sp"/>
+
+    <ImageView
+        android:id="@+id/playResultIcHome"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        android:layout_toLeftOf="@+id/playResultIcLoop"
+        android:src="@drawable/ic_home_black_24dp"/>
+    <ImageView
+        android:id="@+id/playResultIcLoop"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp"
+        android:src="@drawable/ic_loop_black_24dp"/>
+    <ImageView
+        android:id="@+id/playResultIcNext"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        android:layout_toRightOf="@+id/playResultIcLoop"
+        android:src="@drawable/ic_next"/>
+</RelativeLayout>

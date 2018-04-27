@@ -42,3 +42,28 @@ CREATE TABLE userinfo
   access_token  VARCHAR(45)  NULL,
   refresh_token VARCHAR(45)  NULL
 );
+
+CREATE TABLE yiorder
+(
+  id               INT AUTO_INCREMENT
+    PRIMARY KEY,
+  appid            VARCHAR(30)  NOT NULL,
+  mchid            VARCHAR(30)  NOT NULL,
+  nonce_str        VARCHAR(50)  NOT NULL,
+  sign             VARCHAR(50)  NOT NULL,
+  sign_type        VARCHAR(10)  NULL,
+  body             VARCHAR(200) NOT NULL,
+  out_trade_no     VARCHAR(50)  NOT NULL,
+  total_fee        INT          NOT NULL,
+  spbill_create_ip VARCHAR(15)  NULL,
+  time_start       VARCHAR(15)  NOT NULL,
+  time_expire      VARCHAR(15)  NOT NULL,
+  prepay_id        VARCHAR(20)  NOT NULL,
+  result_code      VARCHAR(10)  NOT NULL,
+  err_code         VARCHAR(10)  NULL,
+  err_code_des     VARCHAR(100) NULL,
+  openid           VARCHAR(20)  NOT NULL,
+  bank_type        VARCHAR(20)  NULL,
+  transaction_id   VARCHAR(50)  NOT NULL,
+  time_end         VARCHAR(15)  NOT NULL
+);
