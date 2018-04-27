@@ -7,5 +7,6 @@
         <attr name="group_click_selectColor" format="color"/>
         <attr name="group_click_rightColor" format="color"/>
         <attr name="group_click_errorColor" format="color"/>
+        <attr name="group_click_space" format="integer"/>
     </declare-styleable>
 </resources>

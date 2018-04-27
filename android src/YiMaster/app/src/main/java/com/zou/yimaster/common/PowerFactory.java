@@ -1,7 +1,6 @@
 package com.zou.yimaster.common;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.zou.yimaster.utils.SPTools;
 
@@ -20,10 +19,19 @@ import io.reactivex.disposables.Disposable;
  */
 public class PowerFactory {
 
+    /**
+     * 恢复需要的时间
+     */
     private static final int CONSUME = 120;
 
+    /**
+     * 自动恢复的最大值，到达后不再累加
+     */
     public static final int POWER_MAX = 15;
 
+    /**
+     * 每次消耗的单位
+     */
     private static final int CONSUMPTION_UNIT = 1;
 
     private static final String SP_KEY_POWER = "power_powerCnt";
@@ -32,6 +40,8 @@ public class PowerFactory {
 
     private static final String SP_KEY_COUNTDOWN = "power_countdown";
 
+    private static final String MONEY_SP_KEY = "money";
+
     private IPowerProductionListener listener;
 
     private Disposable productionDisposable;
@@ -39,6 +49,7 @@ public class PowerFactory {
     private SimpleDateFormat format = new SimpleDateFormat("mm:ss", Locale.getDefault());
 
     private static PowerFactory instance;
+
     private SPTools spTools;
 
     private PowerFactory(Context context) {
@@ -112,7 +123,7 @@ public class PowerFactory {
         }
     }
 
-    public void trunToBackground() {
+    public void turnToBackground() {
         spTools.saveLong(SP_KEY_TIME, System.currentTimeMillis());
         spTools.saveInt(SP_KEY_COUNTDOWN, countDown);
     }
@@ -123,8 +134,6 @@ public class PowerFactory {
 
     /**
      * 消费
-     *
-     * @return TRUE 可以消费，FALSE 不可以消费
      */
     public void consumption() {
         if (canPlay()) {
@@ -133,15 +142,49 @@ public class PowerFactory {
         startProduction();
     }
 
+    /**
+     * 获取剩余币，默认5
+     */
+    public int getMoney() {
+        return SPTools.getInstance(x.app()).getInt(MONEY_SP_KEY, 5);
+    }
+
+    /**
+     * 增加，结果为 剩余+value
+     */
+    public void addMoney(int value) {
+        SPTools.getInstance(x.app()).saveInt(MONEY_SP_KEY, getMoney() + value);
+        if (listener != null) {
+            listener.onMoneyChange(getMoney());
+        }
+    }
+
+    /**
+     * 话费
+     *
+     * @return 余额不足返回FALSE，成功返回TRUE
+     */
+    public boolean userMoney(int value) {
+        if (getMoney() < value) return false;
+        SPTools.getInstance(x.app()).saveInt(MONEY_SP_KEY, getMoney() - value);
+        if (listener != null) {
+            listener.onMoneyChange(getMoney());
+        }
+        return true;
+    }
+
     public void setListener(@NonNull IPowerProductionListener listener) {
         this.listener = listener;
         this.listener.onStockChange(getPower());
+        this.listener.onMoneyChange(getMoney());
     }
 
     public interface IPowerProductionListener {
         void onStateChange(String time);
 
         void onStockChange(int stock);
+
+        void onMoneyChange(int money);
     }
 
 }

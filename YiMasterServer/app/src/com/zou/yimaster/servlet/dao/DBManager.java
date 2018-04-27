@@ -1,17 +1,14 @@
 package com.zou.yimaster.servlet.dao;
 
-import org.apache.commons.dbutils.BaseResultSetHandler;
-import org.apache.commons.dbutils.QueryRunner;
-import org.apache.commons.dbutils.ResultSetHandler;
-import org.apache.commons.dbutils.handlers.BeanHandler;
+import com.zou.yimaster.servlet.common.OrderBean;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by zougaoyuan on 2018/4/11
@@ -33,7 +30,7 @@ public class DBManager {
     //MySQL配置时的用户名
     private String user = "root";
     //MySQL配置时的密码
-    private String password = "root";
+    private String password = "zgy03031022WENLI";
 
     private DBManager() {
         try {
@@ -68,13 +65,13 @@ public class DBManager {
                     String sql = "INSERT INTO channelinfo(channel, appid, secret) VALUES (?, ?, ?)";
                     statement = conn.prepareStatement(sql);
                     statement.setString(1, info.getChannel());
-                    statement.setString(2, info.getAppid());
-                    statement.setString(3, info.getSecrit());
+                    statement.setString(2, info.getInfo().getAppid());
+                    statement.setString(3, info.getInfo().getSecrit());
                 } else {
                     String sql = "UPDATE channelinfo SET appid = ? , secret = ? WHERE channel = ?";
                     statement = conn.prepareStatement(sql);
-                    statement.setString(1, info.getAppid());
-                    statement.setString(2, info.getSecrit());
+                    statement.setString(1, info.getInfo().getAppid());
+                    statement.setString(2, info.getInfo().getSecrit());
                     statement.setString(3, info.getChannel());
                 }
                 statement.execute();
@@ -93,9 +90,11 @@ public class DBManager {
                 ResultSet resultSet = statement.executeQuery();
                 if (resultSet.first()) {
                     ChannelInfo info = new ChannelInfo();
-                    info.setChannel(channel)
-                            .setAppid(resultSet.getString("appid"))
-                            .setSecrit(resultSet.getString("secret"));
+                    ChannelInfo.InfoBean bean = new ChannelInfo.InfoBean();
+                    bean.setAppid(resultSet.getString("appid"));
+                    bean.setSecrit(resultSet.getString("secret"));
+                    info.setChannel(channel);
+                    info.setInfo(bean);
                     return info;
                 }
             }
@@ -105,22 +104,19 @@ public class DBManager {
         return null;
     }
 
-    public List<ChannelInfo> getChannels() {
+    public Map<String, ChannelInfo.InfoBean> getChannels() {
         try {
             if (!conn.isClosed()) {
                 String sql = "SELECT * FROM channelinfo";
                 PreparedStatement statement = conn.prepareStatement(sql);
                 ResultSet resultSet = statement.executeQuery();
                 if (resultSet.first()) {
-                    List<ChannelInfo> channelInfos = new ArrayList<>();
+                    Map<String, ChannelInfo.InfoBean> infoBeanMap = new HashMap<>();
                     do {
-                        ChannelInfo info = new ChannelInfo();
-                        info.setChannel(resultSet.getString("channel"))
-                                .setAppid(resultSet.getString("appid"))
-                                .setSecrit(resultSet.getString("secret"));
-                        channelInfos.add(info);
+                        ChannelInfo info = getChannelInfo(resultSet.getString("channel"));
+                        infoBeanMap.put(info.getChannel(), info.getInfo());
                     } while (resultSet.next());
-                    return channelInfos;
+                    return infoBeanMap;
                 }
             }
         } catch (SQLException e) {
@@ -128,4 +124,89 @@ public class DBManager {
         }
         return null;
     }
+
+    public void saveOrUpdateOrder(OrderBean bean) {
+        try {
+            OrderBean infoBean = getOrderBean(bean.getOut_trade_no());
+            PreparedStatement statement;
+            String sql;
+            if (infoBean == null) {//保存
+                sql = "INSERT INTO yiorder(appid,mchid,nonce_str,sign,sign_type,out_trade_no,body,total_fee," +
+                        "spbill_create_ip,time_start,time_expire,prepay_id,result_code,err_code,err_code_des,openid," +
+                        "bank_type,transaction_id,time_end) VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+                        "?, ?, ?)";
+            } else {//更新
+                sql = "UPDATE yiorder SET appid=?,mchid=?,nonce_str=?,sign=?,sign_type=?,out_trade_no=?,body=?," +
+                        "total_fee=?," +
+                        "spbill_create_ip=?,time_start=?,time_expire=?,prepay_id=?,result_code=?,err_code=?," +
+                        "err_code_des=?,openid=?,bank_type=?,transaction_id=?";
+            }
+            statement = conn.prepareStatement(sql);
+            statement.setString(1, bean.getAppid());
+            statement.setString(2, bean.getMchid());
+            statement.setString(3, bean.getNonce_str());
+            statement.setString(4, bean.getSign());
+            statement.setString(5, bean.getSign_type());
+            statement.setString(6, bean.getOut_trade_no());
+            statement.setString(7, bean.getBody());
+            statement.setInt(8, bean.getTotal_fee());
+            statement.setString(9, bean.getSpbill_create_ip());
+            statement.setString(10, bean.getTime_start());
+            statement.setString(11, bean.getTime_expire());
+            statement.setString(12, bean.getPrepay_id());
+            statement.setString(13, bean.getResult_code());
+            statement.setString(14, bean.getErr_code());
+            statement.setString(15, bean.getErr_code_des());
+            statement.setString(16, bean.getOpenid());
+            statement.setString(17, bean.getBank_type());
+            statement.setString(18, bean.getTransaction_id());
+            statement.setString(19, bean.getTime_end());
+            statement.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 获取一个订单记录
+     *
+     * @param out_trade_no 订单号
+     */
+    public OrderBean getOrderBean(String out_trade_no) {
+        try {
+            if (!conn.isClosed()) {
+                String sql = "SELECT * FROM yiorder WHERE out_trade_no= ?";
+                PreparedStatement statement = conn.prepareStatement(sql);
+                statement.setString(1, out_trade_no);
+                ResultSet resultSet = statement.executeQuery();
+                if (resultSet.first()) {
+                    OrderBean info = new OrderBean();
+                    info.setAppid(resultSet.getString("appid"))
+                            .setMchid(resultSet.getString("mchid"))
+                            .setNonce_str(resultSet.getString("nonce_str"))
+                            .setSign(resultSet.getString("sign"))
+                            .setSign_type(resultSet.getString("sign_type"))
+                            .setBody(resultSet.getString("body"))
+                            .setOut_trade_no(resultSet.getString("out_trade_no"))
+                            .setTotal_fee(resultSet.getInt("total_fee"))
+                            .setSpbill_create_ip(resultSet.getString("spbill_create_ip"))
+                            .setTime_start(resultSet.getString("time_start"))
+                            .setTime_expire(resultSet.getString("time_expire"))
+                            .setPrepay_id(resultSet.getString("prepay_id"))
+                            .setResult_code(resultSet.getString("result_code"))
+                            .setErr_code(resultSet.getString("err_code"))
+                            .setErr_code_des(resultSet.getString("err_code_des"))
+                            .setOpenid(resultSet.getString("openid"))
+                            .setBank_type(resultSet.getString("bank_type"))
+                            .setTransaction_id(resultSet.getString("transaction_id"))
+                            .setTime_end(resultSet.getString("time_end"));
+                    return info;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

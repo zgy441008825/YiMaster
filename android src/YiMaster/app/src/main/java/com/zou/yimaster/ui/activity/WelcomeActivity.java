@@ -12,8 +12,6 @@ import com.zou.yimaster.ui.base.BaseActivity;
 
 public class WelcomeActivity extends BaseActivity {
 
-    private static final String TAG = "WelcomeActivity";
-
     private Button showCountDown;
 
     @SuppressLint("CheckResult")
@@ -33,4 +31,5 @@ public class WelcomeActivity extends BaseActivity {
                     showCountDown.setText(String.valueOf(integer));
                 });
     }
+
 }

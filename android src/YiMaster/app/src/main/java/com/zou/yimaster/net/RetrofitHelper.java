@@ -1,10 +1,15 @@
 package com.zou.yimaster.net;
 
+import com.zou.yimaster.common.AppConfig;
+import com.zou.yimaster.common.dao.UserGameRecord;
+
+import java.util.LongSummaryStatistics;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Flowable;
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -27,7 +32,10 @@ public class RetrofitHelper {
     }
 
     private static Retrofit getYiServiceBaseRetrofit() {
+        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder()
+                .addInterceptor(logging)
                 .readTimeout(5, TimeUnit.SECONDS)
                 .connectTimeout(3, TimeUnit.SECONDS)
                 .build();
@@ -63,13 +71,28 @@ public class RetrofitHelper {
         return refreshRetrofit.getUserInfo(access_token, openid);
     }
 
+    public static IYiServerRetrofit getYiServerRetrofit() {
+        Retrofit retrofit = getYiServiceBaseRetrofit();
+        return retrofit.create(IYiServerRetrofit.class);
+    }
+
     /**
      * 获取平台相关信息
      */
-    public static Flowable<String> getChannelInfo(String channel) {
-        Retrofit retrofit = getYiServiceBaseRetrofit();
-        IYiServerRetrofit yiServerRetrofit = retrofit.create(IYiServerRetrofit.class);
-        return yiServerRetrofit.getChannelInfo(channel);
+    public static Flowable<Map<String, AppConfig.InfoBean>> getAllChannelInfo() {
+        return getYiServerRetrofit().getAllChannelInfo();
+    }
+
+    public static Flowable<AppConfig> getAllChannelInfo(String channel) {
+        return getYiServerRetrofit().getChannelInfo(channel);
+    }
+
+    public static Flowable<String> saveRecord(UserGameRecord record) {
+        return getYiServerRetrofit().saveRecord(record);
+    }
+
+    public static Flowable<String> getOrderInfo(String type,String channel) {
+        return getYiServerRetrofit().getOrderInfo(type,channel);
     }
 
 }

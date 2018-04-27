@@ -142,4 +142,12 @@ public class YiDBManager {
             return null;
         }
     }
+
+    public void saveRecord(UserGameRecord record){
+        try {
+            dbManager.saveOrUpdate(record);
+        } catch (DbException e) {
+            e.printStackTrace();
+        }
+    }
 }

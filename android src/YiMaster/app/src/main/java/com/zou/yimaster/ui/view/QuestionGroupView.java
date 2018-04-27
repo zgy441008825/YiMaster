@@ -108,12 +108,14 @@ public class QuestionGroupView extends View {
             errorColor = typedValue.getColor(R.styleable.QuestionGroupView_group_click_errorColor, Color.RED);
             radius = typedValue.getFloat(R.styleable.QuestionGroupView_group_click_radius, 100);
             scaleValue = typedValue.getFloat(R.styleable.QuestionGroupView_group_click_scale, 20);
+            spacing = typedValue.getInt(R.styleable.QuestionGroupView_group_click_space, 50);
             typedValue.recycle();
         } else {
             normalColor = Color.WHITE;
             selectColor = Color.RED;
             radius = 100;
             scaleValue = 20;
+            spacing = 50;
         }
         paintColor = normalColor;
         paint.setColor(paintColor);
@@ -201,9 +203,16 @@ public class QuestionGroupView extends View {
         return this;
     }
 
+    /**
+     * 设置选中一个
+     * @param position
+     *
+     * @return
+     */
     public QuestionGroupView setSelect(int position) {
         this.clickIndex = position;
         this.paintColor = selectColor;
+        drawRadius = radius;
         invalidate();
         return this;
     }
