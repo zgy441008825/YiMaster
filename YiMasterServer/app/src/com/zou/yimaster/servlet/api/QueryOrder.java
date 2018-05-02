@@ -3,7 +3,6 @@ package com.zou.yimaster.servlet.api;
 import com.zou.yimaster.servlet.common.OrderBean;
 import com.zou.yimaster.servlet.common.TradeState;
 import com.zou.yimaster.servlet.dao.DBManager;
-import com.zou.yimaster.servlet.utils.AnalyseXML;
 import com.zou.yimaster.servlet.wx.WXPayUtils;
 
 import java.io.IOException;

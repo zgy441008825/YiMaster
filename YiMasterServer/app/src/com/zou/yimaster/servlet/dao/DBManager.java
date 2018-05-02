@@ -68,7 +68,7 @@ public class DBManager {
                     statement.setString(1, info.getChannel());
                     statement.setString(2, info.getInfo().getAppid());
                     statement.setString(3, info.getInfo().getSecret());
-                    statement.setString(4, info.getInfo().getKey());
+                    statement.setString(4, info.getInfo().getApp_key());
                     statement.setString(5, info.getInfo().getMchId());
                 } else {
                     String sql = "UPDATE channelinfo SET appid = ? , secret = ? , app_key = ? , mch_id= ? WHERE " +
@@ -76,7 +76,7 @@ public class DBManager {
                     statement = conn.prepareStatement(sql);
                     statement.setString(1, info.getInfo().getAppid());
                     statement.setString(2, info.getInfo().getSecret());
-                    statement.setString(3, info.getInfo().getKey());
+                    statement.setString(3, info.getInfo().getApp_key());
                     statement.setString(4, info.getInfo().getMchId());
                     statement.setString(5, info.getChannel());
                 }
@@ -99,7 +99,7 @@ public class DBManager {
                     ChannelInfo.InfoBean bean = new ChannelInfo.InfoBean();
                     bean.setAppid(resultSet.getString("appid"));
                     bean.setSecret(resultSet.getString("secret"));
-                    bean.setKey(resultSet.getString("app_key"))
+                    bean.setApp_key(resultSet.getString("app_key"))
                             .setMchId(resultSet.getString("mch_id"));
                     info.setChannel(channel);
                     info.setInfo(bean);
@@ -141,9 +141,8 @@ public class DBManager {
             if (infoBean == null) {//保存
                 sql = "INSERT INTO yiorder(appid,mchid,nonce_str,sign,sign_type,out_trade_no,body,total_fee," +
                         "spbill_create_ip,time_start,time_expire,prepay_id,result_code,err_code,err_code_des,openid," +
-                        "bank_type,transaction_id,time_end,trade_state) VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?," +
-                        " ?, ?, ?, " +
-                        "?, ?, ?,?)";
+                        "bank_type,transaction_id,time_end,trade_state) VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+                        "?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
             } else {//更新
                 sql = "UPDATE yiorder SET appid=?,mchid=?,nonce_str=?,sign=?,sign_type=?,out_trade_no=?,body=?," +
                         "total_fee=?," +

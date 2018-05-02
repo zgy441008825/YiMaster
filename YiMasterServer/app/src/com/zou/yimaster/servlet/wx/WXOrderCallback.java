@@ -2,9 +2,8 @@ package com.zou.yimaster.servlet.wx;
 
 import com.zou.yimaster.servlet.api.BaseServlet;
 import com.zou.yimaster.servlet.common.OrderBean;
-import com.zou.yimaster.servlet.common.OrderFactory;
 import com.zou.yimaster.servlet.dao.DBManager;
-import com.zou.yimaster.servlet.utils.AnalyseXML;
+import com.zou.yimaster.servlet.utils.XMLMapTools;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -38,9 +37,9 @@ public class WXOrderCallback extends BaseServlet {
             result(WXPayUtils.RESULT_FAIL, "No");
             return;
         }
-        String returnCode = AnalyseXML.analyseWXResultBean(s, "return_code");
+        String returnCode = XMLMapTools.analyseWXResultBean(s, "return_code");
         if (WXPayUtils.RESULT_OK.equals(returnCode)) {
-            String OrderNo = AnalyseXML.analyseWXResultBean(s, "out_trade_no");
+            String OrderNo = XMLMapTools.analyseWXResultBean(s, "out_trade_no");
             OrderBean bean = DBManager.getInstance().getOrderBean(OrderNo);
             if (bean == null) {
                 result(WXPayUtils.RESULT_FAIL, "");
@@ -48,14 +47,14 @@ public class WXOrderCallback extends BaseServlet {
             }
             if (bean.getTrade_state() == null || !bean.getTrade_state().equals(WXPayUtils.RESULT_OK)) {
                 synchronized (lock) {
-                    bean.setNonce_str(AnalyseXML.analyseWXResultBean(s, "nonce_str"));
-                    bean.setSign(AnalyseXML.analyseWXResultBean(s, "sign"));
+                    bean.setNonce_str(XMLMapTools.analyseWXResultBean(s, "nonce_str"));
+                    bean.setSign(XMLMapTools.analyseWXResultBean(s, "sign"));
                     bean.setTrade_state(returnCode);
-                    bean.setBank_type(AnalyseXML.analyseWXResultBean(s, "bank_type"));
-                    bean.setTransaction_id(AnalyseXML.analyseWXResultBean(s, "transaction_id"));
-                    bean.setTime_end(AnalyseXML.analyseWXResultBean(s, "time_end"));
+                    bean.setBank_type(XMLMapTools.analyseWXResultBean(s, "bank_type"));
+                    bean.setTransaction_id(XMLMapTools.analyseWXResultBean(s, "transaction_id"));
+                    bean.setTime_end(XMLMapTools.analyseWXResultBean(s, "time_end"));
                     DBManager.getInstance().saveOrUpdateOrder(bean);
-                    result(bean.getTrade_state(), AnalyseXML.analyseWXResultBean(s, "return_msg"));
+                    result(bean.getTrade_state(), XMLMapTools.analyseWXResultBean(s, "return_msg"));
                     return;
                 }
             }
@@ -73,7 +72,7 @@ public class WXOrderCallback extends BaseServlet {
         Map<String, String> resultMap = new HashMap<>();
         resultMap.put("return_code", return_code);
         resultMap.put("return_msg", return_msg);
-        writer.println(AnalyseXML.mapToXml(resultMap));
+        writer.println(XMLMapTools.mapToXml(resultMap));
     }
 
     private String getBody(HttpServletRequest request) throws IOException {

@@ -326,4 +326,5 @@ public class OrderBean {
         this.trade_state = trade_state;
         return this;
     }
+
 }
