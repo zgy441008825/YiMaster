@@ -88,6 +88,7 @@ public class BuyActivity extends BaseActivity {
                     }
                     callWXPay(s);
                 }, throwable -> {
+                    progressDialog.dismiss();
                     Toast.makeText(this, "支付失败:" + throwable, Toast.LENGTH_SHORT).show();
                 });
     }
