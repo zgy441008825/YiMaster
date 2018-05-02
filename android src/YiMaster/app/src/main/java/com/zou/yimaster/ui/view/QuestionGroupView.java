@@ -12,6 +12,8 @@ import android.graphics.PointF;
 import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -48,7 +50,7 @@ public class QuestionGroupView extends View {
     private PointF[] points;
 
     /**
-     * item的半径
+     * 园的半径
      */
     private float radius = 100;
 
@@ -98,27 +100,27 @@ public class QuestionGroupView extends View {
     }
 
     private void init(Context context, AttributeSet attrs) {
-        paint = new Paint();
-        paint.setAntiAlias(true);
+        DisplayMetrics dm = context.getResources().getDisplayMetrics();
         if (attrs != null) {
             TypedArray typedValue = context.obtainStyledAttributes(attrs, R.styleable.QuestionGroupView);
             normalColor = typedValue.getColor(R.styleable.QuestionGroupView_group_click_normalColor, Color.WHITE);
             selectColor = typedValue.getColor(R.styleable.QuestionGroupView_group_click_selectColor, Color.RED);
             rightColor = typedValue.getColor(R.styleable.QuestionGroupView_group_click_rightColor, Color.GREEN);
             errorColor = typedValue.getColor(R.styleable.QuestionGroupView_group_click_errorColor, Color.RED);
-            radius = typedValue.getFloat(R.styleable.QuestionGroupView_group_click_radius, 100);
             scaleValue = typedValue.getFloat(R.styleable.QuestionGroupView_group_click_scale, 20);
-            spacing = typedValue.getInt(R.styleable.QuestionGroupView_group_click_space, 50);
             typedValue.recycle();
         } else {
             normalColor = Color.WHITE;
             selectColor = Color.RED;
-            radius = 100;
             scaleValue = 20;
-            spacing = 50;
         }
+        paint = new Paint();
+        paint.setAntiAlias(true);
         paintColor = normalColor;
         paint.setColor(paintColor);
+        spacing = (int) (dm.density * 30);
+        radius = (dm.widthPixels - spacing * 4) / 6;
+        Log.d(TAG, "init: " + spacing + " " + radius);
     }
 
     private ObjectAnimator objectAnimator;
@@ -205,6 +207,7 @@ public class QuestionGroupView extends View {
 
     /**
      * 设置选中一个
+     *
      * @param position
      *
      * @return

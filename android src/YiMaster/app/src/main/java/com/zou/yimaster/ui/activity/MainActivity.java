@@ -15,6 +15,7 @@ import com.umeng.message.inapp.InAppMessageManager;
 import com.zou.yimaster.R;
 import com.zou.yimaster.common.PowerFactory;
 import com.zou.yimaster.ui.base.BaseActivity;
+import com.zou.yimaster.utils.SPTools;
 import com.zou.yimaster.utils.ToastHelper;
 
 import java.util.Locale;
@@ -36,6 +37,7 @@ public class MainActivity extends BaseActivity {
         tvMoneyCnt = findViewById(R.id.powerInfoMoney);
         PowerFactory.getInstance().setListener(powerProductionListener);
         findViewById(R.id.BTLogin).setOnClickListener(onClickListener);
+        findViewById(R.id.titleLayout).setOnClickListener(onClickListener);
         InAppMessageManager.getInstance(this).showCardMessage(this, "main",
                 () -> Log.i(TAG, "card message close"));
         requestPermission();
@@ -57,11 +59,20 @@ public class MainActivity extends BaseActivity {
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        PowerFactory.getInstance().requestCallback();
+    }
+
     private View.OnClickListener onClickListener = v -> {
-        if (PowerFactory.getInstance().canPlay()) {
-            startActivity(new Intent(this, PlayActivity.class));
-        } else {
-            ToastHelper.show("。。。。。。。。。。。。。。");
+        switch (v.getId()) {
+            case R.id.BTLogin:
+                startActivity(new Intent(this, PlayActivity.class));
+                break;
+            case R.id.titleLayout:
+                startActivity(new Intent(this, BuyActivity.class));
+                break;
         }
     };
 

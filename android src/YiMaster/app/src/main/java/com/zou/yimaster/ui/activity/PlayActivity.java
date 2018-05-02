@@ -6,13 +6,13 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.zou.yimaster.R;
 import com.zou.yimaster.common.PowerFactory;
+import com.zou.yimaster.common.QuestionHelper;
 import com.zou.yimaster.common.dao.UserGameRecord;
 import com.zou.yimaster.ui.adapter.PlayAdapter;
 import com.zou.yimaster.ui.base.BaseActivity;
@@ -23,7 +23,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
@@ -54,6 +53,11 @@ public class PlayActivity extends BaseActivity {
     @BindView(R.id.powerInfoMoney)
     TextView powerInfoMoney;
 
+    private final int SHOW_SPEED = 2;
+
+    /**
+     * 初始值大小
+     */
     private static int QUEST_CNT_INIT = 5;
 
     /**
@@ -64,7 +68,7 @@ public class PlayActivity extends BaseActivity {
     /**
      * 网格个数
      */
-    private int itemSize = 9;
+    private static final int itemSize = 9;
 
     /**
      * 保存题目
@@ -109,7 +113,7 @@ public class PlayActivity extends BaseActivity {
     private static final int STATE_SHOW_QUESTION = 1;
 
     /**
-     * 当前状态——完成
+     * 当前状态——显示题目完成
      */
     private static final int STATE_SHOW_QUESTION_END = 2;
 
@@ -138,26 +142,25 @@ public class PlayActivity extends BaseActivity {
      * 初始化数据
      */
     private void initDataList() {
+        clickCnt = 0;
         dataList.clear();
         groupView.setEnabled(false);
         state = STATE_NORMAL;
-        Random random = new Random();
-        for (int i = 0; i < dataSize; i++) {
-            dataList.add(random.nextInt(itemSize));
-        }
+        dataList.addAll(QuestionHelper.productionQuestion(dataSize, itemSize));
         Log.d(TAG, "initDataList: " + dataList);
         playButton.setText("准备");
-        showGuide0();
+        showFirstTips();
     }
 
-    private void showGuide0() {
+    /**
+     * 显示初次提示
+     */
+    private void showFirstTips() {
         if (!SPTools.getInstance(this).getBoolean(PLAY_SHOW_GUIDE_0)) {
             if (state < STATE_SHOW_QUESTION_END) {
                 new AlertDialog.Builder(this)
                         .setMessage("点击“准备”按钮，开始显示题目")
-                        .setPositiveButton(R.string.public_ok, (dialog, which) -> SPTools.getInstance(PlayActivity
-                                .this).saveBoolean
-                                (PLAY_SHOW_GUIDE_0, true))
+                        .setPositiveButton(R.string.public_ok, null)
                         .show();
             } else {
                 new AlertDialog.Builder(this)
@@ -227,6 +230,12 @@ public class PlayActivity extends BaseActivity {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        PowerFactory.getInstance().requestCallback();
+    }
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == ACTIVITY_REQUEST_CODE) {
@@ -240,6 +249,9 @@ public class PlayActivity extends BaseActivity {
                         dataSize = QUEST_CNT_INIT;
                         answerUserTime = 0;
                         currentIndex = 0;
+                        initDataList();
+                        break;
+                    case GameResultActivity.GOON:
                         initDataList();
                         break;
                 }
@@ -280,21 +292,29 @@ public class PlayActivity extends BaseActivity {
 
     private void startShowAnswer() {
         state = STATE_SHOW_QUESTION;
-        clearDisposable = Flowable.interval(currentIndex, 2, TimeUnit.SECONDS)
+        playButton.setEnabled(false);
+        clearDisposable = Flowable.interval(currentIndex, SHOW_SPEED, TimeUnit.SECONDS)
+                .onBackpressureBuffer()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.newThread())
                 .take(dataSize + 1)
-                .subscribe(aLong -> groupView.setSelect(-1), throwable -> currentIndex = -1, () -> {
+                .subscribe(aLong -> {
+                    Log.d(TAG, "startShowAnswer clear");
+                    groupView.setSelect(-1);
+                }, throwable -> currentIndex = -1, () -> {
                     currentIndex = -1;
+                    playButton.setEnabled(true);
                     playButton.setText("开始");
+                    showFirstTips();
                     state = STATE_SHOW_QUESTION_END;
                 });
-        selectDisposable = Flowable.interval(currentIndex + 1, 2, TimeUnit.SECONDS)
+        selectDisposable = Flowable.interval(currentIndex + 1, SHOW_SPEED, TimeUnit.SECONDS)
+                .onBackpressureBuffer()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.newThread())
                 .take(dataSize)
                 .subscribe(aLong -> {
-                            Log.d(TAG, "startShowAnswer show: " + aLong);
+                            Log.d(TAG, "startShowAnswer show");
                             currentIndex = aLong.intValue();
                             groupView.setSelect(dataList.get(aLong.intValue()));
                         },
@@ -308,6 +328,9 @@ public class PlayActivity extends BaseActivity {
                         });
     }
 
+    /**
+     * 进入回答状态
+     */
     private void startAnswer() {
         state = STATE_ANSWER;
         groupView.setEnabled(true);
@@ -322,6 +345,9 @@ public class PlayActivity extends BaseActivity {
                 });
     }
 
+    /**
+     * 取消所有的状态
+     */
     private void disposeFlowable() {
         if (clearDisposable != null) {
             clearDisposable.dispose();
@@ -341,10 +367,5 @@ public class PlayActivity extends BaseActivity {
     protected void onStop() {
         super.onStop();
         disposeFlowable();
-    }
-
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        return keyCode == KeyEvent.KEYCODE_BACK || super.onKeyDown(keyCode, event);
     }
 }

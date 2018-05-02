@@ -3,7 +3,6 @@ package com.zou.yimaster.net;
 import com.zou.yimaster.common.AppConfig;
 import com.zou.yimaster.common.dao.UserGameRecord;
 
-import java.util.LongSummaryStatistics;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -22,15 +21,6 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
  */
 public class RetrofitHelper {
 
-    private static Retrofit getWXBaseRetrofit() {
-        return new Retrofit.Builder()
-                .baseUrl("https://api.weixin.qq.com")
-                .addConverterFactory(ScalarsConverterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .build();
-    }
-
     private static Retrofit getYiServiceBaseRetrofit() {
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -48,32 +38,9 @@ public class RetrofitHelper {
                 .build();
     }
 
-    public static Flowable<String> wxAccessLogin(Map<String, String> stringMap) {
-        Retrofit retrofit = getWXBaseRetrofit();
-        IWXAccessLoginRetrofit loginRetrofit = retrofit.create(IWXAccessLoginRetrofit.class);
-        return loginRetrofit.getAccessToken(stringMap);
-    }
-
-    /**
-     * 刷新AccessToken
-     *
-     * @param stringMap 必须包含appid,grant_type="refresh_token",refresh_token
-     */
-    public static Flowable<String> wxRefreshToken(Map<String, String> stringMap) {
-        Retrofit retrofit = getWXBaseRetrofit();
-        IWXAccessLoginRetrofit refreshRetrofit = retrofit.create(IWXAccessLoginRetrofit.class);
-        return refreshRetrofit.refreshToken(stringMap);
-    }
-
-    public static Flowable<String> wxGetUserInfo(String access_token, String openid) {
-        Retrofit retrofit = getWXBaseRetrofit();
-        IWXAccessLoginRetrofit refreshRetrofit = retrofit.create(IWXAccessLoginRetrofit.class);
-        return refreshRetrofit.getUserInfo(access_token, openid);
-    }
-
-    public static IYiServerRetrofit getYiServerRetrofit() {
+    private static YiServer getYiServerRetrofit() {
         Retrofit retrofit = getYiServiceBaseRetrofit();
-        return retrofit.create(IYiServerRetrofit.class);
+        return retrofit.create(YiServer.class);
     }
 
     /**
@@ -87,12 +54,20 @@ public class RetrofitHelper {
         return getYiServerRetrofit().getChannelInfo(channel);
     }
 
+    /**
+     * 保存一条用户成绩
+     */
     public static Flowable<String> saveRecord(UserGameRecord record) {
         return getYiServerRetrofit().saveRecord(record);
     }
 
-    public static Flowable<String> getOrderInfo(String type,String channel) {
-        return getYiServerRetrofit().getOrderInfo(type,channel);
+    public static Flowable<String> getOrderInfo(String type, String channel) {
+        return getYiServerRetrofit().QueryOrder(type, channel);
+    }
+
+    public static Flowable<String> PlaceOrder(int fee, String channel) {
+        String body = "购买:" + fee;
+        return getYiServerRetrofit().PlaceOrder(body, fee, channel);
     }
 
 }

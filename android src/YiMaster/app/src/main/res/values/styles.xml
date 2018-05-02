@@ -29,10 +29,17 @@
         <item name="android:indeterminateDrawable">@drawable/progress</item>
     </style>
 
-    <style name="BuyItemText" parent="Default_button">
-        <item name="android:textSize">30sp</item>
-        <item name="android:gravity">center</item>
-        <item name="android:background">@drawable/bg_rect</item>
+    <style name="BuyItemText">
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_width">200dp</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:gravity">center_vertical|left</item>
+        <item name="android:background">@drawable/buy_item_layout_bg</item>
+        <item name="android:drawablePadding">5dp</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:textColor">@color/default_button_text</item>
+        <item name="android:drawableLeft">@drawable/ic_favorite_white</item>
     </style>
 
 </resources>

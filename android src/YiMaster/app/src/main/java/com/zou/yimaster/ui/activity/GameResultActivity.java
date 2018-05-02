@@ -7,7 +7,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.zou.yimaster.R;
+import com.zou.yimaster.common.PowerFactory;
 import com.zou.yimaster.ui.base.BaseActivity;
+import com.zou.yimaster.utils.SPTools;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,6 +25,8 @@ public class GameResultActivity extends BaseActivity {
 
     @BindView(R.id.playResultTvResult)
     TextView playResultTvResult;
+
+    public static final int GOON = 0xFF0001;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,8 +48,20 @@ public class GameResultActivity extends BaseActivity {
 
     @OnClick(R.id.playResultIcNext)
     public void onNextClick() {
-        Intent intent = new Intent(this, BuyActivity.class);
-        startActivity(intent);
-        finish();
+        if (PowerFactory.getInstance().userMoney(PowerFactory.MONEY_STEP)) {
+            Intent intent = getIntent();
+            intent.putExtra("result", GOON);
+            setResult(RESULT_OK, intent);
+            finish();
+        } else {
+            Intent intent = new Intent(this, BuyActivity.class);
+            startActivity(intent);
+            finish();
+        }
+    }
+
+    @Override
+    protected boolean isBack() {
+        return true;
     }
 }

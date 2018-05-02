@@ -15,26 +15,38 @@ import retrofit2.http.Query;
  *
  * @author zougaoyuan
  */
-public interface IYiServerRetrofit {
+public interface YiServer {
 
     /**
      * 获取channel平台的相关信息
      *
-     * @param channel 平台：如微信
-     *
      * @return json 包含APPID secret等
      */
-    @POST("/yimaster_war/GetChannelInfo")
+    @POST("/api/getChannel")
     Flowable<Map<String, AppConfig.InfoBean>> getAllChannelInfo();
 
-    @POST("/yimaster_war/GetChannelInfo")
+    @POST("/api/getChannel")
     Flowable<AppConfig> getChannelInfo(@Query("channel") String channel);
 
-
-    @POST("/yimaster_war/SaveRecord")
+    @POST("/api/SaveRecord")
     Flowable<String> saveRecord(@Body UserGameRecord record);
 
-    @POST("/yimaster_war/GetOrderInfo")
-    Flowable<String> getOrderInfo(@Query("type") String type, @Query("channel") String channel);
+    /**
+     * 查询订单
+     *
+     * @param orderNo 订单编号
+     * @param channel 支付渠道
+     */
+    @POST("/api/QueryOrder")
+    Flowable<String> QueryOrder(@Query("orderNo") String orderNo, @Query("channel") String channel);
+
+    /**
+     * 统一下单接口
+     *
+     * @param body 说明
+     * @param fee  价格（单位 分）
+     */
+    @POST("/api/place")
+    Flowable<String> PlaceOrder(@Query("body") String body, @Query("fee") int fee, @Query("channel") String channel);
 
 }

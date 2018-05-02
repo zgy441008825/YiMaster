@@ -29,6 +29,8 @@ public class PowerFactory {
      */
     public static final int POWER_MAX = 15;
 
+    public static final int MONEY_STEP = 1;
+
     /**
      * 每次消耗的单位
      */
@@ -171,6 +173,14 @@ public class PowerFactory {
             listener.onMoneyChange(getMoney());
         }
         return true;
+    }
+
+    /**
+     * 手动请求刷新数据
+     */
+    public void requestCallback(){
+        this.listener.onStockChange(getPower());
+        this.listener.onMoneyChange(getMoney());
     }
 
     public void setListener(@NonNull IPowerProductionListener listener) {

@@ -6,16 +6,11 @@ import com.zou.yimaster.servlet.utils.NetworkUtil;
 import com.zou.yimaster.servlet.wx.WXPayUtils;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
 
 /**
  * Created by zougaoyuan on 04.25.025
@@ -28,8 +23,9 @@ public class PlaceOrder extends BaseServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,
             IOException {
         super.doPost(request, response);
-        String body = request.getParameter("body");
-        int totalFee = Integer.valueOf(request.getParameter("fee"));
+        String body = request.getParameter("body");//产品描述
+        String channel = request.getParameter("channel");//订单渠道
+        int totalFee = Integer.valueOf(request.getParameter("fee"));//商品价格
         String ip = NetworkUtil.getIpAddress(request);
         OrderBean bean = OrderFactroy.createOrder(body, totalFee, ip, "wechat");
         WXPayUtils.payUnifiedorder(orderToXML(bean))
