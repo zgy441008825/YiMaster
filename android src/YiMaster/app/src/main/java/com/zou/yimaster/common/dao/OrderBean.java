@@ -1,4 +1,4 @@
-package com.zou.yimaster.servlet.common;
+package com.zou.yimaster.common.dao;
 
 /**
  * Created by zougaoyuan on 04.20.020
@@ -114,11 +114,6 @@ public class OrderBean {
      * 支付完成时间
      */
     private String time_end;
-
-    /**
-     * 支付状态 https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_2
-     */
-    private String trade_state;
 
     public String getAppid() {
         return appid;
@@ -315,15 +310,6 @@ public class OrderBean {
 
     public OrderBean setTime_end(String time_end) {
         this.time_end = time_end;
-        return this;
-    }
-
-    public String getTrade_state() {
-        return trade_state;
-    }
-
-    public OrderBean setTrade_state(String trade_state) {
-        this.trade_state = trade_state;
         return this;
     }
 }

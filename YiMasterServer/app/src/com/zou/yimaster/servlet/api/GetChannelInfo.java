@@ -1,7 +1,7 @@
 package com.zou.yimaster.servlet.api;
 
 import com.google.gson.Gson;
-import com.zou.yimaster.servlet.dao.ChannelInfo;
+import com.zou.yimaster.servlet.common.ChannelInfo;
 import com.zou.yimaster.servlet.dao.DBManager;
 
 import java.io.IOException;

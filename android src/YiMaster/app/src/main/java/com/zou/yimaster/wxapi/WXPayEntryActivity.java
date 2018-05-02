@@ -14,6 +14,7 @@ import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.zou.yimaster.R;
 import com.zou.yimaster.common.AppConfig;
+import com.zou.yimaster.ui.activity.BuyActivity;
 
 /**
  * Created by zougaoyuan on 04.20.020
@@ -30,7 +31,7 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.pay_result);
-        api = WXAPIFactory.createWXAPI(this, AppConfig.APPConfigs.get("weChat").getAppid());
+        api = WXAPIFactory.createWXAPI(this, AppConfig.APPConfigs.get("wechat").getAppid());
         api.handleIntent(getIntent(), this);
     }
 
@@ -48,13 +49,9 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
     @Override
     public void onResp(BaseResp baseResp) {
         Log.d(TAG, "onPayFinish, errCode = " + baseResp.errCode);
-
         //支付结果
         if (baseResp.getType() == ConstantsAPI.COMMAND_PAY_BY_WX) {
-//            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//            builder.setTitle(R.string.public_tips);
-//            builder.setMessage(getString(R.string.pay_result_callback_msg, String.valueOf(baseResp.errCode)));
-//            builder.show();
+            sendBroadcast(new Intent(BuyActivity.ACTION_PAY_RESULT));
         }
     }
 }

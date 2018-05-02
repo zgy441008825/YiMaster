@@ -1,4 +1,4 @@
-package com.zou.yimaster.servlet.dao;
+package com.zou.yimaster.servlet.common;
 
 /**
  * Created by zougaoyuan on 2018/4/11
@@ -9,13 +9,13 @@ public class ChannelInfo {
 
     /**
      * channel : wechat
-     * info : {"appid":"wechat_appid","secrit":"wechat_secret"}
+     * info : {"appid":"wechat_appid","secret":"wechat_secret"}
      */
 
     private String channel;
     /**
      * appid : wechat_appid
-     * secrit : wechat_secret
+     * secret : wechat_secret
      */
 
     private InfoBean info;
@@ -38,7 +38,9 @@ public class ChannelInfo {
 
     public static class InfoBean {
         private String appid;
-        private String secrit;
+        private String secret;
+        private String key;
+        private String mchId;
 
         public String getAppid() {
             return appid;
@@ -48,12 +50,30 @@ public class ChannelInfo {
             this.appid = appid;
         }
 
-        public String getSecrit() {
-            return secrit;
+        public String getSecret() {
+            return secret;
         }
 
-        public void setSecrit(String secrit) {
-            this.secrit = secrit;
+        public void setSecret(String secret) {
+            this.secret = secret;
+        }
+
+        public String getKey() {
+            return key;
+        }
+
+        public InfoBean setKey(String key) {
+            this.key = key;
+            return this;
+        }
+
+        public String getMchId() {
+            return mchId;
+        }
+
+        public InfoBean setMchId(String mchId) {
+            this.mchId = mchId;
+            return this;
         }
     }
 }

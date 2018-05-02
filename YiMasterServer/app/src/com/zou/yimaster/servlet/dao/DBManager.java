@@ -1,5 +1,6 @@
 package com.zou.yimaster.servlet.dao;
 
+import com.zou.yimaster.servlet.common.ChannelInfo;
 import com.zou.yimaster.servlet.common.OrderBean;
 
 import java.sql.Connection;
@@ -62,17 +63,22 @@ public class DBManager {
                 ChannelInfo info1 = getChannelInfo(info.getChannel());
                 PreparedStatement statement;
                 if (info1 == null) {
-                    String sql = "INSERT INTO channelinfo(channel, appid, secret) VALUES (?, ?, ?)";
+                    String sql = "INSERT INTO channelinfo(channel, appid, secret,app_key,mch_id) VALUES (?, ?, ?,?,?)";
                     statement = conn.prepareStatement(sql);
                     statement.setString(1, info.getChannel());
                     statement.setString(2, info.getInfo().getAppid());
-                    statement.setString(3, info.getInfo().getSecrit());
+                    statement.setString(3, info.getInfo().getSecret());
+                    statement.setString(4, info.getInfo().getKey());
+                    statement.setString(5, info.getInfo().getMchId());
                 } else {
-                    String sql = "UPDATE channelinfo SET appid = ? , secret = ? WHERE channel = ?";
+                    String sql = "UPDATE channelinfo SET appid = ? , secret = ? , app_key = ? , mch_id= ? WHERE " +
+                            "channel = ?";
                     statement = conn.prepareStatement(sql);
                     statement.setString(1, info.getInfo().getAppid());
-                    statement.setString(2, info.getInfo().getSecrit());
-                    statement.setString(3, info.getChannel());
+                    statement.setString(2, info.getInfo().getSecret());
+                    statement.setString(3, info.getInfo().getKey());
+                    statement.setString(4, info.getInfo().getMchId());
+                    statement.setString(5, info.getChannel());
                 }
                 statement.execute();
             }
@@ -92,7 +98,9 @@ public class DBManager {
                     ChannelInfo info = new ChannelInfo();
                     ChannelInfo.InfoBean bean = new ChannelInfo.InfoBean();
                     bean.setAppid(resultSet.getString("appid"));
-                    bean.setSecrit(resultSet.getString("secret"));
+                    bean.setSecret(resultSet.getString("secret"));
+                    bean.setKey(resultSet.getString("app_key"))
+                            .setMchId(resultSet.getString("mch_id"));
                     info.setChannel(channel);
                     info.setInfo(bean);
                     return info;
@@ -133,17 +141,18 @@ public class DBManager {
             if (infoBean == null) {//保存
                 sql = "INSERT INTO yiorder(appid,mchid,nonce_str,sign,sign_type,out_trade_no,body,total_fee," +
                         "spbill_create_ip,time_start,time_expire,prepay_id,result_code,err_code,err_code_des,openid," +
-                        "bank_type,transaction_id,time_end) VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-                        "?, ?, ?)";
+                        "bank_type,transaction_id,time_end,trade_state) VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?," +
+                        " ?, ?, ?, " +
+                        "?, ?, ?,?)";
             } else {//更新
                 sql = "UPDATE yiorder SET appid=?,mchid=?,nonce_str=?,sign=?,sign_type=?,out_trade_no=?,body=?," +
                         "total_fee=?," +
                         "spbill_create_ip=?,time_start=?,time_expire=?,prepay_id=?,result_code=?,err_code=?," +
-                        "err_code_des=?,openid=?,bank_type=?,transaction_id=?";
+                        "err_code_des=?,openid=?,bank_type=?,transaction_id=?,trade_state=?";
             }
             statement = conn.prepareStatement(sql);
             statement.setString(1, bean.getAppid());
-            statement.setString(2, bean.getMchid());
+            statement.setString(2, bean.getMch_id());
             statement.setString(3, bean.getNonce_str());
             statement.setString(4, bean.getSign());
             statement.setString(5, bean.getSign_type());
@@ -161,6 +170,7 @@ public class DBManager {
             statement.setString(17, bean.getBank_type());
             statement.setString(18, bean.getTransaction_id());
             statement.setString(19, bean.getTime_end());
+            statement.setString(20, bean.getTrade_state());
             statement.execute();
         } catch (Exception e) {
             e.printStackTrace();
@@ -182,7 +192,7 @@ public class DBManager {
                 if (resultSet.first()) {
                     OrderBean info = new OrderBean();
                     info.setAppid(resultSet.getString("appid"))
-                            .setMchid(resultSet.getString("mchid"))
+                            .setMch_id(resultSet.getString("mchid"))
                             .setNonce_str(resultSet.getString("nonce_str"))
                             .setSign(resultSet.getString("sign"))
                             .setSign_type(resultSet.getString("sign_type"))
@@ -199,7 +209,8 @@ public class DBManager {
                             .setOpenid(resultSet.getString("openid"))
                             .setBank_type(resultSet.getString("bank_type"))
                             .setTransaction_id(resultSet.getString("transaction_id"))
-                            .setTime_end(resultSet.getString("time_end"));
+                            .setTime_end(resultSet.getString("time_end"))
+                            .setTrade_state(resultSet.getString("trade_state"));
                     return info;
                 }
             }

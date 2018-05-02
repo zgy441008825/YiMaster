@@ -61,13 +61,17 @@ public class RetrofitHelper {
         return getYiServerRetrofit().saveRecord(record);
     }
 
-    public static Flowable<String> getOrderInfo(String type, String channel) {
-        return getYiServerRetrofit().QueryOrder(type, channel);
+    public static Flowable<String> QueryOrder(String orderNo, String channel) {
+        return getYiServerRetrofit().QueryOrder(orderNo, channel);
     }
 
     public static Flowable<String> PlaceOrder(int fee, String channel) {
         String body = "购买:" + fee;
         return getYiServerRetrofit().PlaceOrder(body, fee, channel);
+    }
+
+    public static Flowable<String> WXOrderCallback(String param){
+        return getYiServerRetrofit().WXOrderCallback(param);
     }
 
 }

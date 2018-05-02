@@ -1,10 +1,13 @@
+//INSERT INTO channelinfo (channel, appid, secret, app_key, mch_id) VALUES ("wechat","wx583eae0f58402036","560499b5cbc037bdc3b9a2d5c4fccd40","YiMaster511602201206142117zixuan","1502918311");
 CREATE TABLE channelinfo
 (
   id      INT AUTO_INCREMENT
     PRIMARY KEY,
   channel VARCHAR(45)  NOT NULL,
   appid   VARCHAR(100) NOT NULL,
-  secret  VARCHAR(100) NOT NULL
+  secret  VARCHAR(100) NOT NULL,
+  app_key VARCHAR(100) NULL,
+  mch_id  VARCHAR(100) NULL
 );
 
 ////////////////////////////////
@@ -48,7 +51,7 @@ CREATE TABLE yiorder
   id               INT AUTO_INCREMENT
     PRIMARY KEY,
   appid            VARCHAR(30)  NOT NULL,
-  mchid            VARCHAR(30)  NOT NULL,
+  mch_id            VARCHAR(30)  NOT NULL,
   nonce_str        VARCHAR(50)  NOT NULL,
   sign             VARCHAR(50)  NOT NULL,
   sign_type        VARCHAR(10)  NULL,

@@ -49,4 +49,6 @@ public interface YiServer {
     @POST("/api/place")
     Flowable<String> PlaceOrder(@Query("body") String body, @Query("fee") int fee, @Query("channel") String channel);
 
+    @POST("/wx/WXOrderCallback")
+    Flowable<String> WXOrderCallback(@Body String body);
 }

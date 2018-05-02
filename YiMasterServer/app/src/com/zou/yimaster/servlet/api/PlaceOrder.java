@@ -1,11 +1,19 @@
 package com.zou.yimaster.servlet.api;
 
+import com.google.gson.Gson;
 import com.zou.yimaster.servlet.common.OrderBean;
-import com.zou.yimaster.servlet.common.OrderFactroy;
+import com.zou.yimaster.servlet.common.OrderFactory;
+import com.zou.yimaster.servlet.common.YiException;
+import com.zou.yimaster.servlet.dao.DBManager;
+import com.zou.yimaster.servlet.utils.AnalyseXML;
 import com.zou.yimaster.servlet.utils.NetworkUtil;
 import com.zou.yimaster.servlet.wx.WXPayUtils;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,15 +35,24 @@ public class PlaceOrder extends BaseServlet {
         String channel = request.getParameter("channel");//订单渠道
         int totalFee = Integer.valueOf(request.getParameter("fee"));//商品价格
         String ip = NetworkUtil.getIpAddress(request);
-        OrderBean bean = OrderFactroy.createOrder(body, totalFee, ip, "wechat");
-        WXPayUtils.payUnifiedorder(orderToXML(bean))
-                .subscribe(s -> {
-                    System.out.println(s);
-                    writer.println("成功:" + s);
-                }, throwable -> {
-                    throwable.printStackTrace(writer);
-                    throwable.printStackTrace();
-                });
+        OrderBean bean = OrderFactory.createOrder(body, totalFee, ip, "wechat");
+        if (bean == null) {
+            writer.println("生成商户订单失败");
+            return;
+        }
+        try {
+            WXPayUtils.payUnifiedorder(AnalyseXML.orderToXML(bean))
+                    .subscribe(s -> {
+                        System.out.println(s);
+                        writer.println(getJson(s, bean));
+                    }, throwable -> {
+                        writer.println(WXPayUtils.RESULT_FAIL + "_" + throwable);
+                        throwable.printStackTrace();
+                    });
+        } catch (Exception e) {
+            e.printStackTrace();
+            writer.println("failed");
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException,
@@ -43,20 +60,26 @@ public class PlaceOrder extends BaseServlet {
         super.doGet(request, response);
     }
 
-    private String orderToXML(OrderBean bean) {
-        StringBuilder sb = new StringBuilder();
-        sb.append("<xml>");
-        sb.append(String.format("<%1$s>%2$s</%1$s>", "appid", bean.getAppid()));
-        sb.append(String.format("<%1$s>%2$s</%1$s>", "mch_id", bean.getMchid()));
-        sb.append(String.format("<%1$s>%2$s</%1$s>", "nonce_str", bean.getNonce_str()));
-        sb.append(String.format("<%1$s>%2$s</%1$s>", "sign", bean.getSign()));
-        sb.append(String.format("<%1$s>%2$s</%1$s>", "body", bean.getBody()));
-        sb.append(String.format("<%1$s>%2$s</%1$s>", "out_trade_no", bean.getOut_trade_no()));
-        sb.append(String.format("<%1$s>%2$s</%1$s>", "total_fee", bean.getTotal_fee()));
-        sb.append(String.format("<%1$s>%2$s</%1$s>", "spbill_create_ip", bean.getSpbill_create_ip()));
-        sb.append(String.format("<%1$s>%2$s</%1$s>", "notify_url", bean.getNotify_url()));
-        sb.append(String.format("<%1$s>%2$s</%1$s>", "trade_type", bean.getTrade_type()));
-        sb.append("</xml>");
-        return sb.toString();
+
+    /**
+     * 使用服务完全返回的xml解析出prepay_id，并且重新签名返回json
+     */
+    private String getJson(String s, OrderBean bean) throws YiException {
+        String return_code = AnalyseXML.analyseWXResultBean(s, "return_code");
+        String result_code = AnalyseXML.analyseWXResultBean(s, "result_code");
+        bean.setResult_code(result_code)
+                .setReturn_code(return_code);
+        if (WXPayUtils.RESULT_OK.equals(return_code)) {
+            if (WXPayUtils.RESULT_OK.equals(result_code)) {
+                bean.setPrepay_id(AnalyseXML.analyseWXResultBean(s, "prepay_id"));
+                bean.setSign(AnalyseXML.analyseWXResultBean(s, "sign"));
+                bean.setNonce_str(AnalyseXML.analyseWXResultBean(s, "nonce_str"));
+                OrderFactory.setSign(bean);
+                DBManager.getInstance().saveOrUpdateOrder(bean);
+                return new Gson().toJson(bean);
+            }
+        }
+        String return_msg = AnalyseXML.analyseWXResultBean(s, "return_msg");
+        throw new YiException(return_msg);
     }
 }
