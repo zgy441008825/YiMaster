@@ -39,7 +39,7 @@ public class ChannelInfo {
     public static class InfoBean {
         private String appid;
         private String secret;
-        private String key;
+        private String app_key;
         private String mchId;
 
         public String getAppid() {
@@ -58,12 +58,12 @@ public class ChannelInfo {
             this.secret = secret;
         }
 
-        public String getKey() {
-            return key;
+        public String getApp_key() {
+            return app_key;
         }
 
-        public InfoBean setKey(String key) {
-            this.key = key;
+        public InfoBean setApp_key(String app_key) {
+            this.app_key = app_key;
             return this;
         }
 

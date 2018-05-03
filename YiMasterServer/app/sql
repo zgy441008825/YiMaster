@@ -1,4 +1,4 @@
-//INSERT INTO channelinfo (channel, appid, secret, app_key, mch_id) VALUES ("wechat","wx583eae0f58402036","560499b5cbc037bdc3b9a2d5c4fccd40","YiMaster511602201206142117zixuan","1502918311");
+//INSERT INTO channelinfo (channel, appid, secret, key, mch_id) VALUES ("wechat","wx583eae0f58402036","560499b5cbc037bdc3b9a2d5c4fccd40","YiMaster511602201206142117zixuan","1502918311");
 CREATE TABLE channelinfo
 (
   id      INT AUTO_INCREMENT
@@ -6,7 +6,7 @@ CREATE TABLE channelinfo
   channel VARCHAR(45)  NOT NULL,
   appid   VARCHAR(100) NOT NULL,
   secret  VARCHAR(100) NOT NULL,
-  app_key VARCHAR(100) NULL,
+  key VARCHAR(100) NULL,
   mch_id  VARCHAR(100) NULL
 );
 

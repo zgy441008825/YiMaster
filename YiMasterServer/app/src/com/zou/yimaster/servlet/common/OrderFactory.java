@@ -1,14 +1,9 @@
 package com.zou.yimaster.servlet.common;
 
-import com.sun.org.apache.xpath.internal.operations.Or;
 import com.zou.yimaster.servlet.dao.DBManager;
+import com.zou.yimaster.servlet.utils.XMLMapTools;
 
-import java.lang.reflect.Field;
 import java.security.MessageDigest;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -41,8 +36,8 @@ public class OrderFactory {
                     .setOut_trade_no(makeOrderNO())
                     .setTotal_fee(total_fee)
                     .setSpbill_create_ip(spbill_create_ip)
-                    .setTime_start(String.valueOf(System.currentTimeMillis()));
-            setSign(bean);
+                    .setTime_start(String.valueOf(System.currentTimeMillis()))
+                    .setSign(XMLMapTools.getSign(XMLMapTools.orderBenToMap(bean)));
             DBManager.getInstance().saveOrUpdateOrder(bean);
             return bean;
         } catch (Exception e) {
@@ -70,79 +65,5 @@ public class OrderFactory {
         return sb.toString();
     }
 
-    public static void setSign(OrderBean bean) {
-        if (bean == null) return;
-        try {
-            ChannelInfo info = DBManager.getInstance().getChannelInfo("wechat");
-            String sign = getSign(orderBenToMap(bean)) + "&key=" + info.getInfo().getKey();
-            bean.setSign(MD5(sign));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
-    public boolean checkoutSign(OrderBean bean) {
-        try {
-            ChannelInfo info = DBManager.getInstance().getChannelInfo("wechat");
-            String sn = getSign(orderBenToMap(bean)) + "&key=" + info.getInfo().getKey();
-            return MD5(sn).equals(bean.getSign());
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    /**
-     * 获取sign
-     *
-     * @param map orderBean参数
-     */
-    public static String getSign(Map<String, String> map) {
-        List<String> keys = new ArrayList<>(map.keySet());
-        Collections.sort(keys);
-        StringBuilder sb = new StringBuilder();
-        for (String key : keys) {
-            sb.append(key)
-                    .append("=")
-                    .append(map.get(key))
-                    .append("&");
-        }
-        String sign = sb.toString();
-        return sign.substring(0, sign.length() - 1);
-    }
-
-    public static String MD5(String s) {
-        try {
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            byte[] bytes = md.digest(s.getBytes("utf-8"));
-            return toHex(bytes).toUpperCase();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private static String toHex(byte[] bytes) {
-        final char[] HEX_DIGITS = "0123456789ABCDEF".toCharArray();
-        StringBuilder ret = new StringBuilder(bytes.length * 2);
-        for (int i = 0; i < bytes.length; i++) {
-            ret.append(HEX_DIGITS[(bytes[i] >> 4) & 0x0f]);
-            ret.append(HEX_DIGITS[bytes[i] & 0x0f]);
-        }
-        return ret.toString();
-    }
-
-    /**
-     * 将OrderBean转为Map
-     */
-    public static Map<String, String> orderBenToMap(OrderBean bean) throws Exception {
-        Map<String, String> orderMap = new LinkedHashMap<>();
-        for (Field field : bean.getClass().getDeclaredFields()) {
-            field.setAccessible(true);
-            if (field.get(bean) != null && !String.valueOf(field.get(bean)).isEmpty()) {
-                orderMap.put(field.getName(), String.valueOf(field.get(bean)));
-                System.out.println(field.getName() + ":" + field.get(bean));
-            }
-        }
-        return orderMap;
-    }
 }
