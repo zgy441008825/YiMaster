@@ -2,6 +2,7 @@ package com.zou.yimaster.ui.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
@@ -17,6 +18,7 @@ import com.zou.yimaster.common.dao.UserGameRecord;
 import com.zou.yimaster.ui.adapter.PlayAdapter;
 import com.zou.yimaster.ui.base.BaseActivity;
 import com.zou.yimaster.ui.view.QuestionGroupView;
+import com.zou.yimaster.utils.AnimationHelper;
 import com.zou.yimaster.utils.SPTools;
 
 import java.text.SimpleDateFormat;
@@ -59,6 +61,8 @@ public class PlayActivity extends BaseActivity {
      * 初始值大小
      */
     private static int QUEST_CNT_INIT = 5;
+    @BindView(R.id.playTVCount)
+    TextView playTVCount;
 
     /**
      * 题目数量
@@ -69,6 +73,8 @@ public class PlayActivity extends BaseActivity {
      * 网格个数
      */
     private static final int itemSize = 9;
+
+    private static final int LEAVE_STEEP = 3;
 
     /**
      * 保存题目
@@ -134,6 +140,7 @@ public class PlayActivity extends BaseActivity {
         setContentView(R.layout.activity_play);
         ButterKnife.bind(this);
         groupView.setCallback(callback);
+        playTVCount.setTypeface(Typeface.createFromAsset(getAssets(), "font_comm.TTF"));
 //        PowerFactory.getInstance().setListener(powerProductionListener);
         initDataList();
     }
@@ -196,9 +203,17 @@ public class PlayActivity extends BaseActivity {
         }
     };*/
 
+    /**
+     * 当前一局点击正确的计数
+     */
     private int clickCnt = 0;
 
     private int answerCnt = 0;
+
+    /**
+     * 总计
+     */
+    private int rightCnt = 0;
 
     private PlayAdapter.IClickViewTouchCallback callback = new PlayAdapter.IClickViewTouchCallback() {
         @Override
@@ -206,6 +221,9 @@ public class PlayActivity extends BaseActivity {
             Log.d(TAG, "callback: " + index);
             if (clickCnt < dataSize && dataList.get(clickCnt) == index) {
                 clickCnt++;
+                rightCnt++;
+                AnimationHelper.bounceAnimation(playTVCount);
+                playTVCount.setText(String.valueOf(rightCnt));
                 return true;
             }
             disposeFlowable();
@@ -225,7 +243,7 @@ public class PlayActivity extends BaseActivity {
     };
 
     private void showNextLevelDialog() {
-        dataSize += 2;
+        dataSize += LEAVE_STEEP;
         initDataList();
     }
 
@@ -249,10 +267,12 @@ public class PlayActivity extends BaseActivity {
                         dataSize = QUEST_CNT_INIT;
                         answerUserTime = 0;
                         currentIndex = 0;
+                        rightCnt = 0;
                         initDataList();
                         break;
                     case GameResultActivity.GOON:
                         currentIndex = 0;
+                        rightCnt -= clickCnt;
                         initDataList();
                         break;
                 }
@@ -268,6 +288,7 @@ public class PlayActivity extends BaseActivity {
     private void showFailedDialog() {
         Intent intent = new Intent(this, GameResultActivity.class);
         intent.putExtra("time", answerUserTime);
+        intent.putExtra("count", rightCnt);
         startActivityForResult(intent, ACTIVITY_REQUEST_CODE);
     }
 
@@ -277,11 +298,6 @@ public class PlayActivity extends BaseActivity {
                 .setUseTime(answerUserTime)
                 .setRecordTime(System.currentTimeMillis());
         return record;
-    }
-
-    @OnClick(R.id.titleLayout)
-    public void onBuyClick(View view) {
-        startActivity(new Intent(this, BuyActivity.class));
     }
 
     @OnClick(R.id.playButton)
@@ -305,7 +321,6 @@ public class PlayActivity extends BaseActivity {
                 .subscribeOn(Schedulers.newThread())
                 .take(dataSize + 1)
                 .subscribe(aLong -> {
-                    Log.d(TAG, "startShowAnswer clear");
                     groupView.setSelect(-1);
                 }, throwable -> currentIndex = -1, () -> {
                     currentIndex = -1;
@@ -320,7 +335,6 @@ public class PlayActivity extends BaseActivity {
                 .subscribeOn(Schedulers.newThread())
                 .take(dataSize)
                 .subscribe(aLong -> {
-                            Log.d(TAG, "startShowAnswer show");
                             currentIndex = aLong.intValue();
                             groupView.setSelect(dataList.get(aLong.intValue()));
                         },

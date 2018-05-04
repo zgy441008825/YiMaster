@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.zou.yimaster.R;
 import com.zou.yimaster.common.PowerFactory;
 import com.zou.yimaster.ui.base.BaseActivity;
-import com.zou.yimaster.utils.SPTools;
+import com.zou.yimaster.utils.AnimationHelper;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,7 +34,23 @@ public class GameResultActivity extends BaseActivity {
         setContentView(R.layout.activity_game_result);
         ButterKnife.bind(this);
         long useTime = getIntent().getExtras().getLong("time");
-        playResultTvResult.setText(PlayActivity.dateFormat.format(useTime));
+        int count = getIntent().getExtras().getInt("count");
+        showTimeAnimation(useTime);
+        showCountAnimation(count);
+    }
+
+    private void showTimeAnimation(long time) {
+        AnimationHelper.showValueAnimation(time, 500, animation -> {
+            int value = (int) animation.getAnimatedValue();
+            playResultTvResult.setText(PlayActivity.dateFormat.format(value));
+        });
+    }
+
+    private void showCountAnimation(int count) {
+        AnimationHelper.showValueAnimation(count, 500, animation -> {
+            int value = (int) animation.getAnimatedValue();
+            playResultTvResult.setText(String.valueOf(value));
+        });
     }
 
     @OnClick({R.id.playResultIcHome, R.id.playResultIcLoop})

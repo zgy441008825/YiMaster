@@ -7,6 +7,7 @@ import com.zou.yimaster.utils.SPTools;
 import org.xutils.x;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Locale;
 
 import io.reactivex.annotations.NonNull;
@@ -43,6 +44,8 @@ public class PowerFactory {
     private static final String SP_KEY_COUNTDOWN = "power_countdown";
 
     private static final String MONEY_SP_KEY = "money";
+
+    private static final String LOGIN_TIME = "login_time";
 
     private IPowerProductionListener listener;
 
@@ -85,7 +88,6 @@ public class PowerFactory {
             }
         }
     }
-
 
     public int getPower() {
         return spTools.getInt(SP_KEY_POWER, POWER_MAX);
@@ -176,10 +178,19 @@ public class PowerFactory {
         return true;
     }
 
+    public boolean isNewDay() {
+        int today = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+        Long tTmp = SPTools.getInstance(x.app()).getLong(LOGIN_TIME, System.currentTimeMillis());
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(tTmp);
+        int yesterday = calendar.get(Calendar.DAY_OF_MONTH);
+        return today == yesterday;
+    }
+
     /**
      * 手动请求刷新数据
      */
-    public void requestCallback(){
+    public void requestCallback() {
         this.listener.onStockChange(getPower());
         this.listener.onMoneyChange(getMoney());
     }

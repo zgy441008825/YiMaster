@@ -5,16 +5,27 @@
                 android:background="@drawable/main_test_bg">
 
     <!--<include-->
-        <!--android:id="@+id/playPowerLayout"-->
-        <!--layout="@layout/play_power_info"/>-->
+    <!--android:id="@+id/playPowerLayout"-->
+    <!--layout="@layout/play_power_info"/>-->
+
+    <TextView
+        android:id="@+id/playTVCount"
+        android:layout_marginTop="10dp"
+        android:textSize="50sp"
+        android:text="0"
+        android:textColor="@color/goldColor"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <com.zou.yimaster.ui.view.QuestionGroupView
         android:id="@+id/questionGroupView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/playButton"
+        android:layout_below="@+id/playTVCount"
         android:layout_marginBottom="50dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="20dp"
         android:clickable="true"
         android:focusable="true"
         app:group_click_errorColor="@color/colorAccent"

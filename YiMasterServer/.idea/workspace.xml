@@ -7,43 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f51b41b-46e3-4e02-8a8e-9eaf0869dd46" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/dom4j-2.1.0-javadoc.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/dom4j-2.1.0-sources.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/dom4j-2.1.0.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/dom4j_2_1_0.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/dataSources/f7a3e758-3342-4066-951b-85f9008dff6e.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/app_war_exploded/WEB-INF/lib/javax.annotation.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/app_war_exploded/WEB-INF/lib/javax.ejb.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/app_war_exploded/WEB-INF/lib/javax.jms.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/app_war_exploded/WEB-INF/lib/javax.persistence.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/app_war_exploded/WEB-INF/lib/javax.resource.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/app_war_exploded/WEB-INF/lib/javax.servlet.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/app_war_exploded/WEB-INF/lib/javax.servlet.jsp.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/app_war_exploded/WEB-INF/lib/javax.servlet.jsp.jstl.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/app_war_exploded/WEB-INF/lib/javax.transaction.jar" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/utils/XMLMapTools.java" afterPath="$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/utils/ParamStringTools.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../android src/YiMaster/.idea/caches/build_file_checksums.ser" afterPath="$PROJECT_DIR$/../android src/YiMaster/.idea/caches/build_file_checksums.ser" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/app_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/app_war_exploded.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/yimaster_war.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/yimaster_war.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/api/GetChannelInfo.java" afterPath="$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/api/GetChannelInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/api/PlaceOrder.java" afterPath="$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/api/PlaceOrder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/api/QueryOrder.java" afterPath="$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/api/QueryOrder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/common/OrderBean.java" afterPath="$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/common/OrderBean.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/common/OrderFactory.java" afterPath="$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/common/OrderFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/common/TradeState.java" afterPath="$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/common/TradeState.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/dao/DBManager.java" afterPath="$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/dao/DBManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/wx/WXOrderCallback.java" afterPath="$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/wx/WXOrderCallback.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/wx/WXPayServer.java" afterPath="$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/wx/WXPayServer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/wx/WXPayUtils.java" afterPath="$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/wx/WXPayUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../android src/YiMaster/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/../android src/YiMaster/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../android src/YiMaster/app/src/main/java/com/zou/yimaster/net/RetrofitHelper.java" afterPath="$PROJECT_DIR$/../android src/YiMaster/app/src/main/java/com/zou/yimaster/net/RetrofitHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../android src/YiMaster/app/src/main/java/com/zou/yimaster/ui/activity/BuyActivity.java" afterPath="$PROJECT_DIR$/../android src/YiMaster/app/src/main/java/com/zou/yimaster/ui/activity/BuyActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../android src/YiMaster/app/src/main/java/com/zou/yimaster/ui/activity/WelcomeActivity.java" afterPath="$PROJECT_DIR$/../android src/YiMaster/app/src/main/java/com/zou/yimaster/ui/activity/WelcomeActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../android src/YiMaster/app/src/main/java/com/zou/yimaster/wxapi/WXPayEntryActivity.java" afterPath="$PROJECT_DIR$/../android src/YiMaster/app/src/main/java/com/zou/yimaster/wxapi/WXPayEntryActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../android src/YiMaster/app/src/main/java/com/zou/yimaster/common/PowerFactory.java" afterPath="$PROJECT_DIR$/../android src/YiMaster/app/src/main/java/com/zou/yimaster/common/PowerFactory.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -224,7 +188,7 @@
     <option name="FILTER_DEBUG" value="false" />
     <option name="CUSTOM_FILTER" value="" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="20" />
     <option name="y" value="20" />
     <option name="width" value="1400" />
@@ -443,16 +407,15 @@
       <workItem from="1525310590098" duration="20901000" />
       <workItem from="1525393356432" duration="115000" />
       <workItem from="1525394203960" duration="1591000" />
-      <workItem from="1525397909052" duration="3913000" />
+      <workItem from="1525397909052" duration="5343000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26520000" />
+    <option name="totallyTimeSpent" value="27950000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1456" height="876" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -608,8 +571,8 @@
         <state relative-caret-position="1740">
           <caret line="85" column="38" lean-forward="false" selection-start-line="85" selection-start-column="38" selection-end-line="85" selection-end-column="38" />
           <folding>
-            <element signature="docComment;method#getNonce#0;class#OrderFactory#0" expanded="true" />
-            <element signature="docComment;method#updateOrderTradeState#0;class#OrderFactory#0" expanded="true" />
+            <element signature="docComment;method#getNonce#0;class#OrderFactory#0" expanded="false" />
+            <element signature="docComment;method#updateOrderTradeState#0;class#OrderFactory#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -669,8 +632,8 @@
         <state relative-caret-position="1860">
           <caret line="85" column="38" lean-forward="false" selection-start-line="85" selection-start-column="38" selection-end-line="85" selection-end-column="38" />
           <folding>
-            <element signature="docComment;method#getNonce#0;class#OrderFactory#0" expanded="true" />
-            <element signature="docComment;method#updateOrderTradeState#0;class#OrderFactory#0" expanded="true" />
+            <element signature="docComment;method#getNonce#0;class#OrderFactory#0" expanded="false" />
+            <element signature="docComment;method#updateOrderTradeState#0;class#OrderFactory#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -730,8 +693,8 @@
         <state relative-caret-position="1740">
           <caret line="85" column="38" lean-forward="false" selection-start-line="85" selection-start-column="38" selection-end-line="85" selection-end-column="38" />
           <folding>
-            <element signature="docComment;method#getNonce#0;class#OrderFactory#0" expanded="true" />
-            <element signature="docComment;method#updateOrderTradeState#0;class#OrderFactory#0" expanded="true" />
+            <element signature="docComment;method#getNonce#0;class#OrderFactory#0" expanded="false" />
+            <element signature="docComment;method#updateOrderTradeState#0;class#OrderFactory#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -884,8 +847,8 @@
         <state relative-caret-position="199">
           <caret line="60" column="37" lean-forward="true" selection-start-line="60" selection-start-column="37" selection-end-line="60" selection-end-column="37" />
           <folding>
-            <element signature="docComment;method#getNonce#0;class#OrderFactory#0" expanded="true" />
-            <element signature="docComment;method#updateOrderTradeState#0;class#OrderFactory#0" expanded="true" />
+            <element signature="docComment;method#getNonce#0;class#OrderFactory#0" expanded="false" />
+            <element signature="docComment;method#updateOrderTradeState#0;class#OrderFactory#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -41,6 +41,7 @@ public class MainActivity extends BaseActivity {
         InAppMessageManager.getInstance(this).showCardMessage(this, "main",
                 () -> Log.i(TAG, "card message close"));
         requestPermission();
+
     }
 
     private void requestPermission() {
