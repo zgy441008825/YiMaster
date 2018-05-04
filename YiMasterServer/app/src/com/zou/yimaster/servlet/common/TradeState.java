@@ -14,25 +14,32 @@ public enum TradeState {
     SYSTEMERROR("SYSTEMERROR"),//系统错误
     USERPAYING("USERPAYING");//--用户支付中
 
+    private String value;
+
     TradeState(String state) {
+        setValue(state);
     }
 
-    public TradeState getValue(String state) {
+    public String getValue() {
+        return value;
+    }
+
+    private void setValue(String state) {
         switch (state) {
             case "SUCCESS":
-                return SUCCESS;
+                value = "SUCCESS";
             case "REFUND":
-                return REFUND;
+                value = "REFUND";
             case "NOTPAY":
-                return NOTPAY;
+                value = "NOTPAY";
             case "CLOSED":
-                return CLOSED;
+                value = "CLOSED";
             case "REVOKED":
-                return REVOKED;
+                value = "REVOKED";
             case "USERPAYING":
-                return USERPAYING;
+                value = "USERPAYING";
             default:
-                return SYSTEMERROR;
+                value = "SYSTEMERROR";
         }
     }
 }

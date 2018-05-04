@@ -31,7 +31,7 @@ public class WelcomeActivity extends BaseActivity {
                 .subscribe(stringInfoBeanMap -> {
                     System.out.println(stringInfoBeanMap);
                     AppConfig.APPConfigs = stringInfoBeanMap;
-                });
+                }, throwable -> AppConfig.APPConfigs = null);
         RxCountDown.countDown(3)
                 .subscribe(integer -> {
                     if (integer == 0) {

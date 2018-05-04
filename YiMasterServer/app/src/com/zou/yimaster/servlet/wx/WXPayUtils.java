@@ -1,19 +1,10 @@
 package com.zou.yimaster.servlet.wx;
 
-import com.zou.yimaster.servlet.common.OrderBean;
-import com.zou.yimaster.servlet.common.OrderFactory;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-
 import io.reactivex.Flowable;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
-import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
 
 /**
  * Created by zougaoyuan on 04.27.027
@@ -58,6 +49,13 @@ public class WXPayUtils {
      */
     public static Flowable<String> payOrderquery(String param) {
         return getWXPayServer().payOrderquery(param);
+    }
+
+    /**
+     * 获取沙盒测试用sign
+     */
+    public static Flowable<String> getSignKey(String param) {
+        return getWXPayServer().getSignKey(param);
     }
 
 }

@@ -78,7 +78,7 @@ public class QuestionGroupView extends View {
     /**
      * 动画执行时间
      */
-    private static final int ANIMATION_DURATION = 100;
+    private static final int ANIMATION_DURATION = 20;
 
     /**
      * item间距

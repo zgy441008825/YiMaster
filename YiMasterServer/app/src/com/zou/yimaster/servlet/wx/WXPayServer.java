@@ -17,7 +17,7 @@ interface WXPayServer {
      *
      * @see https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=9_1
      */
-    @POST("/sandboxnew/pay/unifiedorder")
+    @POST("/pay/unifiedorder")
     Flowable<String> payUnifiedorder(@Body String param);
 
     /**
@@ -25,7 +25,10 @@ interface WXPayServer {
      *
      * @see https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=9_2&index=4
      */
-    @POST("/sandboxnew/pay/orderquery")
+    @POST("/pay/orderquery")
     Flowable<String> payOrderquery(@Body String param);
+
+    @POST("/pay/getsignkey")
+    Flowable<String> getSignKey(@Body String param);
 
 }

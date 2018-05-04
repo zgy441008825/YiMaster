@@ -148,7 +148,8 @@ public class PowerFactory {
      * 获取剩余币，默认5
      */
     public int getMoney() {
-        return SPTools.getInstance(x.app()).getInt(MONEY_SP_KEY, 5);
+        // TODO: 05.04.004 调试用
+        return 5;//SPTools.getInstance(x.app()).getInt(MONEY_SP_KEY, 5);
     }
 
     /**

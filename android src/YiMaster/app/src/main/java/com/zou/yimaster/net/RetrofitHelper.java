@@ -3,10 +3,14 @@ package com.zou.yimaster.net;
 import com.zou.yimaster.common.AppConfig;
 import com.zou.yimaster.common.dao.UserGameRecord;
 
+import org.reactivestreams.Publisher;
+
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Flowable;
+import io.reactivex.functions.Function;
+import io.reactivex.schedulers.Schedulers;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -70,8 +74,21 @@ public class RetrofitHelper {
         return getYiServerRetrofit().PlaceOrder(body, fee, channel);
     }
 
-    public static Flowable<String> WXOrderCallback(String param){
+    public static Flowable<String> WXOrderCallback(String param) {
         return getYiServerRetrofit().WXOrderCallback(param);
+    }
+
+    /**
+     * 获取微信渠道信息
+     */
+    public static Flowable<AppConfig.InfoBean> getWXChannelInfo() {
+        return getAllChannelInfo()
+                .subscribeOn(Schedulers.newThread())
+                .flatMap((Function<Map<String, AppConfig.InfoBean>, Publisher<AppConfig.InfoBean>>) stringInfoBeanMap
+                        -> {
+                    AppConfig.APPConfigs = stringInfoBeanMap;
+                    return Flowable.just(AppConfig.APPConfigs.get("wechat"));
+                });
     }
 
 }

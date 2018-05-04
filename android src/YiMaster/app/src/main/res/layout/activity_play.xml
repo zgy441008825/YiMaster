@@ -4,18 +4,17 @@
                 android:layout_width="match_parent" android:layout_height="match_parent"
                 android:background="@drawable/main_test_bg">
 
-    <include
-        android:id="@+id/playPowerLayout"
-        layout="@layout/play_power_info"/>
+    <!--<include-->
+        <!--android:id="@+id/playPowerLayout"-->
+        <!--layout="@layout/play_power_info"/>-->
 
     <com.zou.yimaster.ui.view.QuestionGroupView
         android:id="@+id/questionGroupView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/playButton"
-        android:layout_below="@+id/playPowerLayout"
         android:layout_marginBottom="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="60dp"
         android:clickable="true"
         android:focusable="true"
         app:group_click_errorColor="@color/colorAccent"

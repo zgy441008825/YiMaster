@@ -46,14 +46,14 @@ public class PlayActivity extends BaseActivity {
     Button playButton;
     @BindView(R.id.questionGroupView)
     QuestionGroupView groupView;
-    @BindView(R.id.powerInfoPowerCnt)
+/*    @BindView(R.id.powerInfoPowerCnt)
     TextView powerInfoPowerCnt;
     @BindView(R.id.powerInfoTime)
     TextView powerInfoTime;
     @BindView(R.id.powerInfoMoney)
-    TextView powerInfoMoney;
+    TextView powerInfoMoney;*/
 
-    private final int SHOW_SPEED = 2;
+    private static final int SHOW_SPEED = 2;
 
     /**
      * 初始值大小
@@ -134,7 +134,7 @@ public class PlayActivity extends BaseActivity {
         setContentView(R.layout.activity_play);
         ButterKnife.bind(this);
         groupView.setCallback(callback);
-        PowerFactory.getInstance().setListener(powerProductionListener);
+//        PowerFactory.getInstance().setListener(powerProductionListener);
         initDataList();
     }
 
@@ -173,7 +173,7 @@ public class PlayActivity extends BaseActivity {
         }
     }
 
-    private PowerFactory.IPowerProductionListener powerProductionListener = new PowerFactory.IPowerProductionListener
+    /*private PowerFactory.IPowerProductionListener powerProductionListener = new PowerFactory.IPowerProductionListener
             () {
         @Override
         public void onStateChange(String time) {
@@ -194,7 +194,7 @@ public class PlayActivity extends BaseActivity {
         public void onMoneyChange(int money) {
             powerInfoMoney.setText(String.valueOf(money));
         }
-    };
+    };*/
 
     private int clickCnt = 0;
 
@@ -252,6 +252,7 @@ public class PlayActivity extends BaseActivity {
                         initDataList();
                         break;
                     case GameResultActivity.GOON:
+                        currentIndex = 0;
                         initDataList();
                         break;
                 }
@@ -278,6 +279,11 @@ public class PlayActivity extends BaseActivity {
         return record;
     }
 
+    @OnClick(R.id.titleLayout)
+    public void onBuyClick(View view) {
+        startActivity(new Intent(this, BuyActivity.class));
+    }
+
     @OnClick(R.id.playButton)
     public void onPlayButtonClick(View view) {
         if (state == STATE_NORMAL) {
@@ -286,13 +292,13 @@ public class PlayActivity extends BaseActivity {
         }
         if (state == STATE_SHOW_QUESTION_END) {
             startAnswer();
-            return;
         }
     }
 
     private void startShowAnswer() {
         state = STATE_SHOW_QUESTION;
         playButton.setEnabled(false);
+        disposeFlowable();
         clearDisposable = Flowable.interval(currentIndex, SHOW_SPEED, TimeUnit.SECONDS)
                 .onBackpressureBuffer()
                 .observeOn(AndroidSchedulers.mainThread())

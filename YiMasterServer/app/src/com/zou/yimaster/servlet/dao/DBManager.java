@@ -147,7 +147,7 @@ public class DBManager {
                 sql = "UPDATE yiorder SET appid=?,mchid=?,nonce_str=?,sign=?,sign_type=?,out_trade_no=?,body=?," +
                         "total_fee=?," +
                         "spbill_create_ip=?,time_start=?,time_expire=?,prepay_id=?,result_code=?,err_code=?," +
-                        "err_code_des=?,openid=?,bank_type=?,transaction_id=?,trade_state=?";
+                        "err_code_des=?,openid=?,bank_type=?,transaction_id=?,time_end=?,trade_state=?";
             }
             statement = conn.prepareStatement(sql);
             statement.setString(1, bean.getAppid());

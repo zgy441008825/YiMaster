@@ -327,4 +327,32 @@ public class OrderBean {
         return this;
     }
 
+    @Override
+    public String toString() {
+        return "OrderBean{" +
+                "appid='" + appid + '\'' +
+                ", mch_id='" + mch_id + '\'' +
+                ", nonce_str='" + nonce_str + '\'' +
+                ", sign='" + sign + '\'' +
+                ", sign_type='" + sign_type + '\'' +
+                ", body='" + body + '\'' +
+                ", out_trade_no='" + out_trade_no + '\'' +
+                ", total_fee=" + total_fee +
+                ", spbill_create_ip='" + spbill_create_ip + '\'' +
+                ", time_start='" + time_start + '\'' +
+                ", time_expire='" + time_expire + '\'' +
+                ", notify_url='" + notify_url + '\'' +
+                ", trade_type='" + trade_type + '\'' +
+                ", prepay_id='" + prepay_id + '\'' +
+                ", return_code='" + return_code + '\'' +
+                ", result_code='" + result_code + '\'' +
+                ", err_code='" + err_code + '\'' +
+                ", err_code_des='" + err_code_des + '\'' +
+                ", openid='" + openid + '\'' +
+                ", bank_type='" + bank_type + '\'' +
+                ", transaction_id='" + transaction_id + '\'' +
+                ", time_end='" + time_end + '\'' +
+                ", trade_state='" + trade_state + '\'' +
+                '}';
+    }
 }

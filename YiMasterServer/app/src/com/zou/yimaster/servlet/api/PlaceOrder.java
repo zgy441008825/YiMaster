@@ -5,8 +5,8 @@ import com.zou.yimaster.servlet.common.OrderBean;
 import com.zou.yimaster.servlet.common.OrderFactory;
 import com.zou.yimaster.servlet.common.YiException;
 import com.zou.yimaster.servlet.dao.DBManager;
-import com.zou.yimaster.servlet.utils.XMLMapTools;
 import com.zou.yimaster.servlet.utils.NetworkUtil;
+import com.zou.yimaster.servlet.utils.ParamStringTools;
 import com.zou.yimaster.servlet.wx.WXPayUtils;
 
 import java.io.IOException;
@@ -35,18 +35,18 @@ public class PlaceOrder extends BaseServlet {
         String channel = request.getParameter("channel");//订单渠道
         int totalFee = Integer.valueOf(request.getParameter("fee"));//商品价格
         String ip = NetworkUtil.getIpAddress(request);
-        OrderBean bean = OrderFactory.createOrder(body, totalFee, ip, "wechat");
+        OrderBean bean = OrderFactory.createOrder(body, 1, ip, "wechat");
         if (bean == null) {
             writer.println(WXPayUtils.RESULT_FAIL + "_生成商户订单失败");
             return;
         }
         try {
-            WXPayUtils.payUnifiedorder(XMLMapTools.orderToXML(bean))
+            WXPayUtils.payUnifiedorder(ParamStringTools.orderToXML(bean))
                     .subscribe(s -> {
                         System.out.println(s);
                         writer.println(getJson(s, bean));
                     }, throwable -> {
-                        writer.println(WXPayUtils.RESULT_FAIL + "_" + throwable);
+                        writer.println(WXPayUtils.RESULT_FAIL + "_" + throwable.getMessage());
                         throwable.printStackTrace();
                     });
         } catch (Exception e) {
@@ -65,10 +65,10 @@ public class PlaceOrder extends BaseServlet {
      * 使用服务完全返回的xml解析出prepay_id，并且重新签名返回json
      */
     private String getJson(String s, OrderBean bean) throws Exception {
-        Map<String, String> map = XMLMapTools.xml2Map(s);
-        if (map == null || map.containsKey("return_code"))
+        Map<String, String> map = ParamStringTools.xml2Map(s);
+        if (map == null || !map.containsKey("return_code"))
             throw new YiException("获取微信下单信息错误:" + s);
-        if (!XMLMapTools.checkoutSign(map)) {
+        if (!ParamStringTools.checkoutSign(map)) {
             throw new YiException("签名异常:" + s);
         }
         String return_code = map.get("return_code");
@@ -82,7 +82,7 @@ public class PlaceOrder extends BaseServlet {
                 return new Gson().toJson(get2APPString(bean));
             }
         }
-        String return_msg = XMLMapTools.analyseWXResultBean(s, "return_msg");
+        String return_msg = map.get("return_msg");
         throw new YiException(return_msg);
     }
 
@@ -95,10 +95,11 @@ public class PlaceOrder extends BaseServlet {
         map.put("partnerid", bean.getMch_id());
         map.put("prepayid", bean.getPrepay_id());
         map.put("package", "Sign=WXPay");
-        map.put("noncestr", bean.getNonce_str());
-        map.put("timestamp", bean.getTime_start());
-        String sign = XMLMapTools.getSign(map);
+        map.put("noncestr", OrderFactory.getNonce());
+        map.put("timestamp", String.valueOf(System.currentTimeMillis() / 1000));
+        String sign = ParamStringTools.getSign(map);
         map.put("sign", sign);
+        map.put("out_trade_no", bean.getOut_trade_no());
         return map;
     }
 }

@@ -44,6 +44,7 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
 
     @Override
     public void onReq(BaseReq baseReq) {
+        Log.d(TAG, "onReq: " + baseReq);
     }
 
     @Override
@@ -53,5 +54,6 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
         if (baseResp.getType() == ConstantsAPI.COMMAND_PAY_BY_WX) {
             sendBroadcast(new Intent(BuyActivity.ACTION_PAY_RESULT));
         }
+        finish();
     }
 }

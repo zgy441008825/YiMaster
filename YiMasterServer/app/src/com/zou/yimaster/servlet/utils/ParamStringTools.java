@@ -1,14 +1,24 @@
 package com.zou.yimaster.servlet.utils;
 
+import com.google.gson.internal.LinkedTreeMap;
 import com.zou.yimaster.servlet.common.OrderBean;
 import com.zou.yimaster.servlet.common.OrderFactory;
+import com.zou.yimaster.servlet.common.YiException;
 import com.zou.yimaster.servlet.dao.DBManager;
+import com.zou.yimaster.servlet.wx.WXPayUtils;
 
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
+
+import java.io.StringReader;
 import java.lang.reflect.Field;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,48 +27,42 @@ import java.util.regex.Pattern;
 
 /**
  * Created by zougaoyuan on 05.02.002
+ * 和微信服务器交互的参数帮助类
  *
  * @author zougaoyuan
  */
-public class XMLMapTools {
+public class ParamStringTools {
+
+    private static String sandbox_signkey;
+
+    public static boolean sandboxMode = false;
 
     /**
-     * 在xml中查找key对应的值
+     * 将XML参数转为Map
      */
-    public static String analyseWXResultBean(String s, String key) {
-        Pattern pattern = Pattern.compile("<\\/.*?>");
-        Pattern pattern1 = Pattern.compile("CDATA\\[.*?\\]");
-        Matcher matcher = pattern.matcher(s);
-        Matcher matcher1 = pattern1.matcher(s);
-        while (matcher.find() && matcher1.find()) {
-            String keyV = matcher.group().replace("</", "").replace(">", "");
-            String value = matcher1.group().replace("CDATA[", "").replace("]", "");
-            if (key.equals(keyV))
-                return value;
-        }
-        return null;
-    }
-
     public static Map<String, String> xml2Map(String xml) {
         if (isEmpty(xml)) return null;
         try {
-            Pattern pattern = Pattern.compile("<\\/.*?>");
-            Pattern pattern1 = Pattern.compile("CDATA\\[.*?\\]");
-            Matcher matcher = pattern.matcher(xml);
-            Matcher matcher1 = pattern1.matcher(xml);
-            Map<String, String> map = new HashMap<>();
-            while (matcher.find() && matcher1.find()) {
-                String key = matcher.group().replace("</", "").replace(">", "");
-                String value = matcher1.group().replace("CDATA[", "").replace("]", "");
-                map.put(key, value);
+            Map<String, String> map = new LinkedTreeMap<>();
+            SAXReader reader = new SAXReader();
+            Document document = reader.read(new StringReader(xml));
+            Element bookStore = document.getRootElement();
+            // 通过element对象的elementIterator方法获取迭代器
+            Iterator it = bookStore.elementIterator();
+            while (it.hasNext()) {
+                Element element = (Element) it.next();
+                map.put(element.getName().trim(), element.getStringValue().trim());
             }
             return map;
-        } catch (Exception e) {
+        } catch (DocumentException e) {
             e.printStackTrace();
             return null;
         }
     }
 
+    /**
+     * 将订单信息中的参数打包为微信需要的XML
+     */
     public static String orderToXML(OrderBean bean) throws Exception {
         return mapToXml(orderBenToMap(bean));
     }
@@ -94,12 +98,7 @@ public class XMLMapTools {
         bean.setSign(getSign(orderBenToMap(bean)));
     }
 
-    /**
-     * 获取签名,自动跳过sign字段,在末尾加Key
-     *
-     * @param map orderBean参数
-     */
-    public static String getSign(Map<String, String> map) {
+    public static String getSandboxKey(Map<String, String> map) {
         List<String> keys = new ArrayList<>(map.keySet());
         Collections.sort(keys);
         StringBuilder sb = new StringBuilder();
@@ -110,16 +109,66 @@ public class XMLMapTools {
                     .append(map.get(key))
                     .append("&");
         }
-        sb.append("key=")
-                .append(DBManager.getInstance().getChannelInfo("wechat").getInfo().getApp_key());
         String sign = sb.toString();
+        sign = sign.substring(0, sign.length() - 1);
         return MD5(sign);
     }
+
+    /**
+     * 获取签名,自动跳过sign字段,在末尾加Key
+     *
+     * @param map orderBean参数
+     */
+    public static String getSign(Map<String, String> map) {
+        if (sandboxMode && isEmpty(sandbox_signkey)) {
+            getSandboxNewSign();
+        }
+        List<String> keys = new ArrayList<>(map.keySet());
+        Collections.sort(keys);
+        StringBuilder sb = new StringBuilder();
+        for (String key : keys) {
+            if (isEmpty(key) || key.equals("sign") || key.equals("key")) continue;
+            if (isEmpty(map.get(key))) continue;
+            sb.append(key)
+                    .append("=")
+                    .append(map.get(key))
+                    .append("&");
+        }
+        if (sandboxMode) {
+            sb.append("key=").append(sandbox_signkey);
+        } else {
+            sb.append("key=")
+                    .append(DBManager.getInstance().getChannelInfo("wechat").getInfo().getApp_key());
+        }
+        return MD5(sb.toString());
+    }
+
+    /**
+     * 获取沙盒测试用的sign
+     */
+    private static void getSandboxNewSign() {
+        Map<String, String> map = new HashMap<>();
+        map.put("mch_id", DBManager.getInstance().getChannelInfo("wechat").getInfo().getMchId());
+        map.put("nonce_str", OrderFactory.getNonce());
+        String sign = getSandboxKey(map);
+        map.put("sign", sign);
+        WXPayUtils.getSignKey(mapToXml(map))
+                .subscribe(s -> {
+                    Map<String, String> resultMap = xml2Map(s);
+                    if (resultMap == null) throw new YiException("获取沙盒sign错误:" + s);
+                    if (resultMap.containsKey("return_code") && resultMap.get("return_code").equals(WXPayUtils
+                            .RESULT_OK)) {
+                        sandbox_signkey = resultMap.get("sandbox_signkey");
+                    } else {
+                        throw new YiException(resultMap.get("return_msg"));
+                    }
+                }, Throwable::printStackTrace);
+    }
+
 
     public static boolean isEmpty(String s) {
         return s == null || s.length() == 0;
     }
-
 
     public static String MD5(String s) {
         try {
@@ -148,7 +197,7 @@ public class XMLMapTools {
     public static boolean checkoutSign(Map<String, String> map) {
         try {
             if (!map.containsKey("sign")) return false;
-            String sn = XMLMapTools.getSign(map);
+            String sn = ParamStringTools.getSign(map);
             return map.get("sign").equals(sn);
         } catch (Exception e) {
             e.printStackTrace();

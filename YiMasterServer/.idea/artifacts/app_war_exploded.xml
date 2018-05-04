@@ -15,6 +15,7 @@
           <element id="library" level="project" name="io.reactivex.rxjava2:rxjava:2.1.12" />
           <element id="library" level="project" name="com.squareup.retrofit2:converter-simplexml:2.4.0" />
           <element id="library" level="project" name="com.google.code.gson:gson:2.8.2" />
+          <element id="library" level="project" name="dom4j-2.1.0" />
         </element>
       </element>
     </root>

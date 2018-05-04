@@ -27,5 +27,6 @@
     <orderEntry type="library" name="com.squareup.retrofit2:converter-simplexml:2.4.0" level="project" />
     <orderEntry type="library" name="com.google.code.gson:gson:2.8.2" level="project" />
     <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
+    <orderEntry type="library" name="dom4j-2.1.0" level="project" />
   </component>
 </module>
