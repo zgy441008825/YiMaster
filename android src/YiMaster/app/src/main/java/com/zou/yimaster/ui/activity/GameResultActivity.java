@@ -1,5 +1,6 @@
 package com.zou.yimaster.ui.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,9 +12,14 @@ import com.zou.yimaster.common.PowerFactory;
 import com.zou.yimaster.ui.base.BaseActivity;
 import com.zou.yimaster.utils.AnimationHelper;
 
+import java.util.concurrent.TimeUnit;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.reactivex.Flowable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by zougaoyuan on 04.27.027
@@ -28,19 +34,25 @@ public class GameResultActivity extends BaseActivity {
 
     public static final int GOON = 0xFF0001;
 
+    @SuppressLint("CheckResult")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_result);
         ButterKnife.bind(this);
-        long useTime = getIntent().getExtras().getLong("time");
-        int count = getIntent().getExtras().getInt("count");
-        showTimeAnimation(useTime);
-        showCountAnimation(count);
+        Flowable.timer(1, TimeUnit.SECONDS)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(aLong -> {
+                    long useTime = getIntent().getExtras().getLong("time");
+                    int count = getIntent().getExtras().getInt("count");
+                    showTimeAnimation(useTime);
+                    showCountAnimation(count);
+                });
     }
 
     private void showTimeAnimation(long time) {
-        AnimationHelper.showValueAnimation(time, 500, animation -> {
+        AnimationHelper.showValueAnimation((int) time, 500, animation -> {
             int value = (int) animation.getAnimatedValue();
             playResultTvResult.setText(PlayActivity.dateFormat.format(value));
         });

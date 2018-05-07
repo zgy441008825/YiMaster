@@ -58,20 +58,5 @@ public class AnimationHelper {
         return showValueAnimation(0, to, duration, updateListener);
     }
 
-    public static ValueAnimator showValueAnimation(float from, float to, long duration, ValueAnimator
-            .AnimatorUpdateListener
-            updateListener) {
-        ValueAnimator valueAnimator = ValueAnimator.ofFloat(from, to);
-        valueAnimator.setDuration(duration);
-        valueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-        valueAnimator.addUpdateListener(updateListener);
-        valueAnimator.start();
-        return valueAnimator;
-    }
-
-    public static ValueAnimator showValueAnimation(float to, long duration, ValueAnimator.AnimatorUpdateListener
-            updateListener) {
-        return showValueAnimation(0, to, duration, updateListener);
-    }
 
 }

@@ -24,16 +24,12 @@ public class MainActivity extends BaseActivity {
 
     private static final String TAG = "MainActivity";
 
-    private TextView tvPowerCnt;
-    private TextView tvPowerTime;
     private TextView tvMoneyCnt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tvPowerCnt = findViewById(R.id.powerInfoPowerCnt);
-        tvPowerTime = findViewById(R.id.powerInfoTime);
         tvMoneyCnt = findViewById(R.id.powerInfoMoney);
         PowerFactory.getInstance().setListener(powerProductionListener);
         findViewById(R.id.BTLogin).setOnClickListener(onClickListener);
@@ -41,7 +37,6 @@ public class MainActivity extends BaseActivity {
         InAppMessageManager.getInstance(this).showCardMessage(this, "main",
                 () -> Log.i(TAG, "card message close"));
         requestPermission();
-
     }
 
     private void requestPermission() {
@@ -86,17 +81,10 @@ public class MainActivity extends BaseActivity {
             () {
         @Override
         public void onStateChange(String time) {
-            tvPowerTime.setText(time);
         }
 
         @Override
         public void onStockChange(int stock) {
-            tvPowerCnt.setText(String.format(Locale.getDefault(), "%1$d/%2$d", stock, PowerFactory.POWER_MAX));
-            if (stock >= PowerFactory.POWER_MAX) {
-                tvPowerTime.setVisibility(View.GONE);
-            } else {
-                tvPowerTime.setVisibility(View.VISIBLE);
-            }
         }
 
         @Override

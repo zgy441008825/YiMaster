@@ -5,4 +5,15 @@
         <attr name="normalColor" format="color"/>
         <attr name="width_radius" format="float"/>
     </declare-styleable>
+
+    <declare-styleable name="CircleView">
+        <attr name="circle_radius" format="float"/>
+        <attr name="circle_color" format="color"/>
+    </declare-styleable>
+    <declare-styleable name="CircleRect">
+        <attr name="rect_color" format="color"/>
+        <attr name="rect_text" format="string"/>
+        <attr name="rect_text_size" format="dimension|float"/>
+        <attr name="rect_text_color" format="color"/>
+    </declare-styleable>
 </resources>

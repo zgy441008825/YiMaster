@@ -140,7 +140,7 @@ public class PlayActivity extends BaseActivity {
         setContentView(R.layout.activity_play);
         ButterKnife.bind(this);
         groupView.setCallback(callback);
-        playTVCount.setTypeface(Typeface.createFromAsset(getAssets(), "font_comm.TTF"));
+//        playTVCount.setTypeface(Typeface.createFromAsset(getAssets(), "font_comm.TTF"));
 //        PowerFactory.getInstance().setListener(powerProductionListener);
         initDataList();
     }

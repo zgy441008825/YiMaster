@@ -28,9 +28,10 @@
                         </option>
                         <option name="values">
                           <map>
+                            <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="ffffff" />
-                            <entry key="outputName" value="ic_close_black_24dp" />
-                            <entry key="sourceFile" value="C:\Users\zougaoyuan\Desktop\ic_next.svg" />
+                            <entry key="outputName" value="ic_favorite_circle_red" />
+                            <entry key="sourceFile" value="C:\Users\zougaoyuan\Desktop\tmp\心0.svg" />
                           </map>
                         </option>
                       </PersistentState>
