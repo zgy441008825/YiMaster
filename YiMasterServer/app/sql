@@ -1,72 +1,70 @@
 //INSERT INTO channelinfo (channel, appid, secret, key, mch_id) VALUES ("wechat","wx583eae0f58402036","560499b5cbc037bdc3b9a2d5c4fccd40","YiMaster511602201206142117zixuan","1502918311");
-CREATE TABLE channelinfo
+create table channelinfo
 (
-  id      INT AUTO_INCREMENT
-    PRIMARY KEY,
-  channel VARCHAR(45)  NOT NULL,
-  appid   VARCHAR(100) NOT NULL,
-  secret  VARCHAR(100) NOT NULL,
-  key VARCHAR(100) NULL,
-  mch_id  VARCHAR(100) NULL
+  id      int auto_increment
+    primary key,
+  channel varchar(45)  not null,
+  appid   varchar(100) not null,
+  secret  varchar(100) not null,
+  app_key varchar(100) null,
+  mch_id  varchar(100) null
 );
 
-////////////////////////////////
--- auto-generated definition
-CREATE TABLE gamerecord
+create table gamerecord
 (
-  id          INT AUTO_INCREMENT
-    PRIMARY KEY,
-  openid      VARCHAR(50)  NOT NULL,
-  useTime     INT          NOT NULL,
-  count       INT          NOT NULL,
-  recode_time INT          NULL,
-  nickName    VARCHAR(100) NULL,
-  headImgUrl  VARCHAR(100) NULL
-);
-/////////////////////////////////////
--- auto-generated definition
-CREATE TABLE userinfo
-(
-  id            INT AUTO_INCREMENT
-    PRIMARY KEY,
-  nickName      VARCHAR(50)  NOT NULL,
-  sex           INT          NOT NULL,
-  province      VARCHAR(50)  NULL,
-  userinfocol   VARCHAR(50)  NULL,
-  city          VARCHAR(50)  NULL,
-  country       VARCHAR(50)  NULL,
-  headImgUrl    VARCHAR(100) NULL,
-  unionid       VARCHAR(50)  NOT NULL,
-  openid        VARCHAR(50)  NOT NULL,
-  expires_in    INT          NULL,
-  scope         VARCHAR(50)  NULL,
-  access_time   VARCHAR(30)  NULL,
-  refresh_time  VARCHAR(30)  NULL,
-  access_token  VARCHAR(45)  NULL,
-  refresh_token VARCHAR(45)  NULL
+  id          int auto_increment
+    primary key,
+  openid      varchar(50)  not null,
+  useTime     int          not null,
+  count       int          not null,
+  recode_time int          null,
+  nickName    varchar(100) null,
+  headImgUrl  varchar(100) null
 );
 
-CREATE TABLE yiorder
+create table userinfo
 (
-  id               INT AUTO_INCREMENT
-    PRIMARY KEY,
-  appid            VARCHAR(30)  NOT NULL,
-  mch_id            VARCHAR(30)  NOT NULL,
-  nonce_str        VARCHAR(50)  NOT NULL,
-  sign             VARCHAR(50)  NOT NULL,
-  sign_type        VARCHAR(10)  NULL,
-  body             VARCHAR(200) NOT NULL,
-  out_trade_no     VARCHAR(50)  NOT NULL,
-  total_fee        INT          NOT NULL,
-  spbill_create_ip VARCHAR(15)  NULL,
-  time_start       VARCHAR(15)  NOT NULL,
-  time_expire      VARCHAR(15)  NOT NULL,
-  prepay_id        VARCHAR(20)  NOT NULL,
-  result_code      VARCHAR(10)  NOT NULL,
-  err_code         VARCHAR(10)  NULL,
-  err_code_des     VARCHAR(100) NULL,
-  openid           VARCHAR(20)  NOT NULL,
-  bank_type        VARCHAR(20)  NULL,
-  transaction_id   VARCHAR(50)  NOT NULL,
-  time_end         VARCHAR(15)  NOT NULL
+  id            int auto_increment
+    primary key,
+  nickName      varchar(50)  not null,
+  sex           int          not null,
+  province      varchar(50)  null,
+  userinfocol   varchar(50)  null,
+  city          varchar(50)  null,
+  country       varchar(50)  null,
+  headImgUrl    varchar(100) null,
+  unionid       varchar(50)  not null,
+  openid        varchar(50)  not null,
+  expires_in    int          null,
+  scope         varchar(50)  null,
+  access_time   varchar(30)  null,
+  refresh_time  varchar(30)  null,
+  access_token  varchar(45)  null,
+  refresh_token varchar(45)  null
+);
+
+create table yiorder
+(
+  id               int auto_increment
+    primary key,
+  appid            varchar(30)  not null,
+  mch_id           varchar(30)  not null,
+  nonce_str        varchar(50)  not null,
+  sign             varchar(50)  not null,
+  sign_type        varchar(10)  null,
+  body             varchar(200) not null,
+  out_trade_no     varchar(50)  not null,
+  total_fee        int          not null,
+  spbill_create_ip varchar(15)  null,
+  time_start       varchar(15)  not null,
+  time_expire      varchar(15)  not null,
+  prepay_id        varchar(20)  not null,
+  result_code      varchar(10)  not null,
+  err_code         varchar(10)  null,
+  err_code_des     varchar(100) null,
+  openid           varchar(20)  not null,
+  bank_type        varchar(20)  null,
+  transaction_id   varchar(50)  not null,
+  time_end         varchar(15)  not null,
+  trade_state      varchar(20)  null
 );

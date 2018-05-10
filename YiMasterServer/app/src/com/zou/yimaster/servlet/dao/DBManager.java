@@ -139,12 +139,12 @@ public class DBManager {
             PreparedStatement statement;
             String sql;
             if (infoBean == null) {//保存
-                sql = "INSERT INTO yiorder(appid,mchid,nonce_str,sign,sign_type,out_trade_no,body,total_fee," +
+                sql = "INSERT INTO yiorder(appid,mch_id,nonce_str,sign,sign_type,out_trade_no,body,total_fee," +
                         "spbill_create_ip,time_start,time_expire,prepay_id,result_code,err_code,err_code_des,openid," +
                         "bank_type,transaction_id,time_end,trade_state) VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, " +
                         "?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
             } else {//更新
-                sql = "UPDATE yiorder SET appid=?,mchid=?,nonce_str=?,sign=?,sign_type=?,out_trade_no=?,body=?," +
+                sql = "UPDATE yiorder SET appid=?,mch_id=?,nonce_str=?,sign=?,sign_type=?,out_trade_no=?,body=?," +
                         "total_fee=?," +
                         "spbill_create_ip=?,time_start=?,time_expire=?,prepay_id=?,result_code=?,err_code=?," +
                         "err_code_des=?,openid=?,bank_type=?,transaction_id=?,time_end=?,trade_state=?";

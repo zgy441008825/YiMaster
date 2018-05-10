@@ -2,29 +2,76 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@color/colorPrimary"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/window_bg">
 
-    <TextView
-        android:id="@+id/playResultTvTitle"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/playResultLayoutTime"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:text="结果"
-        android:textColor="@android:color/white"
-        android:textSize="30sp"/>
+        android:layout_marginTop="40dp"
+        android:orientation="vertical"
+        android:padding="20dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp">
+            <ImageView
+                android:id="@+id/playResultImgResultTime"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/ic_time"
+                android:visibility="invisible"/>
+            <TextView
+                android:id="@+id/playResultTvResultTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textColor="@android:color/white"
+                android:textSize="50sp"/>
+        </LinearLayout>
+        <View
+            android:id="@+id/playResultLineTime"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/white"/>
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/playResultTvResult"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/playResultTvTitle"
-        android:layout_centerHorizontal="true"
-        android:text="13:22"
-        android:textColor="@android:color/white"
-        android:textSize="50sp"/>
-
+        android:layout_below="@+id/playResultLayoutTime"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:padding="20dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp">
+            <ImageView
+                android:id="@+id/playResultImgResultCount"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/ic_order"
+                android:visibility="invisible"/>
+            <TextView
+                android:id="@+id/playResultTvResultCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textColor="@android:color/white"
+                android:textSize="50sp"/>
+        </LinearLayout>
+        <View
+            android:id="@+id/playResultLineCount"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/white"/>
+    </LinearLayout>
     <ImageView
         android:id="@+id/playResultIcHome"
         android:layout_width="50dp"
@@ -32,7 +79,7 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="20dp"
         android:layout_toLeftOf="@+id/playResultIcLoop"
-        android:src="@drawable/ic_home_black_24dp"/>
+        android:src="@mipmap/ic_home"/>
     <ImageView
         android:id="@+id/playResultIcLoop"
         android:layout_width="50dp"
@@ -40,7 +87,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_margin="20dp"
-        android:src="@drawable/ic_loop_black_24dp"/>
+        android:src="@mipmap/ic_refresh"/>
     <ImageView
         android:id="@+id/playResultIcNext"
         android:layout_width="50dp"
@@ -48,5 +95,5 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="20dp"
         android:layout_toRightOf="@+id/playResultIcLoop"
-        android:src="@drawable/ic_next"/>
+        android:src="@mipmap/ic_next"/>
 </RelativeLayout>

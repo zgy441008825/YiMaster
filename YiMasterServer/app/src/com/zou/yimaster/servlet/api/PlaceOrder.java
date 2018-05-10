@@ -32,6 +32,7 @@ public class PlaceOrder extends BaseServlet {
             IOException {
         super.doPost(request, response);
         String body = request.getParameter("body");//产品描述
+        body = (body == null || body.isEmpty()) ? "购买商品" : body;
         String channel = request.getParameter("channel");//订单渠道
         int totalFee = Integer.valueOf(request.getParameter("fee"));//商品价格
         String ip = NetworkUtil.getIpAddress(request);
@@ -46,7 +47,7 @@ public class PlaceOrder extends BaseServlet {
                         System.out.println(s);
                         writer.println(getJson(s, bean));
                     }, throwable -> {
-                        writer.println(WXPayUtils.RESULT_FAIL + "_" + throwable.getMessage());
+                        writer.println(WXPayUtils.RESULT_FAIL + "_" + throwable.getMessage() + "\n\n" + bean);
                         throwable.printStackTrace();
                     });
         } catch (Exception e) {

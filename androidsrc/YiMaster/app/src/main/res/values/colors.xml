@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
+    <color name="window_bg">#8A51E2</color>
+
     <color name="textColor">#212121</color>
 
     <color name="goldColor">#FFFF00</color>

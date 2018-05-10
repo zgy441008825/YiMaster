@@ -15,10 +15,7 @@ import com.umeng.message.inapp.InAppMessageManager;
 import com.zou.yimaster.R;
 import com.zou.yimaster.common.PowerFactory;
 import com.zou.yimaster.ui.base.BaseActivity;
-import com.zou.yimaster.utils.SPTools;
 import com.zou.yimaster.utils.ToastHelper;
-
-import java.util.Locale;
 
 public class MainActivity extends BaseActivity {
 
@@ -64,7 +61,11 @@ public class MainActivity extends BaseActivity {
     private View.OnClickListener onClickListener = v -> {
         switch (v.getId()) {
             case R.id.BTLogin:
-                startActivity(new Intent(this, PlayActivity.class));
+                Intent intent = new Intent(this, GameResultActivity.class);
+                intent.putExtra("time", 180056);
+                intent.putExtra("count", 6);
+                startActivity(intent);
+//                startActivity(new Intent(this, PlayActivity.class));
                 break;
             case R.id.titleLayout:
                 startActivity(new Intent(this, BuyActivity.class));
