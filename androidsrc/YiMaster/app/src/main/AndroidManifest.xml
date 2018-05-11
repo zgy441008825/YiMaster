@@ -8,7 +8,6 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
-
     <application
         android:name=".common.YiApplication"
         android:allowBackup="true"
@@ -16,30 +15,34 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activity.WelcomeActivity"
-                  android:screenOrientation="portrait">
+        <activity
+            android:name=".ui.activity.WelcomeActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".wxapi.WXPayEntryActivity"
-                  android:configChanges="keyboardHidden|orientation|screenSize"
-                  android:exported="true"
-                  android:screenOrientation="portrait"
-                  android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
-        <activity android:name=".ui.activity.MainActivity"
-                  android:exported="true"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".ui.activity.PlayActivity"
-                  android:screenOrientation="portrait"/>
-        <activity android:name=".ui.activity.GameResultActivity"
-                  android:screenOrientation="portrait"
-                  android:theme="@style/TransparentActivity"/>
-        <activity android:name=".ui.activity.BuyActivity"
-                  android:screenOrientation="portrait"
-                  android:theme="@style/TransparentActivity"/>
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity
+            android:name=".ui.activity.MainActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.PlayActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.GameResultActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.BuyActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -48,8 +51,12 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
 
         <!-- 百度 更新 -->
-        <meta-data android:name="BDAPPID" android:value="3311903"/>
-        <meta-data android:name="BDAPPKEY" android:value="jOUrp6QGvdEqPj6G4xMPGk54"/>
+        <meta-data
+            android:name="BDAPPID"
+            android:value="3311903"/>
+        <meta-data
+            android:name="BDAPPKEY"
+            android:value="jOUrp6QGvdEqPj6G4xMPGk54"/>
 
         <!-- android:authorities="包名.fileprovider"将“包名”替换为实际包名 -->
         <provider
@@ -62,6 +69,8 @@
                 android:resource="@xml/bdp_update_filepaths"/>
         </provider>
 
+        <activity android:name=".ui.activity.RollActivity">
+        </activity>
     </application>
 
 </manifest>

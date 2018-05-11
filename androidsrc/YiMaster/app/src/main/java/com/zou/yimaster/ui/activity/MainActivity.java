@@ -15,6 +15,8 @@ import com.umeng.message.inapp.InAppMessageManager;
 import com.zou.yimaster.R;
 import com.zou.yimaster.common.PowerFactory;
 import com.zou.yimaster.ui.base.BaseActivity;
+import com.zou.yimaster.ui.view.RollViewGroup;
+import com.zou.yimaster.utils.MediaHelper;
 import com.zou.yimaster.utils.ToastHelper;
 
 public class MainActivity extends BaseActivity {
@@ -56,16 +58,13 @@ public class MainActivity extends BaseActivity {
     public void onResume() {
         super.onResume();
         PowerFactory.getInstance().requestCallback();
+//        MediaHelper.getInstance().playOrStopBackground();
     }
 
     private View.OnClickListener onClickListener = v -> {
         switch (v.getId()) {
             case R.id.BTLogin:
-                Intent intent = new Intent(this, GameResultActivity.class);
-                intent.putExtra("time", 180056);
-                intent.putExtra("count", 6);
-                startActivity(intent);
-//                startActivity(new Intent(this, PlayActivity.class));
+                startActivity(new Intent(this, PlayActivity.class));
                 break;
             case R.id.titleLayout:
                 startActivity(new Intent(this, BuyActivity.class));
@@ -113,6 +112,7 @@ public class MainActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         PowerFactory.getInstance().turnToBackground();
+//        MediaHelper.getInstance().release();
         MobclickAgent.onKillProcess(this);
         Process.killProcess(Process.myPid());
         System.exit(0);

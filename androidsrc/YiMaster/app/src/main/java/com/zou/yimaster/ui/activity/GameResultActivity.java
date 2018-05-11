@@ -67,14 +67,14 @@ public class GameResultActivity extends BaseActivity {
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(aLong -> {
-                    long useTime = getIntent().getExtras().getInt("time");
+                    long useTime = getIntent().getExtras().getLong("time");
                     int count = getIntent().getExtras().getInt("count");
                     showTimeAnimation(useTime);
                     showCountAnimation(count);
                 });
-        AnimationHelper.translationY(playResultIcHome,true,300,1400);
-        AnimationHelper.translationY(playResultIcLoop,true,300,1500);
-        AnimationHelper.translationY(playResultIcNext,true,300,1600);
+        AnimationHelper.translationY(playResultIcHome, true, 300, 1000);
+        AnimationHelper.translationY(playResultIcLoop, true, 300, 1200);
+        AnimationHelper.translationY(playResultIcNext, true, 300, 1400);
     }
 
     private void showTimeAnimation(long time) {

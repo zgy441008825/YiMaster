@@ -5,21 +5,15 @@ import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
+import android.net.Uri;
 
 import com.zou.yimaster.R;
 
 import org.xutils.x;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
-import io.reactivex.BackpressureStrategy;
-import io.reactivex.Flowable;
-import io.reactivex.FlowableEmitter;
-import io.reactivex.FlowableOnSubscribe;
-import io.reactivex.Scheduler;
-import io.reactivex.schedulers.Schedulers;
-import retrofit2.http.PUT;
 
 
 /**
@@ -58,15 +52,19 @@ public class MediaHelper {
 
     @SuppressLint("CheckResult")
     private void init() {
-        Flowable.create((FlowableOnSubscribe<Void>) emitter -> {
-            if (mediaPlayer == null)
-                mediaPlayer = MediaPlayer.create(x.app(), R.raw.game_bg);
-            if (!soundMap.containsKey(SOUND_KEY_CLICK))
-                soundMap.put(SOUND_KEY_CLICK, soundPool.load(x.app(), R.raw.click, 1));
-            if (!soundMap.containsKey(SOUND_KEY_ERROR))
-                soundMap.put(SOUND_KEY_ERROR, soundPool.load(x.app(), R.raw.error, 1));
-        }, BackpressureStrategy.BUFFER)
-                .subscribeOn(Schedulers.newThread());
+        if (mediaPlayer == null) {
+            mediaPlayer = new MediaPlayer();
+            try {
+                mediaPlayer.setDataSource(x.app(), Uri.parse("android.resource://" + x.app().getPackageName() +
+                        "/" + R.raw.game_bg));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        if (!soundMap.containsKey(SOUND_KEY_CLICK))
+            soundMap.put(SOUND_KEY_CLICK, soundPool.load(x.app(), R.raw.click, 1));
+        if (!soundMap.containsKey(SOUND_KEY_ERROR))
+            soundMap.put(SOUND_KEY_ERROR, soundPool.load(x.app(), R.raw.error, 1));
     }
 
     public void playSound(String key) {
@@ -81,6 +79,7 @@ public class MediaHelper {
     }
 
     public void playOrStopBackground() {
+        init();
         if (mediaPlayer.isPlaying()) {
             mediaPlayer.pause();
         } else {
@@ -96,6 +95,7 @@ public class MediaHelper {
         soundPool.release();
         soundPool.unload(soundMap.get(SOUND_KEY_CLICK));
         soundPool.unload(soundMap.get(SOUND_KEY_ERROR));
+        soundMap.clear();
         if (mediaPlayer != null) {
             mediaPlayer.stop();
             mediaPlayer.reset();

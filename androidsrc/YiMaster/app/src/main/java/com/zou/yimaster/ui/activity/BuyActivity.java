@@ -11,6 +11,7 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.tencent.mm.opensdk.modelpay.PayReq;
@@ -21,12 +22,14 @@ import com.zou.yimaster.common.AppConfig;
 import com.zou.yimaster.common.PowerFactory;
 import com.zou.yimaster.net.RetrofitHelper;
 import com.zou.yimaster.ui.base.BaseActivity;
+import com.zou.yimaster.utils.AnimationHelper;
 import com.zou.yimaster.utils.ToastHelper;
 import com.zou.yimaster.utils.YiException;
 
 import org.json.JSONObject;
 import org.reactivestreams.Publisher;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.reactivex.Flowable;
@@ -42,6 +45,14 @@ import io.reactivex.schedulers.Schedulers;
 public class BuyActivity extends BaseActivity {
 
     private static final String TAG = "BuyActivity";
+    @BindView(R.id.Buy_1)
+    Button Buy1;
+    @BindView(R.id.Buy_2)
+    Button Buy2;
+    @BindView(R.id.Buy_3)
+    Button Buy3;
+    @BindView(R.id.Buy_4)
+    Button Buy4;
     private IWXAPI iwxapi;
     private ProgressDialog progressDialog;
 
@@ -55,11 +66,16 @@ public class BuyActivity extends BaseActivity {
         if (AppConfig.APPConfigs != null) {
             iwxapi = WXAPIFactory.createWXAPI(this, AppConfig.APPConfigs.get("wechat").getAppid());
             iwxapi.registerApp(AppConfig.APPConfigs.get("wechat").getAppid());
-            if (!iwxapi.isWXAppSupportAPI()){
+            if (!iwxapi.isWXAppSupportAPI()) {
                 ToastHelper.show("检测到设备不支持微信支付");
                 finish();
             }
         }
+        int offset = 100;
+        AnimationHelper.translationY(Buy1, true, 500, offset);
+        AnimationHelper.translationY(Buy2, true, 500, offset + 100);
+        AnimationHelper.translationY(Buy3, true, 500, offset + 200);
+        AnimationHelper.translationY(Buy4, true, 500, offset + 300);
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
         progressDialog.setCanceledOnTouchOutside(false);

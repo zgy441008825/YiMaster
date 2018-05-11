@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context="com.zou.yimaster.ui.activity.WelcomeActivity">
 
     <TextView
@@ -29,8 +31,8 @@
         android:layout_width="50dp"
         android:layout_height="50dp" android:layout_marginBottom="32dp"
         android:layout_marginRight="32dp"
-        android:text="3"
         android:enabled="false"
+        android:text="3"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         tools:layout_editor_absoluteX="253dp"/>

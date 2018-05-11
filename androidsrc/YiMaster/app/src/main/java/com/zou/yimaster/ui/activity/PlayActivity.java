@@ -2,6 +2,7 @@ package com.zou.yimaster.ui.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
@@ -18,7 +19,10 @@ import com.zou.yimaster.ui.adapter.PlayAdapter;
 import com.zou.yimaster.ui.base.BaseActivity;
 import com.zou.yimaster.ui.view.QuestionGroupView;
 import com.zou.yimaster.utils.AnimationHelper;
+import com.zou.yimaster.utils.MediaHelper;
 import com.zou.yimaster.utils.SPTools;
+
+import org.xutils.common.util.LogUtil;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -139,7 +143,7 @@ public class PlayActivity extends BaseActivity {
         setContentView(R.layout.activity_play);
         ButterKnife.bind(this);
         groupView.setCallback(callback);
-//        playTVCount.setTypeface(Typeface.createFromAsset(getAssets(), "font_comm.TTF"));
+        playTVCount.setTypeface(Typeface.createFromAsset(getAssets(), "font_2.otf"));
 //        PowerFactory.getInstance().setListener(powerProductionListener);
         initDataList();
     }
@@ -155,6 +159,7 @@ public class PlayActivity extends BaseActivity {
         dataList.addAll(QuestionHelper.productionQuestion(dataSize, itemSize));
         Log.d(TAG, "initDataList: " + dataList);
         playButton.setText("准备");
+        playTVCount.setText(String.valueOf(rightCnt));
         showFirstTips();
     }
 
@@ -223,8 +228,10 @@ public class PlayActivity extends BaseActivity {
                 rightCnt++;
                 AnimationHelper.bounceAnimation(playTVCount);
                 playTVCount.setText(String.valueOf(rightCnt));
+                MediaHelper.getInstance().playSound(MediaHelper.SOUND_KEY_CLICK);
                 return true;
             }
+            MediaHelper.getInstance().playSound(MediaHelper.SOUND_KEY_ERROR);
             disposeFlowable();
             showFailedDialog();
             return false;
@@ -286,7 +293,7 @@ public class PlayActivity extends BaseActivity {
 
     private void showFailedDialog() {
         Intent intent = new Intent(this, GameResultActivity.class);
-        intent.putExtra("time", answerUserTime);
+        intent.putExtra("time", oneUserTime);
         intent.putExtra("count", rightCnt);
         startActivityForResult(intent, ACTIVITY_REQUEST_CODE);
     }
@@ -312,6 +319,7 @@ public class PlayActivity extends BaseActivity {
 
     private void startShowAnswer() {
         state = STATE_SHOW_QUESTION;
+        playButton.setText("");
         playButton.setEnabled(false);
         disposeFlowable();
         clearDisposable = Flowable.interval(currentIndex, SHOW_SPEED, TimeUnit.SECONDS)
@@ -360,6 +368,7 @@ public class PlayActivity extends BaseActivity {
                 .subscribe(aLong -> {
                     answerUserTime += 1;
                     oneUserTime += 1;
+                    LogUtil.e(answerUserTime + " " + oneUserTime);
                     playButton.setText(dateFormat.format(answerUserTime));
                 });
     }
