@@ -14,8 +14,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_next" />
-                            <entry key="sourceFile" value="C:\Users\44100\Desktop\下一页.svg" />
+                            <entry key="outputName" value="ic_close" />
+                            <entry key="sourceFile" value="C:\Users\44100\Desktop\关闭.svg" />
                           </map>
                         </option>
                       </PersistentState>

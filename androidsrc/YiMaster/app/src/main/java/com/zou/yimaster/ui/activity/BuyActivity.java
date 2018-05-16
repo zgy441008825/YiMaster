@@ -61,7 +61,7 @@ public class BuyActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bug);
+        setContentView(R.layout.activity_buy);
         ButterKnife.bind(this);
         if (AppConfig.APPConfigs != null) {
             iwxapi = WXAPIFactory.createWXAPI(this, AppConfig.APPConfigs.get("wechat").getAppid());

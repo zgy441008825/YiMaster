@@ -10,7 +10,7 @@
         android:layout_height="50dp"
         android:layout_alignParentRight="true"
         android:layout_margin="20dp"
-        android:src="@drawable/ic_close_black_24dp"/>
+        android:src="@drawable/ic_close"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
