@@ -31,7 +31,7 @@
         app:group_click_errorColor="@color/colorAccent"
         app:group_click_radius="130"
         app:group_click_rightColor="@android:color/holo_green_dark"
-        app:group_click_selectColor="@color/colorPrimary"
+        app:group_click_selectColor="@color/goldColor"
         app:group_click_space="80"/>
 
     <Button

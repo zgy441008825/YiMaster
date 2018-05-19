@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.zou.yimaster.R;
 import com.zou.yimaster.common.PowerFactory;
 import com.zou.yimaster.common.QuestionHelper;
+import com.zou.yimaster.common.RxCountDown;
 import com.zou.yimaster.common.dao.UserGameRecord;
 import com.zou.yimaster.ui.adapter.PlayAdapter;
 import com.zou.yimaster.ui.base.BaseActivity;
@@ -21,8 +22,7 @@ import com.zou.yimaster.ui.view.QuestionGroupView;
 import com.zou.yimaster.utils.AnimationHelper;
 import com.zou.yimaster.utils.MediaHelper;
 import com.zou.yimaster.utils.SPTools;
-
-import org.xutils.common.util.LogUtil;
+import com.zou.yimaster.utils.ToastHelper;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -47,6 +47,8 @@ public class PlayActivity extends BaseActivity {
 
     private static final String TAG = "PlayActivity";
 
+    @BindView(R.id.playTVCount)
+    TextView playTVCount;
     @BindView(R.id.playButton)
     Button playButton;
     @BindView(R.id.questionGroupView)
@@ -64,8 +66,6 @@ public class PlayActivity extends BaseActivity {
      * 初始值大小
      */
     private static int QUEST_CNT_INIT = 5;
-    @BindView(R.id.playTVCount)
-    TextView playTVCount;
 
     /**
      * 题目数量
@@ -144,7 +144,6 @@ public class PlayActivity extends BaseActivity {
         ButterKnife.bind(this);
         groupView.setCallback(callback);
         playTVCount.setTypeface(Typeface.createFromAsset(getAssets(), "font_2.otf"));
-//        PowerFactory.getInstance().setListener(powerProductionListener);
         initDataList();
     }
 
@@ -152,15 +151,29 @@ public class PlayActivity extends BaseActivity {
      * 初始化数据
      */
     private void initDataList() {
+        state = STATE_NORMAL;
+        currentIndex = 0;
         clickCnt = 0;
         dataList.clear();
         groupView.setEnabled(false);
-        state = STATE_NORMAL;
         dataList.addAll(QuestionHelper.productionQuestion(dataSize, itemSize));
-        Log.d(TAG, "initDataList: " + dataList);
+        System.out.println("initDataList: " + dataList);
         playButton.setText("准备");
         playTVCount.setText(String.valueOf(rightCnt));
         showFirstTips();
+    }
+
+    @SuppressLint("CheckResult")
+    private void showCountDown() {
+        RxCountDown.countDown(3)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(integer -> {
+                    playButton.setText(String.valueOf(integer));
+                    if (integer == 0) {
+                        startShowAnswer();
+                    }
+                });
     }
 
     /**
@@ -183,29 +196,6 @@ public class PlayActivity extends BaseActivity {
             }
         }
     }
-
-    /*private PowerFactory.IPowerProductionListener powerProductionListener = new PowerFactory.IPowerProductionListener
-            () {
-        @Override
-        public void onStateChange(String time) {
-            powerInfoPowerCnt.setText(time);
-        }
-
-        @Override
-        public void onStockChange(int stock) {
-            powerInfoTime.setText(String.format(Locale.getDefault(), "%1$d/%2$d", stock, PowerFactory.POWER_MAX));
-            if (stock >= PowerFactory.POWER_MAX) {
-                powerInfoTime.setVisibility(View.GONE);
-            } else {
-                powerInfoTime.setVisibility(View.VISIBLE);
-            }
-        }
-
-        @Override
-        public void onMoneyChange(int money) {
-            powerInfoMoney.setText(String.valueOf(money));
-        }
-    };*/
 
     /**
      * 当前一局点击正确的计数
@@ -248,9 +238,14 @@ public class PlayActivity extends BaseActivity {
         }
     };
 
+    @SuppressLint("CheckResult")
     private void showNextLevelDialog() {
         dataSize += LEAVE_STEEP;
-        initDataList();
+        ToastHelper.show("恭喜过关,开始下一关。题目数量将升至 " + dataSize);
+        Flowable.timer(3, TimeUnit.SECONDS)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(aLong -> initDataList());
     }
 
     @Override
@@ -309,7 +304,7 @@ public class PlayActivity extends BaseActivity {
     @OnClick(R.id.playButton)
     public void onPlayButtonClick(View view) {
         if (state == STATE_NORMAL) {
-            startShowAnswer();
+            showCountDown();
             return;
         }
         if (state == STATE_SHOW_QUESTION_END) {
@@ -319,18 +314,20 @@ public class PlayActivity extends BaseActivity {
 
     private void startShowAnswer() {
         state = STATE_SHOW_QUESTION;
-        playButton.setText("");
+        playButton.setText("记忆");
         playButton.setEnabled(false);
         disposeFlowable();
+        System.out.println("startShowAnswer start:" + currentIndex);
         clearDisposable = Flowable.interval(currentIndex, SHOW_SPEED, TimeUnit.SECONDS)
                 .onBackpressureBuffer()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.newThread())
                 .take(dataSize + 1)
                 .subscribe(aLong -> {
+                    System.out.println("startShowAnswer clear: " + aLong);
                     groupView.setSelect(-1);
-                }, throwable -> currentIndex = -1, () -> {
-                    currentIndex = -1;
+                }, throwable -> currentIndex = 0, () -> {
+                    currentIndex = 0;
                     playButton.setEnabled(true);
                     playButton.setText("开始");
                     showFirstTips();
@@ -342,15 +339,16 @@ public class PlayActivity extends BaseActivity {
                 .subscribeOn(Schedulers.newThread())
                 .take(dataSize)
                 .subscribe(aLong -> {
+                            System.out.println("startShowAnswer select: " + aLong);
                             currentIndex = aLong.intValue();
                             groupView.setSelect(dataList.get(aLong.intValue()));
                         },
                         throwable -> {
-                            currentIndex = -1;
+                            currentIndex = 0;
                             state = STATE_NORMAL;
                         },
                         () -> {
-                            currentIndex = -1;
+                            currentIndex = 0;
                             state = STATE_SHOW_QUESTION_END;
                         });
     }
@@ -363,13 +361,16 @@ public class PlayActivity extends BaseActivity {
         groupView.setEnabled(true);
         oneUserTime = 0;
         timeCountDisposable = Flowable.interval(0, 1, TimeUnit.MILLISECONDS)
+                .onBackpressureDrop()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(aLong -> {
                     answerUserTime += 1;
                     oneUserTime += 1;
-                    LogUtil.e(answerUserTime + " " + oneUserTime);
                     playButton.setText(dateFormat.format(answerUserTime));
+                }, throwable -> {
+                    Log.e(TAG, "startAnswer: error", throwable);
+                    throwable.printStackTrace();
                 });
     }
 

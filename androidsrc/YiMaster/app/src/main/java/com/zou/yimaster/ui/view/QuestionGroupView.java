@@ -78,7 +78,7 @@ public class QuestionGroupView extends View {
     /**
      * 动画执行时间
      */
-    private static final int ANIMATION_DURATION = 20;
+    private static final int ANIMATION_DURATION = 50;
 
     /**
      * item间距
@@ -128,6 +128,7 @@ public class QuestionGroupView extends View {
     private ValueAnimator colorAnimation;
 
     private void startAnimation(float from, float to, int fromC, int toC) {
+        System.out.println("startAnimation: " + from + " " + to + " " + fromC + " " + toC);
         stopAnimation();
         objectAnimator = ObjectAnimator.ofFloat(this, "radius", from, to);
         objectAnimator.setDuration(ANIMATION_DURATION);
