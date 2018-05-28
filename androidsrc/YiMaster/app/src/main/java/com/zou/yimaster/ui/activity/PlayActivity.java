@@ -5,7 +5,10 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BaseTransientBottomBar;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -22,7 +25,6 @@ import com.zou.yimaster.ui.view.QuestionGroupView;
 import com.zou.yimaster.utils.AnimationHelper;
 import com.zou.yimaster.utils.MediaHelper;
 import com.zou.yimaster.utils.SPTools;
-import com.zou.yimaster.utils.ToastHelper;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -85,7 +87,7 @@ public class PlayActivity extends BaseActivity {
     private List<Integer> dataList = new ArrayList<>();
 
     /**
-     * 记录耗时
+     * 记录总耗时
      */
     private long answerUserTime = 0;
 
@@ -136,6 +138,11 @@ public class PlayActivity extends BaseActivity {
      */
     private int state = 0;
 
+    /**
+     * 显示的提示信息是否显示 提示过关
+     */
+    private boolean snackBarShowMsgFlag = false;
+
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -144,7 +151,23 @@ public class PlayActivity extends BaseActivity {
         ButterKnife.bind(this);
         groupView.setCallback(callback);
         playTVCount.setTypeface(Typeface.createFromAsset(getAssets(), "font_2.otf"));
-        initDataList();
+        showTipsSnakeBar();
+    }
+
+    private void showTipsSnakeBar() {
+        String msg = !snackBarShowMsgFlag ? "题目数量: <b>" + dataSize + "</b>"
+                : "恭喜完成挑战。难度将升级,题目数量: <b>" + dataSize + "</b>";
+        Snackbar snackbar = Snackbar.make(playButton, Html.fromHtml(msg), Snackbar.LENGTH_LONG);
+        snackbar.setAction("确定", v -> initDataList())
+                .addCallback(new BaseTransientBottomBar.BaseCallback<Snackbar>() {
+                    @Override
+                    public void onDismissed(Snackbar transientBottomBar, int event) {
+                        super.onDismissed(transientBottomBar, event);
+                        if (event != BaseTransientBottomBar.BaseCallback.DISMISS_EVENT_ACTION)
+                            initDataList();
+                    }
+                });
+        snackbar.show();
     }
 
     /**
@@ -212,7 +235,6 @@ public class PlayActivity extends BaseActivity {
     private PlayAdapter.IClickViewTouchCallback callback = new PlayAdapter.IClickViewTouchCallback() {
         @Override
         public boolean onActionDown(int index) {
-            Log.d(TAG, "callback: " + index);
             if (clickCnt < dataSize && dataList.get(clickCnt) == index) {
                 clickCnt++;
                 rightCnt++;
@@ -229,7 +251,6 @@ public class PlayActivity extends BaseActivity {
 
         @Override
         public void onActionUp(int index) {
-            Log.d(TAG, "onActionUp: " + index);
             if (clickCnt >= dataSize) {//完成
                 answerCnt += dataSize;
                 disposeFlowable();
@@ -240,12 +261,9 @@ public class PlayActivity extends BaseActivity {
 
     @SuppressLint("CheckResult")
     private void showNextLevelDialog() {
+        snackBarShowMsgFlag = true;
         dataSize += LEAVE_STEEP;
-        ToastHelper.show("恭喜过关,开始下一关。题目数量将升至 " + dataSize);
-        Flowable.timer(3, TimeUnit.SECONDS)
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(aLong -> initDataList());
+        showTipsSnakeBar();
     }
 
     @Override
@@ -269,12 +287,13 @@ public class PlayActivity extends BaseActivity {
                         answerUserTime = 0;
                         currentIndex = 0;
                         rightCnt = 0;
-                        initDataList();
+                        showTipsSnakeBar();
                         break;
                     case GameResultActivity.GOON:
                         currentIndex = 0;
+                        answerUserTime -= oneUserTime;
                         rightCnt -= clickCnt;
-                        initDataList();
+                        showTipsSnakeBar();
                         break;
                 }
             } catch (Exception e) {
@@ -287,8 +306,9 @@ public class PlayActivity extends BaseActivity {
     private static final int ACTIVITY_REQUEST_CODE = 0x1100;
 
     private void showFailedDialog() {
+        snackBarShowMsgFlag = false;
         Intent intent = new Intent(this, GameResultActivity.class);
-        intent.putExtra("time", oneUserTime);
+        intent.putExtra("time", answerUserTime);
         intent.putExtra("count", rightCnt);
         startActivityForResult(intent, ACTIVITY_REQUEST_CODE);
     }
@@ -314,24 +334,23 @@ public class PlayActivity extends BaseActivity {
 
     private void startShowAnswer() {
         state = STATE_SHOW_QUESTION;
-        playButton.setText("记忆");
+        playButton.setText("请记忆");
         playButton.setEnabled(false);
         disposeFlowable();
-        System.out.println("startShowAnswer start:" + currentIndex);
         clearDisposable = Flowable.interval(currentIndex, SHOW_SPEED, TimeUnit.SECONDS)
                 .onBackpressureBuffer()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.newThread())
                 .take(dataSize + 1)
                 .subscribe(aLong -> {
-                    System.out.println("startShowAnswer clear: " + aLong);
                     groupView.setSelect(-1);
                 }, throwable -> currentIndex = 0, () -> {
                     currentIndex = 0;
-                    playButton.setEnabled(true);
-                    playButton.setText("开始");
-                    showFirstTips();
-                    state = STATE_SHOW_QUESTION_END;
+//                    playButton.setEnabled(true);
+//                    playButton.setText("开始");
+//                    showFirstTips();
+//                    state = STATE_SHOW_QUESTION_END;
+                    startAnswer();
                 });
         selectDisposable = Flowable.interval(currentIndex + 1, SHOW_SPEED, TimeUnit.SECONDS)
                 .onBackpressureBuffer()
@@ -339,7 +358,6 @@ public class PlayActivity extends BaseActivity {
                 .subscribeOn(Schedulers.newThread())
                 .take(dataSize)
                 .subscribe(aLong -> {
-                            System.out.println("startShowAnswer select: " + aLong);
                             currentIndex = aLong.intValue();
                             groupView.setSelect(dataList.get(aLong.intValue()));
                         },
