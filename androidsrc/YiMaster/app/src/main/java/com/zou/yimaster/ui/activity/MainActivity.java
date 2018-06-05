@@ -33,6 +33,7 @@ public class MainActivity extends BaseActivity {
         PowerFactory.getInstance().setListener(powerProductionListener);
         findViewById(R.id.BTLogin).setOnClickListener(onClickListener);
         findViewById(R.id.titleLayout).setOnClickListener(onClickListener);
+        findViewById(R.id.mainBtSetting).setOnClickListener(onClickListener);
         InAppMessageManager.getInstance(this).showCardMessage(this, "main",
                 () -> Log.i(TAG, "card message close"));
         requestPermission();
@@ -68,6 +69,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.titleLayout:
                 startActivity(new Intent(this, BuyActivity.class));
+                break;
+            case R.id.mainBtSetting:
+                startActivity(new Intent(this, AboutActivity.class));
                 break;
         }
     };

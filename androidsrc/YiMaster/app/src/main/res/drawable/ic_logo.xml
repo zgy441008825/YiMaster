@@ -1,0 +1,17 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp"
+        android:height="24dp" android:viewportHeight="322" android:viewportWidth="322">
+    <path android:name="多边形 1" android:fillColor="#fff"
+          android:pathData="m161 21.8 121.4 70.1v140.2l-121.4 70.1l-121.4 -70.1v-140.2l121.4 -70.1zm0 -5.8 -126.4 73v146l126.4 73l126.4 -73v-146l-126.4 -73z"/>
+    <path android:name="椭圆 1" android:fillColor="#fff"
+          android:pathData="m161 10c5.5 0 10 4.5 10 10c0 5.5 -4.5 10 -10 10c-5.5 0 -10 -4.5 -10 -10c0 -5.5 4.5 -10 10 -10z"/>
+    <path android:name="椭圆 1 拷贝" android:fillColor="#fff"
+          android:pathData="m38 82c5.5 0 10 4.5 10 10c0 5.5 -4.5 10 -10 10c-5.5 0 -10 -4.5 -10 -10c0 -5.5 4.5 -10 10 -10z"/>
+    <path android:name="椭圆 1 拷贝 2" android:fillColor="#fff"
+          android:pathData="m37 221c5.5 0 10 4.5 10 10c0 5.5 -4.5 10 -10 10c-5.5 0 -10 -4.5 -10 -10c0 -5.5 4.5 -10 10 -10z"/>
+    <path android:name="椭圆 1 拷贝 3" android:fillColor="#fff"
+          android:pathData="m161 293c5.5 0 10 4.5 10 10c0 5.5 -4.5 10 -10 10c-5.5 0 -10 -4.5 -10 -10c0 -5.5 4.5 -10 10 -10z"/>
+    <path android:name="椭圆 1 拷贝 4" android:fillColor="#fff"
+          android:pathData="m285 221c5.5 0 10 4.5 10 10c0 5.5 -4.5 10 -10 10c-5.5 0 -10 -4.5 -10 -10c0 -5.5 4.5 -10 10 -10z"/>
+    <path android:name="椭圆 1 拷贝 5" android:fillColor="#fff"
+          android:pathData="m285 82c5.5 0 10 4.5 10 10c0 5.5 -4.5 10 -10 10c-5.5 0 -10 -4.5 -10 -10c0 -5.5 4.5 -10 10 -10z"/>
+</vector>

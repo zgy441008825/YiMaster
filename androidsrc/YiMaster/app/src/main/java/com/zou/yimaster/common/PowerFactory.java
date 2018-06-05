@@ -30,6 +30,9 @@ public class PowerFactory {
      */
     public static final int POWER_MAX = 15;
 
+    /**
+     * 单次消费金额
+     */
     public static final int MONEY_STEP = 1;
 
     /**
@@ -150,8 +153,7 @@ public class PowerFactory {
      * 获取剩余币，默认5
      */
     public int getMoney() {
-        // TODO: 05.04.004 调试用
-        return 5;//SPTools.getInstance(x.app()).getInt(MONEY_SP_KEY, 5);
+        return SPTools.getInstance(x.app()).getInt(MONEY_SP_KEY, 5);
     }
 
     /**
@@ -165,11 +167,11 @@ public class PowerFactory {
     }
 
     /**
-     * 话费
+     * 消费
      *
      * @return 余额不足返回FALSE，成功返回TRUE
      */
-    public boolean userMoney(int value) {
+    public boolean useMoney(int value) {
         if (getMoney() < value) return false;
         SPTools.getInstance(x.app()).saveInt(MONEY_SP_KEY, getMoney() - value);
         if (listener != null) {

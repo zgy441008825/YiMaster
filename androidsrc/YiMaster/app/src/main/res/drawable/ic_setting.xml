@@ -1,0 +1,5 @@
+<vector android:height="24dp" android:viewportHeight="1024"
+    android:viewportWidth="1024" android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillColor="#fff" android:name="椭圆 1" android:pathData="m512 36c262.9 0 476 213.1 476 476c0 262.9 -213.1 476 -476 476c-262.9 0 -476 -213.1 -476 -476c0 -262.9 213.1 -476 476 -476zm0 -20c-273.9 0 -496 222.1 -496 496c0 273.9 222.1 496 496 496c273.9 0 496 -222.1 496 -496c0 -273.9 -222.1 -496 -496 -496z"/>
+    <path android:fillColor="#fff" android:name="多边形 1" android:pathData="m511.5 343.3 145.5 84.1v168.2l-145.5 84.1l-145.5 -84.1v-168.2l145.5 -84.1zm0 -17.3 -160.5 92.8v185.5l160.5 92.8l160.5 -92.8v-185.5l-160.5 -92.8z"/>
+</vector>

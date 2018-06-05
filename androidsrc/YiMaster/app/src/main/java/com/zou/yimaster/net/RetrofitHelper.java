@@ -34,7 +34,7 @@ public class RetrofitHelper {
                 .connectTimeout(3, TimeUnit.SECONDS)
                 .build();
         return new Retrofit.Builder()
-                .baseUrl("http://192.168.3.148:8080")
+                .baseUrl("http://192.168.1.107:8080")
                 .client(client)
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())

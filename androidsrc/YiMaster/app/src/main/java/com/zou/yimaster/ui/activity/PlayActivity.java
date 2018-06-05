@@ -207,7 +207,9 @@ public class PlayActivity extends BaseActivity {
             if (state < STATE_SHOW_QUESTION_END) {
                 new AlertDialog.Builder(this)
                         .setMessage("点击“准备”按钮，开始显示题目")
-                        .setPositiveButton(R.string.public_ok, null)
+                        .setPositiveButton(R.string.public_ok, (dialog, which) -> SPTools.getInstance(PlayActivity
+                                .this).saveBoolean
+                                (PLAY_SHOW_GUIDE_0, true))
                         .show();
             } else {
                 new AlertDialog.Builder(this)

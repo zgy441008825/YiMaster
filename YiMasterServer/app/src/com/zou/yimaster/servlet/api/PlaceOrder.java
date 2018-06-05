@@ -36,7 +36,7 @@ public class PlaceOrder extends BaseServlet {
         String channel = request.getParameter("channel");//订单渠道
         int totalFee = Integer.valueOf(request.getParameter("fee"));//商品价格
         String ip = NetworkUtil.getIpAddress(request);
-        OrderBean bean = OrderFactory.createOrder(body, 1, ip, "wechat");
+        OrderBean bean = OrderFactory.createOrder(body, 1, "192.168.1.104", "wechat");
         if (bean == null) {
             writer.println(WXPayUtils.RESULT_FAIL + "_生成商户订单失败");
             return;

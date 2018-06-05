@@ -23,7 +23,7 @@ public class DBManager {
     //声明Connection对象
     private Connection conn;
     //驱动程序名
-    private String driver = "com.mysql.jdbc.Driver";
+    private static String driver = "com.mysql.jdbc.Driver";
     //URL指向要访问的数据库名mydata
     private String url = "jdbc:mysql://localhost:3306/";
     private static String character = "?useUnicode=true&characterEncoding=gbk";

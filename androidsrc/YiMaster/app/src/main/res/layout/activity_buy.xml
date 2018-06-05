@@ -21,19 +21,19 @@
         <Button
             android:id="@+id/Buy_1"
             style="@style/BuyItemText"
-            android:text="@string/public_no"/>
+            android:text="5个       5元"/>
         <Button
             android:id="@+id/Buy_2"
             style="@style/BuyItemText"
-            android:text="@string/public_ok"/>
+            android:text="15个     12元"/>
         <Button
             android:id="@+id/Buy_3"
             style="@style/BuyItemText"
-            android:text="@string/login_ing"/>
+            android:text="30个     20元"/>
         <Button
             android:id="@+id/Buy_4"
             style="@style/BuyItemText"
-            android:text="@string/public_tips"/>
+            android:text="50个     25元"/>
     </LinearLayout>
 
 </RelativeLayout>

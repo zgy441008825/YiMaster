@@ -13,6 +13,7 @@ import com.zou.yimaster.R;
 import com.zou.yimaster.common.PowerFactory;
 import com.zou.yimaster.ui.base.BaseActivity;
 import com.zou.yimaster.utils.AnimationHelper;
+import com.zou.yimaster.utils.ToastHelper;
 
 import java.util.concurrent.TimeUnit;
 
@@ -52,6 +53,7 @@ public class GameResultActivity extends BaseActivity {
     @BindView(R.id.playResultIcNext)
     ImageView playResultIcNext;
 
+    private static final int BUY_ACTIVITY_REQUEST_CODE = 0xFF000001;
 
     @SuppressLint("CheckResult")
     @Override
@@ -106,15 +108,32 @@ public class GameResultActivity extends BaseActivity {
 
     @OnClick(R.id.playResultIcNext)
     public void onNextClick() {
-        if (PowerFactory.getInstance().userMoney(PowerFactory.MONEY_STEP)) {
+        if (PowerFactory.getInstance().useMoney(PowerFactory.MONEY_STEP)) {
             Intent intent = getIntent();
             intent.putExtra("result", GOON);
             setResult(RESULT_OK, intent);
             finish();
         } else {
             Intent intent = new Intent(this, BuyActivity.class);
-            startActivity(intent);
-            finish();
+            startActivityForResult(intent, BUY_ACTIVITY_REQUEST_CODE);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == BUY_ACTIVITY_REQUEST_CODE) {
+            boolean buyFlag = data.getBooleanExtra(BuyActivity.ACTION_PAY_RESULT, false);
+            if (buyFlag) {
+                if (PowerFactory.getInstance().useMoney(PowerFactory.MONEY_STEP)) {
+                    Intent intent = getIntent();
+                    intent.putExtra("result", GOON);
+                    setResult(RESULT_OK, intent);
+                    finish();
+                }
+            } else {
+                ToastHelper.show("购买失败");
+            }
         }
     }
 

@@ -12,7 +12,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.tencent.mm.opensdk.modelpay.PayReq;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
@@ -119,11 +118,11 @@ public class BuyActivity extends BaseActivity {
         Flowable<String> buyFlowable;
         if (iwxapi == null) {
             buyFlowable = RetrofitHelper.getWXChannelInfo()
+                    .observeOn(AndroidSchedulers.mainThread())
                     .flatMap((Function<AppConfig.InfoBean, Publisher<String>>) infoBean -> {
                         iwxapi = WXAPIFactory.createWXAPI(BuyActivity.this, infoBean.getAppid());
                         return retrofitBuy(fee);
-                    })
-                    .observeOn(AndroidSchedulers.mainThread());
+                    });
         } else {
             buyFlowable = retrofitBuy(fee);
         }
@@ -135,8 +134,10 @@ public class BuyActivity extends BaseActivity {
             progressDialog.dismiss();
             callWXPay(s);
         }, throwable -> {
+            Log.e(TAG, "buy: " + Thread.currentThread().getName(), throwable);
             progressDialog.dismiss();
-            Toast.makeText(this, "支付失败:" + throwable, Toast.LENGTH_SHORT).show();
+            ToastHelper.show("购买失败:" + throwable);
+            throwable.printStackTrace();
         });
     }
 
@@ -203,17 +204,23 @@ public class BuyActivity extends BaseActivity {
                     throwable.printStackTrace();
                     progressDialog.dismiss();
                     ToastHelper.show("错误:" + throwable);
+                    exit();
                 });
     }
 
     private BroadcastReceiver receiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            switch (action) {
-                case ACTION_PAY_RESULT:
-                    query();
-                    break;
+            try {
+                String action = intent.getAction();
+                assert action != null;
+                switch (action) {
+                    case ACTION_PAY_RESULT:
+                        query();
+                        break;
+                }
+            } catch (Throwable e) {
+                e.printStackTrace();
             }
         }
     };
@@ -243,6 +250,9 @@ public class BuyActivity extends BaseActivity {
         if (buySuccess) {
             PowerFactory.getInstance().addMoney(buyCount);
         }
+        Intent intent = getIntent();
+        intent.putExtra(BuyActivity.ACTION_PAY_RESULT, buySuccess);
+        setResult(RESULT_OK, intent);
         finish();
     }
 }

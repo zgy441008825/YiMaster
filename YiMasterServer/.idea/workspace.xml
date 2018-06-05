@@ -7,50 +7,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f51b41b-46e3-4e02-8a8e-9eaf0869dd46" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/res/drawable/ic_count.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/res/drawable/ic_home_o.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/res/drawable/ic_loop.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/res/drawable/ic_time.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/343d6e8c-462b-442e-9e6a-d2b95e60f30f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/343d6e8c-462b-442e-9e6a-d2b95e60f30f.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/sql" beforeDir="false" afterPath="$PROJECT_DIR$/app/sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/api/PlaceOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/api/PlaceOrder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/dao/DBManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/dao/DBManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/.idea/assetWizardSettings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/.idea/dictionaries/Administrator.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/.idea/dictionaries/zougaoyuan.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/.idea/kotlinc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/.idea/runConfigurations.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/.idea/runConfigurations.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/UMLibrary/build/generated/source/buildConfig/debug/com/umeng/message/lib/BuildConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/UMLibrary/build/generated/source/buildConfig/debug/com/umeng/message/lib/BuildConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/UMLibrary/build/intermediates/attr/R.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/UMLibrary/build/intermediates/attr/R.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/UMLibrary/build/intermediates/incremental/debug-mergeJniLibs/merge-state" beforeDir="false" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/UMLibrary/build/intermediates/incremental/debug-mergeJniLibs/merge-state" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/UMLibrary/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/UMLibrary/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/UMLibrary/build/intermediates/incremental/mergeDebugShaders/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/UMLibrary/build/intermediates/incremental/mergeDebugShaders/merger.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/UMLibrary/build/intermediates/incremental/packageDebugAssets/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/UMLibrary/build/intermediates/incremental/packageDebugAssets/merger.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/UMLibrary/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/UMLibrary/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/UMLibrary/build/intermediates/incremental/packageDebugResources/merged.dir/values/values.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/UMLibrary/build/intermediates/incremental/packageDebugResources/merged.dir/values/values.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/UMLibrary/build/intermediates/incremental/packageDebugResources/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/UMLibrary/build/intermediates/incremental/packageDebugResources/merger.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/UMLibrary/build/intermediates/manifests/aapt/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/UMLibrary/build/intermediates/manifests/aapt/debug/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/UMLibrary/build/intermediates/manifests/full/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/UMLibrary/build/intermediates/manifests/full/debug/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/UMLibrary/build/intermediates/packaged_res/debug/values/values.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/UMLibrary/build/intermediates/packaged_res/debug/values/values.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/UMLibrary/build/intermediates/res/symbol-table-with-package/debug/package-aware-r.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/UMLibrary/build/intermediates/res/symbol-table-with-package/debug/package-aware-r.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/UMLibrary/build/intermediates/symbols/debug/R.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/UMLibrary/build/intermediates/symbols/debug/R.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/UMLibrary/build/outputs/logs/manifest-merger-debug-report.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/UMLibrary/build/outputs/logs/manifest-merger-debug-report.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/java/com/zou/yimaster/ui/activity/GameResultActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/java/com/zou/yimaster/ui/activity/GameResultActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/java/com/zou/yimaster/ui/activity/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/java/com/zou/yimaster/ui/activity/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/java/com/zou/yimaster/ui/activity/PlayActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/java/com/zou/yimaster/ui/activity/PlayActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/java/com/zou/yimaster/utils/AnimationHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/java/com/zou/yimaster/utils/AnimationHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/res/drawable/ic_next.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/res/drawable/ic_next.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/res/layout/activity_game_result.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/res/layout/activity_game_result.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/res/layout/play_power_info.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/res/layout/play_power_info.xml" afterDir="false" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/java/com/zou/yimaster/tools/YiUncaughtExceptionHandler.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/java/com/zou/yimaster/ui/activity/AboutActivity.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/res/drawable/ic_back.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/res/drawable/ic_logo.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/res/drawable/ic_setting.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/res/layout/activity_about.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/343d6e8c-462b-442e-9e6a-d2b95e60f30f.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/343d6e8c-462b-442e-9e6a-d2b95e60f30f.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/api/PlaceOrder.java" afterPath="$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/api/PlaceOrder.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/dao/DBManager.java" afterPath="$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/dao/DBManager.java" />
+      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/.idea/assetWizardSettings.xml" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/.idea/assetWizardSettings.xml" />
+      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/.idea/caches/build_file_checksums.ser" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/.idea/caches/build_file_checksums.ser" />
+      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/UMLibrary/build/intermediates/incremental/debug-mergeJavaRes/merge-state" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/UMLibrary/build/intermediates/incremental/debug-mergeJavaRes/merge-state" />
+      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/UMLibrary/build/intermediates/incremental/debug-mergeJniLibs/merge-state" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/UMLibrary/build/intermediates/incremental/debug-mergeJniLibs/merge-state" />
+      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/UMLibrary/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/UMLibrary/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" />
+      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/UMLibrary/build/outputs/aar/UMLibrary-debug.aar" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/UMLibrary/build/outputs/aar/UMLibrary-debug.aar" />
+      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/app/build.gradle" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/app/build.gradle" />
+      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/AndroidManifest.xml" />
+      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/java/com/zou/yimaster/common/PowerFactory.java" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/java/com/zou/yimaster/common/PowerFactory.java" />
+      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/java/com/zou/yimaster/common/YiApplication.java" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/java/com/zou/yimaster/common/YiApplication.java" />
+      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/java/com/zou/yimaster/net/RetrofitHelper.java" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/java/com/zou/yimaster/net/RetrofitHelper.java" />
+      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/java/com/zou/yimaster/ui/activity/BuyActivity.java" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/java/com/zou/yimaster/ui/activity/BuyActivity.java" />
+      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/java/com/zou/yimaster/ui/activity/GameResultActivity.java" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/java/com/zou/yimaster/ui/activity/GameResultActivity.java" />
+      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/java/com/zou/yimaster/ui/activity/MainActivity.java" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/java/com/zou/yimaster/ui/activity/MainActivity.java" />
+      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/res/layout/activity_buy.xml" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/res/layout/activity_buy.xml" />
+      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/res/layout/activity_main.xml" />
+      <change beforePath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/../androidsrc/YiMaster/app/src/main/res/values/strings.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -70,11 +54,9 @@
     <option name="GROUP_SCHEMA" value="true" />
     <option name="GROUP_CONTENTS" value="false" />
     <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
     <option name="SHOW_EMPTY_GROUPS" value="false" />
     <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
-    </option>
     <expand>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
@@ -85,31 +67,37 @@
         <item name="yimaster@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
       </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="yimaster@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="yimaster: schema" type="c314c289:MysqlImplModel$Schema" />
-      </path>
     </expand>
     <select />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DBManager.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DBManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/dao/DBManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="82">
-              <caret line="176" selection-start-line="176" selection-end-line="176" />
+            <state relative-caret-position="388">
+              <caret line="37" column="48" lean-forward="true" selection-start-line="37" selection-start-column="48" selection-end-line="37" selection-end-column="48" />
+              <folding>
+                <marker date="1527688069400" expanded="true" signature="1957:2040" ph="INSERT INTO channelinfo... " />
+                <marker date="1527688069400" expanded="true" signature="2512:2634" ph="UPDATE channelinfo... " />
+                <marker date="1527688069400" expanded="true" signature="3337:3380" ph="SELECT * FRO... channelinfo" />
+                <marker date="1527688069400" expanded="true" signature="4413:4438" ph="SELECT * FRO... channelinfo" />
+                <marker date="1527688069400" expanded="true" signature="5388:5764" ph="INSERT INTO yiorder... " />
+                <marker date="1527688069400" expanded="true" signature="5815:6163" ph="UPDATE yiorder... " />
+                <marker date="1527688069400" expanded="true" signature="7705:7748" ph="SELECT * FRO... yiorder" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlaceOrder.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PlaceOrder.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/api/PlaceOrder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="37" column="39" lean-forward="true" selection-start-line="37" selection-start-column="39" selection-end-line="37" selection-end-column="39" />
+            <state relative-caret-position="308">
+              <caret line="38" column="73" lean-forward="false" selection-start-line="38" selection-start-column="73" selection-end-line="38" selection-end-column="73" />
+              <folding>
+                <element signature="docComment;class#PlaceOrder#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -117,8 +105,9 @@
       <file leaf-file-name="NetworkUtil.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/utils/NetworkUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
+            <state relative-caret-position="62">
+              <caret line="25" column="13" lean-forward="false" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -126,35 +115,9 @@
       <file leaf-file-name="OrderFactory.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/common/OrderFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="148">
-              <caret line="41" selection-start-line="41" selection-end-line="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="616">
-              <caret line="44" selection-start-line="44" selection-end-line="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="userinfo.sql" pinned="false" current-in-tab="false">
-        <entry file="das://343d6e8c-462b-442e-9e6a-d2b95e60f30f/schema/yimaster/table/userinfo.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
-              <caret line="20" column="2" lean-forward="true" selection-start-line="1" selection-end-line="20" selection-end-column="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gamerecord.sql" pinned="false" current-in-tab="false">
-        <entry file="das://343d6e8c-462b-442e-9e6a-d2b95e60f30f/schema/yimaster/table/gamerecord.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="33">
-              <caret line="1" selection-start-line="1" selection-end-line="11" selection-end-column="2" />
+            <state relative-caret-position="30">
+              <caret line="27" column="28" lean-forward="false" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -172,6 +135,11 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -187,10 +155,10 @@
         <option value="$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/api/QueryOrder.java" />
         <option value="$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/common/OrderFactory.java" />
         <option value="$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/api/GetChannelInfo.java" />
-        <option value="$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/dao/DBManager.java" />
         <option value="$PROJECT_DIR$/app/sql" />
-        <option value="$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/api/PlaceOrder.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/343d6e8c-462b-442e-9e6a-d2b95e60f30f/console.sql" />
+        <option value="$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/dao/DBManager.java" />
+        <option value="$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/api/PlaceOrder.java" />
       </list>
     </option>
   </component>
@@ -224,10 +192,24 @@
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -240,13 +222,16 @@
               <item name="YiMasterServer" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="YiMasterServer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="YiMasterServer" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -281,11 +266,27 @@
   <component name="RunManager">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="WIDTH" value="0" />
+      <option name="HEIGHT" value="0" />
+      <module />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" />
@@ -295,13 +296,24 @@
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="singleModule" />
       </option>
+      <envs />
       <patterns />
     </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="SUITE_NAME" />
@@ -314,18 +326,22 @@
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="singleModule" />
       </option>
       <option name="USE_DEFAULT_REPORTERS" value="false" />
       <option name="PROPERTIES_FILE" />
+      <envs />
       <properties />
       <listeners />
     </configuration>
-    <configuration name="tomcat" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0M4" ALTERNATIVE_JRE_ENABLED="false">
+    <configuration name="tomcat" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.0.50" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="OPEN_IN_BROWSER" value="false" />
       <option name="BROWSER_ID" value="16bf23d4-93e0-4ffc-bfd6-cb13575177b0" />
-      <option name="UPDATING_POLICY" value="restart-server" />
+      <option name="UPDATING_POLICY" value="redeploy-artifacts" />
       <deployment>
         <artifact name="app:war exploded">
           <settings>
@@ -341,6 +357,7 @@
       <predefined_log_file id="Tomcat Manager" enabled="false" />
       <predefined_log_file id="Tomcat Host Manager" enabled="false" />
       <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <RunnerSettings RunnerId="Debug">
         <option name="DEBUG_PORT" value="58530" />
       </RunnerSettings>
@@ -395,19 +412,15 @@
         </option>
       </method>
     </configuration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
-    </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
       <option name="PROGRAM_PARAMETERS" />
       <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -426,84 +439,78 @@
       <workItem from="1525692453866" duration="31000" />
       <workItem from="1525692507161" duration="404000" />
       <workItem from="1525848145971" duration="1494000" />
+      <workItem from="1527687899821" duration="1304000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29879000" />
+    <option name="totallyTimeSpent" value="31183000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" />
-      <window_info anchor="bottom" id="Application Servers" order="7" weight="0.3559322" />
-      <window_info anchor="right" id="Maven Projects" order="9" weight="0.3295129" />
-      <window_info anchor="bottom" id="Database Changes" order="12" />
-      <window_info id="Capture Tool" order="7" />
-      <window_info id="Designer" order="2" />
-      <window_info anchor="right" id="Database" order="5" sideWeight="0.49261993" weight="0.28366762" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" order="4" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.57827926" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="9" weight="0.32909605" />
-      <window_info anchor="right" id="Palette&#9;" order="6" />
-      <window_info id="Image Layers" order="3" />
-      <window_info anchor="bottom" id="Java Enterprise" order="10" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.45416078" />
-      <window_info anchor="bottom" id="Version Control" order="11" />
-      <window_info anchor="right" id="Coverage" order="8" sideWeight="0.50738007" side_tool="true" weight="0.4269341" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Database Console" order="14" weight="0.32863188" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.17550144" />
-      <window_info id="Web" order="6" side_tool="true" />
-      <window_info anchor="right" id="Theme Preview" order="7" />
-      <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32909605" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5981524" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17703862" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
-      <window_info anchor="bottom" id="Application Servers" order="7" weight="0.3559322" />
-      <window_info id="Designer" order="2" />
-      <window_info anchor="bottom" id="Database Console" order="14" weight="0.32863188" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.45416078" />
-      <window_info id="Image Layers" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32909605" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info id="Capture Tool" order="7" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="9" weight="0.32909605" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Java Enterprise" order="10" />
-      <window_info anchor="bottom" id="Database Changes" order="12" />
-      <window_info anchor="bottom" id="Version Control" order="11" />
-      <window_info anchor="right" id="Maven Projects" order="9" weight="0.3295129" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.17550144" />
-      <window_info anchor="right" id="Database" order="5" sideWeight="0.49261993" weight="0.28366762" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info id="Web" order="6" side_tool="true" />
-      <window_info anchor="right" id="Palette&#9;" order="6" />
-      <window_info anchor="right" id="Theme Preview" order="7" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" id="Coverage" order="8" sideWeight="0.50738007" side_tool="true" weight="0.4269341" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.57827926" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17703862" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5981524" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -523,25 +530,25 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/wx/WXOrderCallback.java</url>
-          <line>27</line>
+          <line>25</line>
           <properties />
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/api/QueryOrder.java</url>
-          <line>27</line>
+          <line>30</line>
           <properties />
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/api/QueryOrder.java</url>
-          <line>34</line>
+          <line>37</line>
           <properties />
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/api/QueryOrder.java</url>
-          <line>35</line>
+          <line>38</line>
           <properties />
           <option name="timeStamp" value="12" />
         </line-breakpoint>
@@ -554,40 +561,27 @@
       </breakpoints>
       <option name="time" value="15" />
     </breakpoint-manager>
+    <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/wx/WXOrderCallback.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="21" column="3" lean-forward="true" selection-start-line="21" selection-start-column="3" selection-end-line="21" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/dao/DBManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3173">
-          <caret line="176" selection-start-line="176" selection-end-line="176" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/utils/ParamStringTools.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="532">
-          <caret line="51" column="34" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
+          <caret line="51" column="34" lean-forward="false" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/api/GetChannelInfo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
-          <caret line="15" column="41" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
+          <caret line="15" column="41" lean-forward="false" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/api/QueryOrder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
-          <caret line="37" column="72" selection-start-line="37" selection-start-column="72" selection-end-line="37" selection-end-column="72" />
+          <caret line="37" column="72" lean-forward="false" selection-start-line="37" selection-start-column="72" selection-end-line="37" selection-end-column="72" />
           <folding>
             <element signature="e#2432#2433#0" expanded="true" />
             <element signature="e#2485#2486#0" expanded="true" />
@@ -598,7 +592,7 @@
     <entry file="file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/common/OrderBean.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6810">
-          <caret line="320" column="18" selection-start-line="320" selection-start-column="18" selection-end-line="320" selection-end-column="18" />
+          <caret line="320" column="18" lean-forward="false" selection-start-line="320" selection-start-column="18" selection-end-line="320" selection-end-column="18" />
           <folding>
             <element signature="e#5914#5915#0" expanded="true" />
             <element signature="e#5948#5949#0" expanded="true" />
@@ -609,21 +603,21 @@
     <entry file="file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/wx/WXOrderCallback.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
-          <caret line="29" column="55" selection-start-line="29" selection-start-column="55" selection-end-line="29" selection-end-column="55" />
+          <caret line="29" column="55" lean-forward="false" selection-start-line="29" selection-start-column="55" selection-end-line="29" selection-end-column="55" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/api/PlaceOrder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="630">
-          <caret line="44" selection-start-line="44" selection-end-line="44" />
+          <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/common/OrderFactory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1740">
-          <caret line="85" column="38" selection-start-line="85" selection-start-column="38" selection-end-line="85" selection-end-column="38" />
+          <caret line="85" column="38" lean-forward="false" selection-start-line="85" selection-start-column="38" selection-end-line="85" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -637,7 +631,7 @@
     <entry file="file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/api/QueryOrder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
-          <caret line="37" column="72" selection-start-line="37" selection-start-column="72" selection-end-line="37" selection-end-column="72" />
+          <caret line="37" column="72" lean-forward="false" selection-start-line="37" selection-start-column="72" selection-end-line="37" selection-end-column="72" />
           <folding>
             <element signature="e#2432#2433#0" expanded="true" />
             <element signature="e#2485#2486#0" expanded="true" />
@@ -648,7 +642,7 @@
     <entry file="file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/common/OrderBean.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6810">
-          <caret line="320" column="18" selection-start-line="320" selection-start-column="18" selection-end-line="320" selection-end-column="18" />
+          <caret line="320" column="18" lean-forward="false" selection-start-line="320" selection-start-column="18" selection-end-line="320" selection-end-column="18" />
           <folding>
             <element signature="e#5914#5915#0" expanded="true" />
             <element signature="e#5948#5949#0" expanded="true" />
@@ -659,21 +653,21 @@
     <entry file="file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/wx/WXOrderCallback.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
-          <caret line="29" column="55" selection-start-line="29" selection-start-column="55" selection-end-line="29" selection-end-column="55" />
+          <caret line="29" column="55" lean-forward="false" selection-start-line="29" selection-start-column="55" selection-end-line="29" selection-end-column="55" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/api/PlaceOrder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="630">
-          <caret line="44" selection-start-line="44" selection-end-line="44" />
+          <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/common/OrderFactory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1860">
-          <caret line="85" column="38" selection-start-line="85" selection-start-column="38" selection-end-line="85" selection-end-column="38" />
+          <caret line="85" column="38" lean-forward="false" selection-start-line="85" selection-start-column="38" selection-end-line="85" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -687,7 +681,7 @@
     <entry file="file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/api/QueryOrder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
-          <caret line="37" column="72" selection-start-line="37" selection-start-column="72" selection-end-line="37" selection-end-column="72" />
+          <caret line="37" column="72" lean-forward="false" selection-start-line="37" selection-start-column="72" selection-end-line="37" selection-end-column="72" />
           <folding>
             <element signature="e#2432#2433#0" expanded="true" />
             <element signature="e#2485#2486#0" expanded="true" />
@@ -698,7 +692,7 @@
     <entry file="file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/common/OrderBean.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="9600">
-          <caret line="320" column="18" selection-start-line="320" selection-start-column="18" selection-end-line="320" selection-end-column="18" />
+          <caret line="320" column="18" lean-forward="false" selection-start-line="320" selection-start-column="18" selection-end-line="320" selection-end-column="18" />
           <folding>
             <element signature="e#5914#5915#0" expanded="true" />
             <element signature="e#5948#5949#0" expanded="true" />
@@ -709,21 +703,21 @@
     <entry file="file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/wx/WXOrderCallback.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
-          <caret line="29" column="55" selection-start-line="29" selection-start-column="55" selection-end-line="29" selection-end-column="55" />
+          <caret line="29" column="55" lean-forward="false" selection-start-line="29" selection-start-column="55" selection-end-line="29" selection-end-column="55" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/api/PlaceOrder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="630">
-          <caret line="44" selection-start-line="44" selection-end-line="44" />
+          <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/common/OrderFactory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1740">
-          <caret line="85" column="38" selection-start-line="85" selection-start-column="38" selection-end-line="85" selection-end-column="38" />
+          <caret line="85" column="38" lean-forward="false" selection-start-line="85" selection-start-column="38" selection-end-line="85" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -737,14 +731,14 @@
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1110">
-          <caret line="70" column="15" selection-start-line="70" selection-start-column="15" selection-end-line="70" selection-end-column="15" />
+          <caret line="70" column="15" lean-forward="false" selection-start-line="70" selection-start-column="15" selection-end-line="70" selection-end-column="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/common/TradeState.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
-          <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+          <caret line="7" column="12" lean-forward="false" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -752,7 +746,7 @@
     <entry file="jar://$PROJECT_DIR$/lib/rxjava-2.0.0-sources.jar!/io/reactivex/internal/operators/flowable/FlowableOnBackpressureLatest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="131">
-          <caret line="129" selection-start-line="129" selection-end-line="129" />
+          <caret line="129" column="0" lean-forward="false" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -780,7 +774,7 @@
     <entry file="file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/common/OrderBean.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7491">
-          <caret line="320" column="18" selection-start-line="320" selection-start-column="18" selection-end-line="320" selection-end-column="18" />
+          <caret line="320" column="18" lean-forward="false" selection-start-line="320" selection-start-column="18" selection-end-line="320" selection-end-column="18" />
           <folding>
             <element signature="e#5914#5915#0" expanded="true" />
             <element signature="e#5948#5949#0" expanded="true" />
@@ -791,7 +785,7 @@
     <entry file="jar://$PROJECT_DIR$/lib/rxjava-2.0.0-sources.jar!/io/reactivex/internal/subscribers/LambdaSubscriber.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
-          <caret line="62" selection-start-line="62" selection-end-line="62" />
+          <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -799,7 +793,7 @@
     <entry file="file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/utils/ParamStringTools.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="693">
-          <caret line="51" column="34" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
+          <caret line="51" column="34" lean-forward="false" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -807,21 +801,21 @@
     <entry file="file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/wx/WXOrderCallback.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
-          <caret line="21" column="3" selection-start-line="21" selection-start-column="3" selection-end-line="21" selection-end-column="3" />
+          <caret line="21" column="3" lean-forward="false" selection-start-line="21" selection-start-column="3" selection-end-line="21" selection-end-column="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/api/GetChannelInfo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
-          <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+          <caret line="29" column="5" lean-forward="false" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/api/QueryOrder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="33">
-          <caret line="34" column="73" selection-start-line="34" selection-start-column="73" selection-end-line="34" selection-end-column="73" />
+          <caret line="34" column="73" lean-forward="false" selection-start-line="34" selection-start-column="73" selection-end-line="34" selection-end-column="73" />
           <folding>
             <element signature="e#2432#2433#0" expanded="true" />
             <element signature="e#2485#2486#0" expanded="true" />
@@ -832,102 +826,80 @@
     <entry file="file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/api/BaseServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="33">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="das://343d6e8c-462b-442e-9e6a-d2b95e60f30f/schema/yimaster/table/yiorder.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="26" lean-forward="true" selection-end-line="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://343d6e8c-462b-442e-9e6a-d2b95e60f30f/schema/yimaster/table/channelinfo.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33">
-          <caret line="1" selection-start-line="1" selection-end-line="10" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://343d6e8c-462b-442e-9e6a-d2b95e60f30f/schema/yimaster/table/gamerecord.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33">
-          <caret line="1" selection-start-line="1" selection-end-line="11" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://343d6e8c-462b-442e-9e6a-d2b95e60f30f/schema/yimaster/table/userinfo.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="20" column="2" lean-forward="true" selection-start-line="1" selection-end-line="20" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="das://343d6e8c-462b-442e-9e6a-d2b95e60f30f/schema/yimaster/table/yiorder.sql" />
+    <entry file="das://343d6e8c-462b-442e-9e6a-d2b95e60f30f/schema/yimaster/table/channelinfo.sql" />
+    <entry file="das://343d6e8c-462b-442e-9e6a-d2b95e60f30f/schema/yimaster/table/gamerecord.sql" />
+    <entry file="das://343d6e8c-462b-442e-9e6a-d2b95e60f30f/schema/yimaster/table/userinfo.sql" />
     <entry file="file://$PROJECT_DIR$/app/sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="616">
-          <caret line="44" selection-start-line="44" selection-end-line="44" />
+        <state relative-caret-position="1230">
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="das://343d6e8c-462b-442e-9e6a-d2b95e60f30f/schema/yimaster/table/channelinfo">
+    <entry file="das://343d6e8c-462b-442e-9e6a-d2b95e60f30f/schema/yimaster/table/channelinfo" />
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/343d6e8c-462b-442e-9e6a-d2b95e60f30f/console.sql" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_91/src.zip!/java/lang/String.java" />
+    <entry file="das://343d6e8c-462b-442e-9e6a-d2b95e60f30f/schema/yimaster/table/yiorder" />
+    <entry file="das://table:/76c4f3f5/343d6e8c-462b-442e-9e6a-d2b95e60f30f/yimaster.channelinfo">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/web/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="13" column="7" lean-forward="true" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/common/OrderFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="41" selection-start-line="41" selection-end-line="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/api/PlaceOrder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="37" column="39" lean-forward="true" selection-start-line="37" selection-start-column="39" selection-end-line="37" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/343d6e8c-462b-442e-9e6a-d2b95e60f30f/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="22" selection-start-column="22" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_91/src.zip!/java/lang/String.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="656" column="53" lean-forward="true" selection-start-line="656" selection-start-column="53" selection-end-line="656" selection-end-column="53" />
-          <folding>
-            <element signature="e#23072#23073#0" expanded="true" />
-            <element signature="e#23112#23113#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://343d6e8c-462b-442e-9e6a-d2b95e60f30f/schema/yimaster/table/yiorder">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
+        <state relative-caret-position="30">
+          <caret line="27" column="28" lean-forward="false" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/utils/NetworkUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
+        <state relative-caret-position="62">
+          <caret line="25" column="13" lean-forward="false" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/dao/DBManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="176" selection-start-line="176" selection-end-line="176" />
+        <state relative-caret-position="388">
+          <caret line="37" column="48" lean-forward="true" selection-start-line="37" selection-start-column="48" selection-end-line="37" selection-end-column="48" />
+          <folding>
+            <marker date="1527688069400" expanded="true" signature="1957:2040" ph="INSERT INTO channelinfo... " />
+            <marker date="1527688069400" expanded="true" signature="2512:2634" ph="UPDATE channelinfo... " />
+            <marker date="1527688069400" expanded="true" signature="3337:3380" ph="SELECT * FRO... channelinfo" />
+            <marker date="1527688069400" expanded="true" signature="4413:4438" ph="SELECT * FRO... channelinfo" />
+            <marker date="1527688069400" expanded="true" signature="5388:5764" ph="INSERT INTO yiorder... " />
+            <marker date="1527688069400" expanded="true" signature="5815:6163" ph="UPDATE yiorder... " />
+            <marker date="1527688069400" expanded="true" signature="7705:7748" ph="SELECT * FRO... yiorder" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/com/zou/yimaster/servlet/api/PlaceOrder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="38" column="73" lean-forward="false" selection-start-line="38" selection-start-column="73" selection-end-line="38" selection-end-column="73" />
+          <folding>
+            <element signature="docComment;class#PlaceOrder#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -5,12 +5,12 @@ import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Application;
 import android.content.Context;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.text.TextUtils;
-import android.widget.Toast;
 
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.commonsdk.UMConfigure;
@@ -19,6 +19,7 @@ import com.umeng.message.PushAgent;
 import com.umeng.message.UmengNotificationClickHandler;
 import com.umeng.message.entity.UMessage;
 import com.umeng.socialize.UMShareAPI;
+import com.zou.yimaster.utils.ToastHelper;
 
 import org.xutils.x;
 
@@ -82,7 +83,7 @@ public class YiApplication extends Application {
     private UmengNotificationClickHandler notificationClickHandler = new UmengNotificationClickHandler() {
         @Override
         public void dealWithCustomAction(Context context, UMessage msg) {
-            Toast.makeText(context, msg.custom, Toast.LENGTH_LONG).show();
+            ToastHelper.show(msg.custom);
         }
     };
 
@@ -196,5 +197,24 @@ public class YiApplication extends Application {
         return result;
     }
 
+    public static String getApkVersionName() {
+        try {
+            PackageInfo packageInfo = x.app().getPackageManager().getPackageInfo(x.app().getPackageName(), 0);
+            return packageInfo.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    public static int getApkVersionCode() {
+        try {
+            PackageInfo packageInfo = x.app().getPackageManager().getPackageInfo(x.app().getPackageName(), 0);
+            return packageInfo.versionCode;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 
 }
