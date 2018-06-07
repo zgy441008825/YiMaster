@@ -181,6 +181,7 @@ public class PlayActivity extends BaseActivity {
         groupView.setEnabled(false);
         dataList.addAll(QuestionHelper.productionQuestion(dataSize, itemSize));
         System.out.println("initDataList: " + dataList);
+        playButton.setEnabled(true);
         playButton.setText("准备");
         playTVCount.setText(String.valueOf(rightCnt));
         showFirstTips();
