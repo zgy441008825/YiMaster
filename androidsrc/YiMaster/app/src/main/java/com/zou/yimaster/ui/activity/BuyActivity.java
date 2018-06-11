@@ -96,15 +96,15 @@ public class BuyActivity extends BaseActivity {
                 break;
             case R.id.Buy_2:
                 buyCount = 15;
-                buy(getFee(10));
+                buy(getFee(12));
                 break;
             case R.id.Buy_3:
-                buyCount = 25;
-                buy(getFee(15));
+                buyCount = 30;
+                buy(getFee(20));
                 break;
             case R.id.Buy_4:
                 buyCount = 50;
-                buy(getFee(20));
+                buy(getFee(25));
                 break;
             case R.id.BuyClose:
                 exit();
